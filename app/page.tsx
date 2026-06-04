@@ -1,27 +1,23 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Ventures } from "@/components/sections/Ventures";
-import { Speaking } from "@/components/sections/Speaking";
-import { Mentorship } from "@/components/sections/Mentorship";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { Publications } from "@/components/sections/Publications";
-import { Contact } from "@/components/sections/Contact";
+import { HomeHero } from "@/components/sections/HomeHero";
+import { HomeImpact } from "@/components/sections/HomeImpact";
+import { HomeVenturesPreview } from "@/components/sections/HomeVenturesPreview";
+import { HomeMentorship } from "@/components/sections/HomeMentorship";
+import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
+import { HomeClosing } from "@/components/sections/HomeClosing";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <Ventures />
-        <Speaking />
-        <Mentorship />
-        <Testimonials />
-        <Publications />
-        <Contact />
+        <HomeHero />
+        <HomeImpact />
+        <HomeVenturesPreview />
+        <HomeMentorship />
+        <HomeNewsletter />
+        <HomeClosing />
       </main>
       <Footer />
     </>
