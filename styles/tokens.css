@@ -1,0 +1,58 @@
+/*
+  Design Tokens — Damilare Portfolio
+  Reference this file for token names. Values are defined in app/globals.css.
+
+  ─── Color Tokens ────────────────────────────────────────────────
+  bg-background          Page background (near-black)
+  bg-card                Card / panel surface
+  bg-surface             Section surface
+  bg-surface-raised      Elevated surface (dropdowns, modals)
+
+  text-foreground        Primary text
+  text-muted-foreground  Secondary / caption text
+
+  text-gold              Brand gold (use sparingly — key highlights only)
+  bg-gold-subtle         Gold tint background (for badges, highlights)
+
+  border-border          Default border
+  ring-ring              Focus ring
+
+  ─── Typography ──────────────────────────────────────────────────
+  font-sans              Geist — body, UI text
+  font-display           Playfair Display — headings, hero, editorial
+  font-mono              Geist Mono — code, numbers, metadata
+
+  Sizes (via Tailwind text-* utilities):
+  text-xs   12px    captions, labels
+  text-sm   14px    secondary body, metadata
+  text-base 16px    body copy
+  text-lg   18px    large body
+  text-xl   20px    sub-headings
+  text-2xl  24px    h4 level
+  text-3xl  30px    h3 level
+  text-4xl  36px    h2 level
+  text-5xl  48px    h1 level
+  text-6xl  60px    hero sub
+  text-7xl  72px    hero
+  text-8xl  96px    display
+
+  ─── Spacing ─────────────────────────────────────────────────────
+  Section vertical padding: py-20 md:py-28 lg:py-36
+  Section horizontal padding: px-6 md:px-10 lg:px-16
+  Component gap: gap-4 (tight) / gap-6 (default) / gap-10 (loose)
+
+  ─── Containers ──────────────────────────────────────────────────
+  max-w-[var(--container-content)]  46rem — reading / text columns
+  max-w-[var(--container-default)]  75rem — standard page width
+  max-w-[var(--container-wide)]     90rem — wide / full layouts
+
+  ─── Breakpoints (Tailwind defaults) ─────────────────────────────
+  sm    640px
+  md    768px
+  lg    1024px
+  xl    1280px
+  2xl   1536px
+
+  ─── Radius ──────────────────────────────────────────────────────
+  rounded-sm / rounded-md / rounded-lg / rounded-xl / rounded-2xl
+*/

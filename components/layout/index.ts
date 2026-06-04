@@ -1,0 +1,2 @@
+// Layout components — Navbar, Footer, etc.
+export {};

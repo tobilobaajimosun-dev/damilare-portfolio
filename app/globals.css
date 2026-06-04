@@ -1,26 +1,179 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Fonts — literal names required; @theme inline resolves at parse time */
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-display: "Playfair Display", "Georgia", ui-serif, serif;
+
+  /* Base colors mapped from CSS custom properties */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand custom tokens */
+  --color-gold: var(--gold);
+  --color-gold-muted: var(--gold-muted);
+  --color-gold-subtle: var(--gold-subtle);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+
+  /* Radius scale */
+  --radius-xs: calc(var(--radius) * 0.5);
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: calc(var(--radius) * 0.875);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+
+  /* Spacing scale (extends Tailwind defaults) */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+
+  /* Container widths */
+  --container-content: 46rem;
+  --container-default: 75rem;
+  --container-wide: 90rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Dark mode (default — premium dark brand) ───────────────────────────── */
+:root {
+  color-scheme: dark;
+
+  --background: oklch(0.09 0 0);
+  --foreground: oklch(0.97 0 0);
+
+  --card: oklch(0.13 0 0);
+  --card-foreground: oklch(0.97 0 0);
+
+  --popover: oklch(0.13 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+
+  /* Primary = brand gold */
+  --primary: oklch(0.76 0.12 80);
+  --primary-foreground: oklch(0.09 0 0);
+
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+
+  --accent: oklch(0.20 0 0);
+  --accent-foreground: oklch(0.97 0 0);
+
+  --destructive: oklch(0.62 0.22 27);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.76 0.12 80 / 60%);
+
+  /* Brand gold system */
+  --gold: oklch(0.76 0.12 80);
+  --gold-muted: oklch(0.65 0.09 80);
+  --gold-subtle: oklch(0.76 0.12 80 / 12%);
+
+  /* Surfaces */
+  --surface: oklch(0.13 0 0);
+  --surface-raised: oklch(0.17 0 0);
+
+  --radius: 0.5rem;
+}
+
+/* ── Light mode override ─────────────────────────────────────────────────── */
+.light {
+  color-scheme: light;
+
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.09 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.09 0 0);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.09 0 0);
+
+  --primary: oklch(0.55 0.14 80);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.09 0 0);
+
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+
+  --accent: oklch(0.93 0 0);
+  --accent-foreground: oklch(0.09 0 0);
+
+  --destructive: oklch(0.58 0.22 27);
+
+  --border: oklch(0.09 0 0 / 10%);
+  --input: oklch(0.09 0 0 / 8%);
+  --ring: oklch(0.55 0.14 80 / 50%);
+
+  --gold: oklch(0.58 0.14 80);
+  --gold-muted: oklch(0.55 0.12 80);
+  --gold-subtle: oklch(0.55 0.14 80 / 10%);
+
+  --surface: oklch(0.97 0 0);
+  --surface-raised: oklch(1 0 0);
+}
+
+/* ── Base layer ──────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    @apply font-sans scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight;
+  }
 }
