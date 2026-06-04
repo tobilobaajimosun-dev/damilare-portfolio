@@ -3,13 +3,13 @@
   Reference this file for token names. Values are defined in app/globals.css.
 
   ─── Color Tokens ────────────────────────────────────────────────
-  bg-background          Page background (near-black)
-  bg-card                Card / panel surface
-  bg-surface             Section surface
-  bg-surface-raised      Elevated surface (dropdowns, modals)
+  bg-background          Page background (near-white)
+  bg-card                Card / panel surface (white)
+  bg-surface             Section surface (light gray)
+  bg-surface-raised      Elevated surface (white, for modals/dropdowns)
 
-  text-foreground        Primary text
-  text-muted-foreground  Secondary / caption text
+  text-foreground        Primary text (near-black)
+  text-muted-foreground  Secondary / caption text (mid gray)
 
   text-gold              Brand gold (use sparingly — key highlights only)
   bg-gold-subtle         Gold tint background (for badges, highlights)

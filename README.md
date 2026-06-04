@@ -44,16 +44,16 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Color Palette
 
-The site is dark-mode-first with a premium palette anchored in warm near-black and brand gold.
+Light mode. Clean, airy palette with brand gold as the single accent color.
 
 | Token | Value | Use |
 |---|---|---|
-| `--background` | `oklch(0.09 0 0)` | Page background |
-| `--foreground` | `oklch(0.97 0 0)` | Primary text |
-| `--primary` / `--gold` | `oklch(0.76 0.12 80)` | Brand gold accent |
-| `--surface` | `oklch(0.13 0 0)` | Card / panel |
-| `--surface-raised` | `oklch(0.17 0 0)` | Elevated surface |
-| `--muted-foreground` | `oklch(0.65 0 0)` | Secondary text |
+| `--background` | `oklch(0.99 0 0)` | Page background |
+| `--foreground` | `oklch(0.09 0 0)` | Primary text |
+| `--primary` / `--gold` | `oklch(0.55 0.14 80)` | Brand gold accent |
+| `--surface` | `oklch(0.97 0 0)` | Section / panel |
+| `--surface-raised` | `oklch(1 0 0)` | Elevated surface |
+| `--muted-foreground` | `oklch(0.45 0 0)` | Secondary text |
 
 ### Typography
 

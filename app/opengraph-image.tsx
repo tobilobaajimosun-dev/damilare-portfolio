@@ -10,7 +10,7 @@ export default function OGImage() {
     (
       <div
         style={{
-          background: "#171717",
+          background: "#fafafa",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -38,7 +38,7 @@ export default function OGImage() {
           style={{
             fontSize: 72,
             fontWeight: 700,
-            color: "#f9f9f9",
+            color: "#111111",
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
             marginBottom: 20,
@@ -51,7 +51,7 @@ export default function OGImage() {
         <div
           style={{
             fontSize: 28,
-            color: "oklch(0.65 0 0)",
+            color: "oklch(0.45 0 0)",
             letterSpacing: "0.05em",
             textTransform: "uppercase",
           }}
