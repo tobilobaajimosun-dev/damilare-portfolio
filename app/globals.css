@@ -142,4 +142,11 @@
   h6 {
     @apply font-display tracking-tight;
   }
+
+  /* Stablecoin display face ships only a Light master — never fake-bold it,
+     so headings render at their true light weight. Italic synthesis stays on
+     for the editorial accent words. */
+  .font-display {
+    font-synthesis-weight: none;
+  }
 }
