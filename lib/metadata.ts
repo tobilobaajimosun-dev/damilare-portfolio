@@ -5,9 +5,9 @@ const baseUrl =
 
 export const siteConfig = {
   name: "Oshokoya Damilare",
-  title: "Oshokoya Damilare — Entrepreneur, Founder & Speaker",
+  title: "Oshokoya Damilare — Entrepreneur, Founder & Business Strategist",
   description:
-    "Entrepreneur, founder, mentor, and speaker building businesses that matter. Explore insights on business building, leadership, and impact.",
+    "Faith-driven entrepreneur and business strategist empowering Africa through fintech, proptech, agritech, and mentorship. Co-founder of Realvest.ng, Abode, Agbeloba, and Pettysave.",
   url: baseUrl,
   ogImage: `${baseUrl}/opengraph-image`,
   twitter: "@damilareoshokoya",
@@ -27,8 +27,14 @@ export const baseMetadata: Metadata = {
     "founder",
     "speaker",
     "mentor",
-    "business builder",
+    "business strategist",
     "Nigeria",
+    "Africa",
+    "proptech",
+    "fintech",
+    "SME growth",
+    "Realvest",
+    "Abode",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,

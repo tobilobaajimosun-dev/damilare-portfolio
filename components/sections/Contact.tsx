@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight, ArrowRight } from "lucide-react";
 import { brand } from "@/content/brand";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -29,17 +29,17 @@ export function Contact() {
             variants={fadeUp}
             className="text-xs tracking-[0.2em] uppercase text-background/35 font-sans"
           >
-            05 — Contact
+            Let&apos;s Work Together
           </motion.p>
 
           <motion.h2
             variants={fadeUp}
             className="font-display font-bold tracking-tight text-background leading-[1.0] text-[clamp(2.75rem,7vw,6.5rem)]"
           >
-            Let&apos;s start a
+            Ready to create
             <br />
             <span className="italic font-normal text-background/50">
-              conversation.
+              impact together?
             </span>
           </motion.h2>
 
@@ -47,9 +47,27 @@ export function Contact() {
             variants={fadeUp}
             className="text-background/55 max-w-lg leading-relaxed text-lg"
           >
-            Whether you&apos;re building something new, looking for a speaker,
-            or simply want to connect — my door is always open.
+            Whether you&apos;re building a business, looking for a speaker, or
+            want to transform your organisation — let&apos;s start a
+            conversation.
           </motion.p>
+
+          {/* Primary CTAs */}
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+            <a
+              href={brand.bookingUrl}
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-background text-foreground text-sm font-medium rounded-full hover:bg-background/90 transition-all duration-200"
+            >
+              Book a Free Discovery Call
+              <ArrowRight size={14} />
+            </a>
+            <a
+              href={brand.trainingUrl}
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 border border-background/20 text-background text-sm font-medium rounded-full hover:bg-background/10 transition-all duration-200"
+            >
+              Join My Next Training
+            </a>
+          </motion.div>
 
           {/* Email */}
           <motion.div variants={fadeUp}>
@@ -61,29 +79,37 @@ export function Contact() {
                 size={18}
                 className="text-background/40 group-hover:text-background transition-colors duration-200 shrink-0"
               />
-              <span className="font-sans text-base md:text-lg font-medium text-background border-b border-background/20 group-hover:border-background/50 transition-colors duration-200 pb-0.5">
+              <span className="font-sans text-base font-medium text-background/70 border-b border-background/15 group-hover:border-background/40 group-hover:text-background transition-colors duration-200 pb-0.5">
                 hello@damilareoshokoya.com
               </span>
             </a>
           </motion.div>
 
-          {/* Social links */}
+          {/* Social + Speaking link */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-wrap items-center gap-6 pt-6 border-t border-background/10"
+            className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-background/10"
           >
-            {socialLinks.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-background/35 hover:text-background transition-colors duration-200"
-              >
-                {label}
-                <ArrowUpRight size={13} />
-              </a>
-            ))}
+            <div className="flex flex-wrap items-center gap-6">
+              {socialLinks.map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-background/35 hover:text-background transition-colors duration-200"
+                >
+                  {label}
+                  <ArrowUpRight size={13} />
+                </a>
+              ))}
+            </div>
+            <a
+              href={brand.bookingUrl}
+              className="text-sm text-background/35 hover:text-background border-b border-background/15 hover:border-background/40 transition-colors duration-200 pb-0.5"
+            >
+              Hire me for speaking →
+            </a>
           </motion.div>
         </motion.div>
       </div>

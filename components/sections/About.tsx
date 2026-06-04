@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, scaleIn } from "@/lib/motion";
 
 const stats = [
-  { value: "10+", label: "Years building" },
-  { value: "5+", label: "Companies founded" },
-  { value: "100+", label: "Founders mentored" },
+  { value: "19", label: "African countries" },
+  { value: "9", label: "Research papers published" },
+  { value: "100+", label: "Entrepreneurs mentored" },
 ];
 
 export function About() {
@@ -36,10 +36,10 @@ export function About() {
               variants={fadeUp}
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground"
             >
-              More builder
+              Faith-driven.
               <br />
               <span className="italic font-normal text-muted-foreground">
-                than anything else.
+                Africa-focused.
               </span>
             </motion.h2>
 
@@ -48,15 +48,18 @@ export function About() {
               className="flex flex-col gap-5 text-muted-foreground leading-relaxed"
             >
               <p>
-                My journey in business started with a simple conviction — that
-                entrepreneurship, when approached with integrity and purpose, is
-                one of the most transformative forces in any economy.
+                I&apos;m Oshokoya Damilare — an entrepreneur and business
+                strategist dedicated to transforming how Africa builds,
+                finances, and grows. My work spans fintech, proptech, and
+                agritech, but the mission has always been the same: create
+                businesses that solve real problems and open real doors.
               </p>
               <p>
-                Over the years, that conviction has translated into companies
-                built across industries, a network of founders mentored through
-                their hardest moments, and honest conversations with audiences
-                across the continent about what building really means.
+                Beyond building companies, I mentor startups and SMEs through
+                programmes including the Wadhwani Foundation, Enactus, and
+                Futurize. I&apos;ve also published 9 academic research papers
+                on entrepreneurship and SME growth in Africa — because I
+                believe theory and practice have to inform each other.
               </p>
             </motion.div>
 

@@ -7,38 +7,47 @@ export type Venture = {
   url?: string
 }
 
-// Replace placeholder data with actual ventures
 export const ventures: Venture[] = [
   {
-    name: "Venture Name",
-    category: "Industry",
+    name: "Realvest.ng",
+    category: "Proptech",
     description:
-      "What the company does and the problem it solves. One or two honest sentences.",
-    year: "20XX–",
+      "Revolutionising home financing and mortgages across 19 African countries — making homeownership a real possibility, not a distant dream.",
+    year: "Active",
+    status: "active",
+    url: "https://realvest.ng",
+  },
+  {
+    name: "Abode",
+    category: "Proptech",
+    description:
+      "Pioneering property technology to make homeownership accessible for everyday Africans through smarter tools and transparent processes.",
+    year: "Active",
     status: "active",
   },
   {
-    name: "Venture Name",
-    category: "Industry",
+    name: "Agbeloba.ng",
+    category: "Agritech",
     description:
-      "What the company does and the problem it solves. One or two honest sentences.",
-    year: "20XX–20XX",
+      "Empowering Nigerian farmers with innovative agritech financing — bridging the gap between agriculture and formal financial systems.",
+    year: "Active",
+    status: "active",
+    url: "https://agbeloba.ng",
+  },
+  {
+    name: "Pettysave",
+    category: "Fintech",
+    description:
+      "Driving financial inclusion across Africa through accessible micro-savings and fintech infrastructure built for the underserved.",
+    year: "Active",
     status: "active",
   },
   {
-    name: "Venture Name",
-    category: "Industry",
+    name: "Integrated Acquest Global",
+    category: "Consulting",
     description:
-      "What the company does and the problem it solves. One or two honest sentences.",
-    year: "20XX–20XX",
-    status: "acquired",
-  },
-  {
-    name: "Venture Name",
-    category: "Industry",
-    description:
-      "What the company does and the problem it solves. One or two honest sentences.",
-    year: "20XX–20XX",
-    status: "closed",
+      "A strategic consultancy guiding transformative leaders and organisations to excel, grow, and create lasting value.",
+    year: "Active",
+    status: "active",
   },
 ]

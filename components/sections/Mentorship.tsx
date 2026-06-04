@@ -2,7 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { brand } from "@/content/brand";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+
+const programmes = [
+  "Wadhwani Foundation",
+  "Enactus",
+  "Futurize",
+];
 
 export function Mentorship() {
   return (
@@ -37,6 +44,18 @@ export function Mentorship() {
                 generation.
               </span>
             </motion.h2>
+
+            {/* Programmes */}
+            <motion.div variants={fadeUp} className="flex flex-col gap-2 pt-2">
+              <p className="text-xs tracking-widest uppercase text-muted-foreground mb-3">
+                Active programmes
+              </p>
+              {programmes.map((p) => (
+                <p key={p} className="text-sm font-medium text-foreground">
+                  {p}
+                </p>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* Right — content */}
@@ -64,21 +83,24 @@ export function Mentorship() {
               className="flex flex-col gap-5 text-muted-foreground leading-relaxed"
             >
               <p>
-                For over a decade, I have worked closely with entrepreneurs —
-                early-stage founders navigating their first real challenge, and
-                seasoned executives making the transition into a larger version
-                of themselves.
+                I&apos;ve had the privilege of mentoring hundreds of
+                entrepreneurs — from first-time founders navigating their
+                earliest challenges, to seasoned executives stepping into a
+                larger version of themselves. Through global programmes like
+                the Wadhwani Foundation, Enactus, and Futurize, I work with
+                startups and SMEs to sharpen strategy, build confidence, and
+                unlock sustainable growth.
               </p>
               <p>
-                I don&apos;t mentor for legacy. I do it because I genuinely
-                believe that human potential, when given the right environment
-                and challenge, is the most reliable investment there is.
+                My approach is direct and practical. I share what I know from
+                building real businesses in real markets — not theory, but
+                the hard-won lessons that only experience delivers.
               </p>
             </motion.div>
 
             <motion.div variants={fadeUp}>
               <a
-                href="#contact"
+                href={brand.bookingUrl}
                 className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground/40 pb-0.5 hover:text-primary hover:border-primary transition-colors duration-200"
               >
                 Enquire about mentorship

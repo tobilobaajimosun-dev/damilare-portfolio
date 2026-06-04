@@ -5,23 +5,23 @@ export type SpeakingTopic = {
 
 export const speakingTopics: SpeakingTopic[] = [
   {
-    title: "The Real Cost of Entrepreneurship",
+    title: "Building & Scaling Businesses in Africa",
     description:
-      "A candid look at what building really asks of you — and why that cost is worth paying.",
+      "Practical strategies for navigating Africa's dynamic markets, scaling sustainably, and building companies that outlast trends.",
   },
   {
-    title: "Building in Africa",
+    title: "Real Estate & Proptech Innovation",
     description:
-      "The opportunities, the constraints, and the conviction required to build at scale on the continent.",
+      "How technology is reshaping homeownership, property investment, and real estate access across the continent.",
   },
   {
-    title: "Leadership & Organisational Culture",
+    title: "SME Growth & Financial Inclusion",
     description:
-      "How a founder's values become a company's DNA — and what happens when they don't.",
+      "The tools, funding strategies, and mindset shifts that help small businesses move from survival to sustainable expansion.",
   },
   {
-    title: "Mentorship & Human Development",
+    title: "Faith-Driven Entrepreneurship",
     description:
-      "Why investing in people is the highest-return decision any leader will ever make.",
+      "What it means to lead with values in a fast-moving world — and why purpose is the most durable competitive advantage.",
   },
 ]

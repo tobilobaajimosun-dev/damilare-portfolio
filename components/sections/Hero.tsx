@@ -32,7 +32,7 @@ export function Hero() {
                 </span>
               </h1>
               <p className="font-display italic font-normal text-muted-foreground mt-3 leading-tight text-[clamp(1.4rem,2.8vw,2.25rem)]">
-                Building businesses. Developing people.
+                Empowering Africa through entrepreneurship and innovation.
               </p>
             </motion.div>
 
@@ -40,9 +40,10 @@ export function Hero() {
               variants={fadeUp}
               className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed"
             >
-              Entrepreneur and founder based in {brand.location}. I build
-              companies, mentor the next generation of African founders, and
-              speak on what it really takes to create meaningful, lasting impact.
+              Faith-driven entrepreneur and business strategist based in{" "}
+              {brand.location}. I build companies across fintech, proptech, and
+              agritech — and help founders across Africa unlock their full
+              potential.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
@@ -54,10 +55,10 @@ export function Hero() {
                 <ArrowDown size={14} />
               </a>
               <a
-                href="#contact"
+                href={brand.bookingUrl}
                 className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:bg-surface transition-all duration-200"
               >
-                Let&apos;s talk
+                Book a discovery call
               </a>
             </motion.div>
           </div>
@@ -81,8 +82,8 @@ export function Hero() {
                 Focus
               </p>
               <p className="text-sm font-medium text-foreground leading-snug">
-                Entrepreneurship
-                <br />& Human Development
+                Business · Proptech
+                <br />· Social Impact
               </p>
             </div>
           </motion.div>
