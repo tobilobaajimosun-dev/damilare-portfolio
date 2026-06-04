@@ -5,38 +5,37 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function AboutHero() {
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="pt-44 pb-24 md:pt-52 md:pb-36 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-8 max-w-3xl"
+          className="flex flex-col gap-10 max-w-4xl"
         >
-          <motion.h1
-            variants={staggerContainer}
-            className="font-display font-bold leading-[1.0] tracking-tight text-[clamp(3rem,7vw,6rem)]"
+          <motion.p
+            variants={fadeUp}
+            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
           >
-            <motion.span variants={fadeUp} className="block text-foreground">
-              Entrepreneur.
-            </motion.span>
-            <motion.span
-              variants={fadeUp}
-              className="block italic font-normal text-muted-foreground"
-            >
-              Founder.
-            </motion.span>
-            <motion.span variants={fadeUp} className="block text-foreground">
-              Mentor.
-            </motion.span>
+            About
+          </motion.p>
+
+          <motion.h1
+            variants={fadeUp}
+            className="font-display font-bold leading-[1.06] tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,4.75rem)]"
+          >
+            Entrepreneurship was never only about building{" "}
+            <span className="italic font-normal text-muted-foreground">
+              companies.
+            </span>
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
           >
-            A builder at heart, committed to creating businesses, developing
-            people, and advancing opportunities across Africa.
+            It has always been about building people, creating opportunities,
+            and solving problems that matter.
           </motion.p>
         </motion.div>
       </div>

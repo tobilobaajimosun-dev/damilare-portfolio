@@ -15,7 +15,7 @@ const roles = [
 
 export function LeadershipJourney() {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Sidebar */}
