@@ -4,11 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Custom local display face — usage: className="font-stablecoin" */
+@utility font-stablecoin {
+  font-family: var(--font-stablecoin), "Playfair Display", ui-serif, serif;
+}
+
 @theme inline {
   /* Fonts — literal names required; @theme inline resolves at parse time */
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-display: "Playfair Display", "Georgia", ui-serif, serif;
+  --font-display: var(--font-stablecoin), "Playfair Display", "Georgia", ui-serif, serif;
 
   /* Base colors mapped from CSS custom properties */
   --color-background: var(--background);
