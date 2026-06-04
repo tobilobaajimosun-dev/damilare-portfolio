@@ -29,7 +29,7 @@ export default function OGImage() {
             left: 0,
             width: "100%",
             height: "4px",
-            background: "oklch(0.76 0.12 80)",
+            background: "#C4893A",
           }}
         />
 
@@ -51,7 +51,7 @@ export default function OGImage() {
         <div
           style={{
             fontSize: 28,
-            color: "oklch(0.45 0 0)",
+            color: "#666666",
             letterSpacing: "0.05em",
             textTransform: "uppercase",
           }}
@@ -66,7 +66,7 @@ export default function OGImage() {
             top: 80,
             right: 80,
             fontSize: 18,
-            color: "oklch(0.76 0.12 80)",
+            color: "#C4893A",
             letterSpacing: "0.08em",
           }}
         >
