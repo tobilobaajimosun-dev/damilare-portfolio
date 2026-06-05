@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { brand } from "@/content/brand";
@@ -100,31 +101,14 @@ export function Footer() {
         </div>
 
         {/* Bottom bar — logo left, copyright right */}
-        {/* Swap the div below for <Image src="/logo.png" ... /> once the file is in /public */}
         <div className="pt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div className="flex items-center leading-none select-none">
-            <span
-              className="font-display font-normal text-foreground"
-              style={{ fontSize: "2.6rem", lineHeight: 1 }}
-            >
-              D
-            </span>
-            <div className="flex flex-col justify-center ml-0.5">
-              <span
-                className="font-display font-normal text-foreground leading-none"
-                style={{ fontSize: "0.95rem" }}
-              >
-                amilare
-              </span>
-              <span
-                className="font-sans font-medium text-foreground leading-none tracking-[0.17em] uppercase"
-                style={{ fontSize: "0.58rem", marginTop: "0.15rem" }}
-              >
-                Oshokoya
-              </span>
-            </div>
-          </div>
-
+          <Image
+            src="/logo.png"
+            alt="Damilare Oshokoya"
+            width={160}
+            height={52}
+            className="object-contain"
+          />
           <p className="text-xs text-muted-foreground">
             © 2026 {brand.name}. All rights reserved.
           </p>
