@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { brand } from "@/content/brand";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function HomeHero() {
@@ -56,7 +57,7 @@ export function HomeHero() {
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <a
-                href="mailto:damilareoshokoya@gmail.com"
+                href={`mailto:${brand.email}`}
                 className="inline-flex items-center gap-2.5 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-200"
               >
                 Work With Me

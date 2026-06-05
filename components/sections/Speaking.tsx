@@ -19,7 +19,7 @@ export function Speaking() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col items-center text-center gap-6 mb-14"
         >
           <motion.h2
@@ -52,7 +52,7 @@ export function Speaking() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 sm:grid-cols-2 gap-5"
         >
           {speakingTopics.map((topic, i) => (
@@ -61,9 +61,6 @@ export function Speaking() {
               variants={fadeUp}
               className="flex flex-col gap-4 p-6 bg-background rounded-xl border border-border hover:border-primary/25 hover:shadow-sm transition-all duration-300"
             >
-              <span className="text-[0.65rem] text-primary font-mono tracking-[0.15em]">
-                0{i + 1}
-              </span>
               <h3 className="font-display text-xl font-normal text-foreground leading-snug">
                 {topic.title}
               </h3>

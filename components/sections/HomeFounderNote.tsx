@@ -15,7 +15,7 @@ export function HomeFounderNote() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col gap-8"
           >
             <motion.p
@@ -73,7 +73,7 @@ export function HomeFounderNote() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="hidden lg:block w-full"
           >

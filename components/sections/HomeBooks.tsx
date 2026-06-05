@@ -30,7 +30,7 @@ export function HomeBooks() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-12"
         >
           <motion.div variants={fadeUp} className="flex flex-col gap-2">

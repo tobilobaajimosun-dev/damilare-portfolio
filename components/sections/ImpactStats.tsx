@@ -51,7 +51,7 @@ export function ImpactStats() {
           variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="hidden sm:flex gap-4 items-start"
         >
           {stats.map((stat, i) => (
@@ -95,7 +95,7 @@ export function ImpactStats() {
           variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex sm:hidden flex-col gap-4"
         >
           {stats.map((stat) => (

@@ -13,13 +13,18 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Faith-driven entrepreneur, business strategist, and founder committed to building companies and developing people across Africa.",
+  openGraph: {
+    title: "About — Oshokoya Damilare",
+    description: "Faith-driven entrepreneur, business strategist, and founder committed to building companies and developing people across Africa.",
+    url: "https://damilareoshokoya.com/about",
+  },
 };
 
 export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <AboutHero />
         <AboutCarousel />
         <AboutStory />

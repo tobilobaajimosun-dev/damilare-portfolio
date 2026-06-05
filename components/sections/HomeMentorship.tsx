@@ -43,7 +43,7 @@ export function HomeMentorship() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col gap-8 lg:sticky lg:top-28"
           >
             <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
@@ -81,7 +81,7 @@ export function HomeMentorship() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="grid grid-cols-1 sm:grid-cols-2 border border-border rounded-2xl overflow-hidden"
           >
             {topics.map((topic, i) => (
@@ -95,12 +95,9 @@ export function HomeMentorship() {
                   i === topics.length - 2 ? "sm:border-b border-border" : "",
                 ].join(" ")}
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-[10px] text-primary font-mono shrink-0">0{i + 1}</span>
-                  <p className="font-display font-normal text-lg text-foreground leading-snug">
-                    {topic.title}
-                  </p>
-                </div>
+                <p className="font-display font-normal text-lg text-foreground leading-snug">
+                  {topic.title}
+                </p>
                 <p className="text-sm text-muted-foreground leading-relaxed pl-6">
                   {topic.description}
                 </p>

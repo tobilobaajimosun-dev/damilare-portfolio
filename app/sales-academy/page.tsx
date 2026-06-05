@@ -11,13 +11,18 @@ export const metadata: Metadata = {
   title: "Sales Masterclass — Damilare Oshokoya",
   description:
     "Join Damilare Oshokoya's Sales Masterclass. Learn the systems, psychology, and execution frameworks that close deals and build businesses.",
+  openGraph: {
+    title: "Sales Masterclass — Oshokoya Damilare",
+    description: "Learn the sales systems, psychology, and execution frameworks that close deals and build businesses — with Damilare Oshokoya.",
+    url: "https://damilareoshokoya.com/sales-academy",
+  },
 };
 
 export default function SalesAcademyPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <SalesAcademyHero />
         <SalesAcademyCurriculum />
         <SalesAcademyWhoIsItFor />

@@ -12,13 +12,18 @@ export const metadata: Metadata = {
   title: "Resources",
   description:
     "Books, talks, press, speaking, and mentorship from Oshokoya Damilare — resources for entrepreneurs, leaders, and founders.",
+  openGraph: {
+    title: "Resources — Oshokoya Damilare",
+    description: "Books, speaking topics, press features, and mentorship programmes from entrepreneur and founder Damilare Oshokoya.",
+    url: "https://damilareoshokoya.com/resources",
+  },
 };
 
 export default function ResourcesPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <ResourcesHero />
         <Publications />
         <Speaking />

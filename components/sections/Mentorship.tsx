@@ -25,7 +25,7 @@ export function Mentorship() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col items-center text-center gap-6 mb-16"
         >
           <motion.h2
@@ -63,7 +63,7 @@ export function Mentorship() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-wrap items-center justify-center gap-8 mb-12"
         >
           {programmes.map(({ name, domain }) => (
@@ -88,7 +88,7 @@ export function Mentorship() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
           className="flex justify-center"
         >

@@ -21,12 +21,16 @@ const TIMELINE_W = milestones.length * (CARD_W + GAP) + SIDE_PAD * 2;
 export function LeadershipJourney() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [vpW, setVpW] = useState(1200);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setVpW(window.innerWidth);
-    const onResize = () => setVpW(window.innerWidth);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const update = () => {
+      setVpW(window.innerWidth);
+      setIsMobile(window.innerWidth < 768);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -38,6 +42,37 @@ export function LeadershipJourney() {
   const x = useTransform(scrollYProgress, [0, 1], [0, -maxTranslate]);
   const sectionH = vpW + maxTranslate;
 
+  // ── Mobile: simple vertical list ──────────────────────────────────────
+  if (isMobile) {
+    return (
+      <section className="py-24 px-6 bg-background border-t border-border">
+        <h2 className="font-display font-normal text-[clamp(2rem,8vw,3rem)] tracking-tight text-foreground leading-tight mb-12">
+          Leadership Journey
+        </h2>
+        <div className="relative flex flex-col gap-0">
+          {/* Vertical line */}
+          <div className="absolute left-[5px] top-2 bottom-2 w-px bg-border" />
+          {milestones.map((m, i) => (
+            <div key={`${m.year}-${i}`} className="relative flex gap-6 pb-10 last:pb-0">
+              <div className="relative z-10 flex flex-col items-center" style={{ width: 12 }}>
+                <div
+                  className="w-3 h-3 rounded-full border-2 border-background mt-1.5 shrink-0"
+                  style={{ backgroundColor: i % 2 === 0 ? "oklch(0.55 0.14 80)" : "oklch(0.7 0 0)" }}
+                />
+              </div>
+              <div className="flex flex-col gap-0.5 pb-2">
+                <p className="font-display font-normal text-2xl text-foreground leading-none mb-1">{m.year}</p>
+                <p className="text-sm font-medium text-foreground">{m.title}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">{m.org}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  // ── Desktop: sticky + horizontal scroll ──────────────────────────────
   return (
     <div ref={sectionRef} style={{ height: sectionH }}>
       <div className="sticky top-0 h-screen overflow-hidden bg-background">
@@ -54,19 +89,18 @@ export function LeadershipJourney() {
           </div>
         </div>
 
-        {/* Timeline — vertically centered */}
+        {/* Timeline track */}
         <div className="absolute inset-0 flex items-center">
           <motion.div
             style={{ x, width: TIMELINE_W }}
             className="relative flex items-center"
           >
-            {/* Continuous horizontal rule */}
+            {/* Continuous line */}
             <div
               className="absolute top-1/2 -translate-y-1/2 h-px bg-border"
               style={{ left: SIDE_PAD, width: TIMELINE_W - SIDE_PAD * 2 }}
             />
 
-            {/* Leading space */}
             <div style={{ width: SIDE_PAD, flexShrink: 0 }} />
 
             {milestones.map((m, i) => {
@@ -77,20 +111,16 @@ export function LeadershipJourney() {
                   className="relative flex flex-col items-center"
                   style={{ width: CARD_W, flexShrink: 0, marginRight: i < milestones.length - 1 ? GAP : 0 }}
                 >
-                  {/* Top slot */}
                   <div className="flex flex-col items-center text-center px-2" style={{ height: 140, justifyContent: "flex-end", paddingBottom: "2rem" }}>
                     {above && (
                       <>
-                        <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-foreground leading-none mb-1.5">
-                          {m.year}
-                        </p>
+                        <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-foreground leading-none mb-1.5">{m.year}</p>
                         <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
                         <p className="text-xs text-muted-foreground leading-relaxed mt-1" style={{ maxWidth: 200 }}>{m.org}</p>
                       </>
                     )}
                   </div>
 
-                  {/* Dot */}
                   <div className="relative z-10">
                     <div
                       className="w-3 h-3 rounded-full border-2 border-background"
@@ -98,13 +128,10 @@ export function LeadershipJourney() {
                     />
                   </div>
 
-                  {/* Bottom slot */}
                   <div className="flex flex-col items-center text-center px-2" style={{ height: 140, justifyContent: "flex-start", paddingTop: "2rem" }}>
                     {!above && (
                       <>
-                        <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-muted-foreground leading-none mb-1.5">
-                          {m.year}
-                        </p>
+                        <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-muted-foreground leading-none mb-1.5">{m.year}</p>
                         <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
                         <p className="text-xs text-muted-foreground leading-relaxed mt-1" style={{ maxWidth: 200 }}>{m.org}</p>
                       </>
@@ -114,11 +141,9 @@ export function LeadershipJourney() {
               );
             })}
 
-            {/* Trailing space */}
             <div style={{ width: SIDE_PAD, flexShrink: 0 }} />
           </motion.div>
         </div>
-
       </div>
     </div>
   );

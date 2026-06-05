@@ -12,7 +12,7 @@ export function Testimonials() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7 }}
           className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-20"
         >
@@ -24,21 +24,16 @@ export function Testimonials() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col divide-y divide-border"
         >
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
               variants={fadeUp}
-              className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 lg:gap-16 py-12 lg:py-16 items-start"
+              className="flex flex-col gap-6 py-12 lg:py-16"
             >
-              {/* Index */}
-              <p className="text-[0.65rem] text-primary font-mono tracking-[0.15em] lg:pt-1.5 lg:w-8">
-                0{i + 1}
-              </p>
-
-              {/* Quote + attribution */}
+                  {/* Quote + attribution */}
               <div className="flex flex-col gap-8">
                 <p className="font-display font-normal text-[clamp(1.35rem,2.5vw,1.9rem)] text-foreground leading-snug">
                   &ldquo;{t.quote}&rdquo;

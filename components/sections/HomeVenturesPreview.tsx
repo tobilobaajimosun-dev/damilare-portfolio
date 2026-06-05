@@ -45,7 +45,7 @@ export function HomeVenturesPreview() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-12"
         >
           {/* Header */}

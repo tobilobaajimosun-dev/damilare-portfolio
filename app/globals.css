@@ -152,4 +152,21 @@
     font-synthesis: none;
     font-style: normal;
   }
+
+  /* Skip navigation link for keyboard users */
+  .skip-nav {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:text-sm focus:font-medium focus:rounded-lg focus:outline-none;
+  }
+
+  /* Consistent focus-visible ring */
+  :focus-visible {
+    outline: 2px solid oklch(0.55 0.14 80);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Remove focus ring for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
 }

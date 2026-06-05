@@ -44,7 +44,7 @@ export function SalesAcademyIncludes() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-14"
         >
           <motion.div variants={fadeUp} className="flex flex-col gap-3 max-w-xl">

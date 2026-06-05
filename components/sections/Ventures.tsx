@@ -18,7 +18,7 @@ export function Ventures() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col items-center text-center gap-4 mb-16"
         >
           <motion.h2
@@ -33,23 +33,20 @@ export function Ventures() {
           </motion.p>
         </motion.div>
 
-        {/* Card grid — like reference image */}
+        {/* Card grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {ventures.map((v) => (
             <motion.div
               key={v.name}
               variants={fadeUp}
-              className="group flex flex-col bg-background rounded-2xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 overflow-hidden"
+              className="group flex flex-col bg-background rounded-2xl border border-border hover:border-foreground/20 hover:shadow-sm transition-all duration-300 overflow-hidden"
             >
-              {/* Colored accent strip */}
-              <div className="h-1 w-full" style={{ backgroundColor: v.accent }} />
-
               {/* Logo area */}
               <div className="flex items-center justify-between px-6 pt-6 pb-4">
                 <div className="h-8 flex items-center">
@@ -83,10 +80,7 @@ export function Ventures() {
 
               {/* Content */}
               <div className="flex flex-col gap-3 px-6 pb-8 flex-1">
-                <span
-                  className="text-[0.6rem] tracking-[0.2em] uppercase font-sans px-2 py-0.5 rounded-full border self-start"
-                  style={{ borderColor: `${v.accent}40`, color: v.accent }}
-                >
+                <span className="text-[0.6rem] tracking-[0.2em] uppercase font-sans text-muted-foreground">
                   {v.category}
                 </span>
                 {v.logo && (

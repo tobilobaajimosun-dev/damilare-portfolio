@@ -8,13 +8,18 @@ export const metadata: Metadata = {
   title: "Ventures",
   description:
     "A collection of ventures built to solve practical challenges across real estate, finance, agriculture, and technology in Africa.",
+  openGraph: {
+    title: "Ventures — Oshokoya Damilare",
+    description: "Realvest, Abode, Agbeloba, Pettysave — ventures built at the intersection of capital, technology, and entrepreneurship across African markets.",
+    url: "https://damilareoshokoya.com/ventures",
+  },
 };
 
 export default function VenturesPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <VenturesHero />
         <Ventures />
       </main>

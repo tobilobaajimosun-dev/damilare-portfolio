@@ -22,7 +22,7 @@ export function About() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col justify-between gap-10"
           >
             <div className="flex flex-col gap-8">
@@ -79,7 +79,7 @@ export function About() {
             variants={scaleIn}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="aspect-[3/4] bg-muted rounded-2xl overflow-hidden relative lg:sticky lg:top-24"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-muted via-muted to-accent/10" />

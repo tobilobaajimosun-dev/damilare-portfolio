@@ -130,10 +130,10 @@ export function Footer() {
                 Email
               </p>
               <a
-                href="mailto:damilareoshokoya@gmail.com"
+                href={`mailto:${brand.email}`}
                 className="text-sm text-foreground hover:text-primary transition-colors duration-200 self-start"
               >
-                damilareoshokoya@gmail.com
+                {brand.email}
               </a>
             </div>
           </div>

@@ -11,7 +11,7 @@ export function AboutStory() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-10"
         >
           <motion.div

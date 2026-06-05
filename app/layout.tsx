@@ -17,6 +17,7 @@ export default function RootLayout({
       className={`${generalSans.variable} ${ltSuperiorSerif.variable} ${archivo.variable} ${geistMono.variable} ${dancingScript.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
+        <a href="#main-content" className="skip-nav">Skip to main content</a>
         {children}
         <ScrollBlur />
       </body>

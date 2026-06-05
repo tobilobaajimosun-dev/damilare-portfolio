@@ -14,7 +14,7 @@ export function InTheNews() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-4 mb-16"
         >
           <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
@@ -30,7 +30,7 @@ export function InTheNews() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {press.map((item) => (

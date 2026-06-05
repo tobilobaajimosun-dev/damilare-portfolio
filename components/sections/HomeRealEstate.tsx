@@ -17,7 +17,7 @@ export function HomeRealEstate() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col gap-6"
           >
             <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
@@ -49,7 +49,7 @@ export function HomeRealEstate() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div

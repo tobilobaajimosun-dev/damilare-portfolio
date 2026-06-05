@@ -85,7 +85,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-4">
           <Link
-            href="mailto:damilareoshokoya@gmail.com"
+            href={`mailto:${brand.email}`}
             className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors duration-200"
           >
             <MailFilled size={14} />
@@ -126,7 +126,7 @@ export function Navbar() {
                 </Link>
               ))}
               <Link
-                href="mailto:damilareoshokoya@gmail.com"
+                href={`mailto:${brand.email}`}
                 className="inline-flex items-center gap-2 text-base font-semibold text-foreground pt-3 mt-1 border-t border-border"
               >
                 <MailFilled size={16} />

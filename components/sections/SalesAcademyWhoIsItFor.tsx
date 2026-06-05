@@ -51,7 +51,7 @@ export function SalesAcademyWhoIsItFor() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col gap-10"
           >
             <motion.div variants={fadeUp} className="flex flex-col gap-3">
@@ -66,9 +66,8 @@ export function SalesAcademyWhoIsItFor() {
                 <motion.div
                   key={p.title}
                   variants={fadeUp}
-                  className="flex gap-4 pb-6 border-b border-border last:border-0"
+                  className="flex flex-col gap-1.5 pb-6 border-b border-border last:border-0"
                 >
-                  <span className="font-mono text-xs text-primary mt-1 shrink-0">0{i + 1}</span>
                   <div className="flex flex-col gap-1.5">
                     <h3 className="font-display text-lg font-normal text-foreground">{p.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{p.description}</p>

@@ -4,6 +4,7 @@ export type Publication = {
   type: "book" | "research"
   url?: string
   cta?: string
+  image?: string
 }
 
 export const publications: Publication[] = [
@@ -14,13 +15,16 @@ export const publications: Publication[] = [
     type: "book",
     url: "https://selar.com/Buyology?currency=NGN",
     cta: "Get the Book",
+    image: "/images/buyology-guide.jpg",
   },
   {
     title: "Smash It",
     description:
       "A practical guide to setting and achieving transformative goals — with the discipline to follow through.",
     type: "book",
+    url: "https://selar.com/Buyology?currency=NGN",
     cta: "Get the Book",
+    image: "/images/smash-it.jpg",
   },
   {
     title: "9 Academic Research Papers",

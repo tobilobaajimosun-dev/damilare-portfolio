@@ -13,7 +13,7 @@ export function VenturesClosing() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="max-w-2xl"
         >
           <motion.p

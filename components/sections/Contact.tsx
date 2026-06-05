@@ -50,7 +50,7 @@ export function Contact() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="lg:col-span-5 flex flex-col gap-10"
           >
             <motion.div variants={fadeUp} className="flex flex-col gap-3">
@@ -58,10 +58,10 @@ export function Contact() {
                 Email
               </p>
               <a
-                href="mailto:hello@damilareoshokoya.com"
+                href={`mailto:${brand.email}`}
                 className="inline-flex items-center self-start bg-gold-subtle text-foreground font-medium px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors duration-200"
               >
-                hello@damilareoshokoya.com
+                {brand.email}
               </a>
             </motion.div>
 

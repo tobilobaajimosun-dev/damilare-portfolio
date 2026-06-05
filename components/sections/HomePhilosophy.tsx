@@ -14,7 +14,7 @@ export function HomePhilosophy() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="w-full min-h-[460px] rounded-2xl overflow-hidden relative"
           >
@@ -31,7 +31,7 @@ export function HomePhilosophy() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col justify-center gap-8"
           >
             <motion.p

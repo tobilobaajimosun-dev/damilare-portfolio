@@ -29,7 +29,7 @@ export function Philosophy() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-60px" }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
               {pillars.map(({ icon: Icon, text }) => (
@@ -50,7 +50,7 @@ export function Philosophy() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7 }}
               className="pt-8 border-t border-border"
             >

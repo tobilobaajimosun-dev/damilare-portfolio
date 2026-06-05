@@ -12,7 +12,7 @@ export function Talks() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-4 mb-10"
         >
           <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
@@ -31,18 +31,15 @@ export function Talks() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col divide-y divide-border"
         >
           {talks.map((talk, i) => (
             <motion.div
               key={talk.title}
               variants={fadeUp}
-              className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8 py-5"
+              className="flex flex-col gap-0.5 py-5"
             >
-              <span className="text-[0.65rem] text-primary font-mono tracking-[0.15em] shrink-0">
-                0{i + 1}
-              </span>
               <div className="flex flex-col gap-0.5">
                 <p className="font-display text-xl font-normal text-foreground leading-snug">
                   {talk.title}
