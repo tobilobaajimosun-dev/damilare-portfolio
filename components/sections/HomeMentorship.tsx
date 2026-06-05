@@ -5,13 +5,20 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
-const pillars = ["Speaking", "Workshops", "Training Programs", "Mentorship"];
+const topics = [
+  "Entrepreneurship",
+  "Leadership",
+  "Sales Systems",
+  "Real Estate Innovation",
+  "Business Growth",
+];
 
 export function HomeMentorship() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface">
+    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
           {/* Left */}
           <motion.div
             variants={staggerContainer}
@@ -20,57 +27,61 @@ export function HomeMentorship() {
             viewport={{ once: true, margin: "-80px" }}
             className="flex flex-col gap-8"
           >
+            <motion.p variants={fadeUp} className="text-xs tracking-[0.22em] uppercase text-primary font-sans">
+              Mentorship &amp; Speaking
+            </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground leading-tight"
+              className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground leading-tight"
             >
-              Helping people see bigger{" "}
-              <span className="text-muted-foreground">
-                possibilities.
-              </span>
+              Developing leaders who create impact.
             </motion.h2>
-
-            <motion.p
-              variants={fadeUp}
-              className="text-muted-foreground leading-relaxed"
-            >
-              Through mentorship, speaking engagements, workshops, and training
-              programmes, Damilare helps entrepreneurs, sales professionals,
-              and leaders grow with confidence and clarity.
+            <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
+              Damilare mentors entrepreneurs, founders, sales professionals, and
+              emerging leaders navigating growth across African markets.
             </motion.p>
-
-            <motion.div variants={fadeUp}>
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
               <Link
-                href="/resources"
-                className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground/40 pb-0.5 hover:text-primary hover:border-primary transition-colors duration-200"
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-all duration-200"
               >
-                Explore Resources
+                Book A Session
                 <ArrowRight size={14} />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-foreground text-sm font-medium rounded-full hover:bg-background transition-all duration-200"
+              >
+                Invite To Speak
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* Right — pillars */}
+          {/* Right — speaking topics */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-2 gap-4"
+            className="flex flex-col gap-2 lg:pt-20"
           >
-            {pillars.map((p, i) => (
+            <motion.p variants={fadeUp} className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-sans mb-4">
+              Speaking Topics
+            </motion.p>
+            {topics.map((topic, i) => (
               <motion.div
-                key={p}
+                key={topic}
                 variants={fadeUp}
-                className="flex flex-col gap-2 p-6 bg-background rounded-xl border border-border"
+                className="flex items-center gap-4 py-4 border-b border-border last:border-0"
               >
                 <span className="text-xs text-primary font-mono">0{i + 1}</span>
-                <p className="font-display text-lg font-medium text-foreground">
-                  {p}
+                <p className="font-display text-xl md:text-2xl font-normal text-foreground">
+                  {topic}
                 </p>
               </motion.div>
             ))}
           </motion.div>
+
         </div>
       </div>
     </section>

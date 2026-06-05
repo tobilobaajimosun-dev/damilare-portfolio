@@ -12,12 +12,11 @@ export function HomeNewsletter() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    // TODO: connect to newsletter provider (Beehiiv, ConvertKit, etc.)
     setSubmitted(true);
   };
 
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
@@ -42,10 +41,18 @@ export function HomeNewsletter() {
 
           <motion.p
             variants={fadeUp}
+            className="text-muted-foreground leading-relaxed mb-3"
+          >
+            Reflections on building durable businesses, mastering sales,
+            developing leaders, and creating long-term impact.
+          </motion.p>
+
+          <motion.p
+            variants={fadeUp}
             className="text-muted-foreground leading-relaxed mb-10"
           >
-            Thoughts on business, leadership, entrepreneurship, stewardship,
-            and growth — delivered directly to your inbox.
+            Subscribe for practical insights, lessons from the field, and ideas
+            for building what matters.
           </motion.p>
 
           {submitted ? (

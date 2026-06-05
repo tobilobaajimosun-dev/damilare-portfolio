@@ -3,8 +3,30 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { ventures } from "@/content/ventures";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+
+const ventures = [
+  {
+    name: "Abode",
+    description:
+      "Expanding access to homeownership through technology-driven real estate solutions.",
+  },
+  {
+    name: "Realvest",
+    description:
+      "Structuring real estate investment and home-financing opportunities across African markets.",
+  },
+  {
+    name: "Agbeloba",
+    description:
+      "Connecting farmers to financing, resources, and opportunities for growth.",
+  },
+  {
+    name: "Pettysave",
+    description:
+      "Driving financial inclusion through accessible savings and finance solutions.",
+  },
+];
 
 export function HomeVenturesPreview() {
   return (
@@ -22,38 +44,42 @@ export function HomeVenturesPreview() {
             variants={fadeUp}
             className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground max-w-xl">
-              Building solutions that solve real problems.
-            </h2>
+            <div className="flex flex-col gap-3">
+              <p className="text-xs tracking-[0.22em] uppercase text-primary font-sans">
+                Ventures
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground max-w-xl leading-tight">
+                Building &amp; Leading Platforms
+              </h2>
+              <p className="text-muted-foreground text-sm max-w-md leading-relaxed mt-1">
+                Operating at the intersection of capital, technology, and
+                entrepreneurship across African markets.
+              </p>
+            </div>
             <Link
               href="/ventures"
               className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground/30 pb-0.5 hover:text-primary hover:border-primary transition-colors duration-200 shrink-0"
             >
-              View all ventures
+              View All Ventures
               <ArrowRight size={14} />
             </Link>
           </motion.div>
 
-          {/* Ventures grid */}
+          {/* Ventures list */}
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border"
           >
             {ventures.map((v) => (
               <motion.div
                 key={v.name}
                 variants={fadeUp}
-                className="flex flex-col gap-3 p-5 border border-border rounded-xl hover:border-primary/20 hover:bg-surface transition-all duration-300"
+                className="flex flex-col gap-3 p-7 bg-background hover:bg-surface transition-colors duration-300"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-lg font-medium text-foreground">
-                    {v.name}
-                  </h3>
-                  <span className="text-xs tracking-widest uppercase text-muted-foreground border border-border rounded-full px-2 py-0.5 shrink-0">
-                    {v.category}
-                  </span>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                <h3 className="font-display text-2xl font-normal text-foreground">
+                  {v.name}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {v.description}
                 </p>
               </motion.div>

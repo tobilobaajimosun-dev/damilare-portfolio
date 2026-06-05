@@ -1,48 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeUp, staggerContainer } from "@/lib/motion";
+import type { Variants } from "framer-motion";
 
-const phrases = [
-  "Years of building.",
-  "Businesses launched.",
-  "Leaders developed.",
-  "Communities impacted.",
+const lines = [
+  { text: "Build systems.", accent: false },
+  { text: "Develop people.", accent: false },
+  { text: "Multiply impact.", accent: true },
 ];
 
-export function HomeImpact() {
+const blurUp: Variants = {
+  hidden: { opacity: 0, y: 24, filter: "blur(10px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const container: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } },
+};
+
+const bodyBlur: Variants = {
+  hidden: { opacity: 0, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+export function HomeVision() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface">
+    <section className="py-28 md:py-40 px-6 md:px-10 lg:px-16 bg-surface">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col gap-12"
-        >
-          {/* Phrases grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 border-t border-border pt-12">
-            {phrases.map((phrase) => (
+        <div className="max-w-4xl">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="flex flex-col gap-4 mb-14"
+          >
+            {lines.map(({ text, accent }) => (
               <motion.p
-                key={phrase}
-                variants={fadeUp}
-                className="font-display text-3xl md:text-4xl lg:text-5xl font-normal text-foreground leading-tight"
+                key={text}
+                variants={blurUp}
+                className={`font-display font-normal leading-tight text-[clamp(2.4rem,5vw,4.5rem)] tracking-tight ${
+                  accent ? "text-primary" : "text-foreground"
+                }`}
               >
-                {phrase}
+                {text}
               </motion.p>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Supporting paragraph */}
-          <motion.p
-            variants={fadeUp}
-            className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="flex flex-col gap-4 border-t border-border pt-10 max-w-2xl"
           >
-            Across industries and across Africa, the mission remains the same:
-            helping people and organisations unlock greater possibilities.
-          </motion.p>
-        </motion.div>
+            <motion.p variants={bodyBlur} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Sustainable growth does not happen by accident.
+            </motion.p>
+            <motion.p variants={bodyBlur} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              It requires structure, disciplined execution, and leaders willing
+              to think beyond themselves. Across business, real estate,
+              mentorship, and leadership development, the goal remains the same:
+              create value that lasts.
+            </motion.p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
