@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -109,9 +110,13 @@ export function HomeNewsletter() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             className="hidden lg:flex flex-col gap-4"
           >
-            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden bg-surface border border-border flex items-center justify-center">
-              {/* Replace with: <Image src="/portrait.jpg" alt="Damilare Oshokoya" fill className="object-cover" /> */}
-              <p className="text-xs text-muted-foreground tracking-widest uppercase">Portrait</p>
+            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden relative">
+              <Image
+                src="/images/portrait.jpg"
+                alt="Damilare Oshokoya"
+                fill
+                className="object-cover"
+              />
             </div>
           </motion.div>
 

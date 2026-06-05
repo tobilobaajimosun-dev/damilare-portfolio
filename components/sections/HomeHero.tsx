@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -86,10 +87,13 @@ export function HomeHero() {
               }}
               className="relative w-full max-w-[420px] aspect-[3/4] rounded-2xl overflow-hidden bg-surface border border-border"
             >
-              {/* Replace with: <Image src="/portrait.jpg" alt="Damilare Oshokoya" fill className="object-cover" priority /> */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-xs text-muted-foreground tracking-widest uppercase">Portrait</p>
-              </div>
+              <Image
+                src="/images/portrait.jpg"
+                alt="Damilare Oshokoya"
+                fill
+                className="object-cover"
+                priority
+              />
             </motion.div>
           </motion.div>
 

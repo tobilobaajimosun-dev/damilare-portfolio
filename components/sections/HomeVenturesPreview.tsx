@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -8,23 +9,31 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 const ventures = [
   {
     name: "Abode",
+    logo: "/images/abode-logo.svg",
     description:
       "Expanding access to homeownership through technology-driven real estate solutions.",
+    href: "https://abodeflex.ng",
   },
   {
     name: "Realvest",
+    logo: "/images/realvest-logo.svg",
     description:
       "Structuring real estate investment and home-financing opportunities across African markets.",
+    href: "https://realvest.ng",
   },
   {
     name: "Agbeloba",
+    logo: "/images/agbeloba-logo.png",
     description:
       "Connecting farmers to financing, resources, and opportunities for growth.",
+    href: "https://agbeloba.ng",
   },
   {
     name: "Pettysave",
+    logo: "/images/pettysave-logo.svg",
     description:
       "Driving financial inclusion through accessible savings and finance solutions.",
+    href: "https://pettysave.com",
   },
 ];
 
@@ -65,24 +74,41 @@ export function HomeVenturesPreview() {
             </Link>
           </motion.div>
 
-          {/* Ventures list */}
+          {/* Ventures grid with logos */}
           <motion.div
             variants={staggerContainer}
             className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border"
           >
             {ventures.map((v) => (
-              <motion.div
+              <motion.a
                 key={v.name}
+                href={v.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 variants={fadeUp}
-                className="flex flex-col gap-3 p-7 bg-background hover:bg-surface transition-colors duration-300"
+                className="group flex flex-col gap-6 p-7 bg-background hover:bg-surface transition-colors duration-300"
               >
-                <h3 className="font-display text-2xl font-normal text-foreground">
-                  {v.name}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {v.description}
-                </p>
-              </motion.div>
+                {/* Logo */}
+                <div className="h-10 flex items-center">
+                  <Image
+                    src={v.logo}
+                    alt={`${v.name} logo`}
+                    width={120}
+                    height={40}
+                    className="object-contain object-left max-h-10 w-auto"
+                    unoptimized
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <h3 className="font-display text-xl font-normal text-foreground group-hover:text-primary transition-colors duration-200">
+                    {v.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {v.description}
+                  </p>
+                </div>
+              </motion.a>
             ))}
           </motion.div>
         </motion.div>

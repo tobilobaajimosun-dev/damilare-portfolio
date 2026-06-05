@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
@@ -51,10 +52,14 @@ export function HomeBooks() {
                 variants={fadeUp}
                 className="flex flex-col gap-0 bg-background border border-border rounded-2xl overflow-hidden"
               >
-                {/* Book cover image spot */}
-                <div className="w-full aspect-[4/3] bg-surface border-b border-border flex items-end p-6 relative">
-                  {/* 👉 Add: <Image src={`/images/${book.title.toLowerCase().replace(/ /g,'-')}.jpg`} alt={book.title} fill className="object-cover" /> */}
-                  <p className="text-xs text-muted-foreground tracking-widest uppercase">Book Cover</p>
+                {/* Book cover */}
+                <div className="w-full aspect-[4/3] bg-surface border-b border-border relative overflow-hidden">
+                  <Image
+                    src={`/images/${book.title.toLowerCase().replace(/ /g, "-")}.jpg`}
+                    alt={book.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="flex flex-col justify-between gap-8 p-8">
                   <div className="flex flex-col gap-3">

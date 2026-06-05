@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -36,10 +37,14 @@ export function HomePhilosophy() {
               Entrepreneurship is more than opportunity. It is responsibility.
             </motion.h2>
 
-            {/* Image spot */}
-            <motion.div variants={fadeUp} className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-background/10 border border-background/10 flex items-end p-6">
-              {/* 👉 Add: <Image src="/images/damilare-portrait-2.jpg" alt="Damilare Oshokoya" fill className="object-cover" /> */}
-              <p className="text-xs text-background/30 tracking-widest uppercase">Image</p>
+            {/* Portrait */}
+            <motion.div variants={fadeUp} className="w-full aspect-[4/3] rounded-2xl overflow-hidden relative">
+              <Image
+                src="/images/portrait-2.jpg"
+                alt="Damilare Oshokoya"
+                fill
+                className="object-cover"
+              />
             </motion.div>
           </motion.div>
 
