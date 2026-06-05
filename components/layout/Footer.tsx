@@ -1,43 +1,62 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { brand } from "@/content/brand";
 
 const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Ventures", href: "/ventures" },
   { label: "Resources", href: "/resources" },
+  { label: "Sales Academy", href: "/sales-academy" },
   { label: "Contact", href: "/contact" },
 ];
 
 const socials = [
-  { label: "Twitter / X", href: brand.social.twitter },
   { label: "LinkedIn", href: brand.social.linkedin },
+  { label: "Twitter / X", href: brand.social.twitter },
   { label: "Instagram", href: brand.social.instagram },
 ];
 
+function BrandLogo() {
+  return (
+    <div className="flex items-center leading-none select-none">
+      <span
+        className="font-display font-normal text-foreground"
+        style={{ fontSize: "2.6rem", lineHeight: 1 }}
+      >
+        D
+      </span>
+      <div className="flex flex-col justify-center ml-0.5">
+        <span
+          className="font-display font-normal text-foreground leading-none"
+          style={{ fontSize: "0.95rem" }}
+        >
+          amilare
+        </span>
+        <span
+          className="font-sans font-medium text-foreground leading-none tracking-[0.17em] uppercase"
+          style={{ fontSize: "0.58rem", marginTop: "0.15rem" }}
+        >
+          Oshokoya
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border overflow-hidden">
-      <div className="mx-auto w-full max-w-[var(--container-default)] px-6 md:px-10 lg:px-16 pt-20 pb-10">
-        {/* Top grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
-          {/* Brand */}
-          <div className="md:col-span-4 flex flex-col gap-3">
-            <p className="font-display text-lg font-medium tracking-tight text-foreground">
-              {brand.firstName} {brand.lastName}
-            </p>
-            <p className="text-sm text-muted-foreground max-w-[24ch] leading-relaxed">
-              Building businesses. Developing leaders. Creating lasting impact.
-            </p>
-          </div>
+    <footer className="bg-background border-t border-border">
+      <div className="mx-auto w-full max-w-[var(--container-default)] px-6 md:px-10 lg:px-16 pt-16 md:pt-20 pb-10">
 
-          {/* Navigation */}
-          <div className="md:col-span-4 flex flex-col gap-4">
-            <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              Navigation
+        {/* Main columns — mirrors &Fold layout */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 pb-16 border-b border-border">
+
+          {/* Col 1 — Navigate */}
+          <div className="flex flex-col gap-5">
+            <p className="text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground font-sans">
+              Navigate
             </p>
-            <nav className="flex flex-col gap-2.5">
+            <nav className="flex flex-col gap-3">
               {nav.map((link) => (
                 <Link
                   key={link.href}
@@ -50,45 +69,67 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Contact */}
-          <div className="md:col-span-4 flex flex-col gap-4">
-            <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              Get in touch
+          {/* Col 2 — Follow */}
+          <div className="flex flex-col gap-5">
+            <p className="text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground font-sans">
+              Follow
             </p>
-            <a
-              href="mailto:hello@damilareoshokoya.com"
-              className="inline-flex items-center self-start bg-gold-subtle text-foreground text-sm font-medium px-3.5 py-2 rounded-lg hover:bg-primary/20 transition-colors duration-200"
-            >
-              hello@damilareoshokoya.com
-            </a>
-            <div className="flex flex-col gap-2.5 mt-2">
+            <div className="flex flex-col gap-3">
               {socials.map(({ label, href }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 self-start"
+                  className="inline-flex items-center gap-1.5 text-sm text-foreground hover:text-primary transition-colors duration-200 self-start"
                 >
                   {label}
-                  <ArrowUpRight size={13} />
+                  <ArrowUpRight size={12} />
                 </a>
               ))}
             </div>
           </div>
+
+          {/* Col 3 — Find */}
+          <div className="col-span-2 md:col-span-2 flex flex-col gap-8 md:pl-8">
+
+            {/* Address */}
+            <div className="flex flex-col gap-2">
+              <p className="text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground font-sans">
+                Location
+              </p>
+              <div className="flex items-start gap-2 text-sm text-foreground">
+                <MapPin size={14} className="text-primary mt-0.5 shrink-0" />
+                <span className="leading-snug">
+                  Lagos, Nigeria
+                  <span className="text-muted-foreground"> — Global Reach</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="flex flex-col gap-2">
+              <p className="text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground font-sans">
+                Email
+              </p>
+              <a
+                href="mailto:hello@damilareoshokoya.com"
+                className="text-sm text-foreground hover:text-primary transition-colors duration-200 self-start"
+              >
+                hello@damilareoshokoya.com
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Oversized wordmark */}
-        <div className="border-t border-border pt-10">
-          <p className="font-display font-normal tracking-tight text-foreground/[0.06] leading-[0.85] text-[clamp(3.5rem,17vw,16rem)] select-none">
-            {brand.firstName}
-            <br />
-            {brand.lastName}
-          </p>
-          <p className="text-xs text-muted-foreground mt-8">
-            © {new Date().getFullYear()} {brand.name}. All rights reserved.
+        {/* Bottom bar — logo left, copyright right */}
+        <div className="pt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <BrandLogo />
+          <p className="text-xs text-muted-foreground">
+            © 2026 {brand.name}. All rights reserved.
           </p>
         </div>
+
       </div>
     </footer>
   );
