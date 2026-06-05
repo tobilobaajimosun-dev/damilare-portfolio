@@ -11,16 +11,14 @@ export function VenturesHero() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-6 max-w-3xl"
+          className="flex flex-col gap-6 items-center text-center"
         >
           <motion.h1
             variants={fadeUp}
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground leading-[1.0]"
+            className="font-display font-normal text-[clamp(2.5rem,5.5vw,4.75rem)] tracking-tight text-foreground leading-[1.06]"
           >
             Building Solutions{" "}
-            <span className="text-muted-foreground">
-              That Matter.
-            </span>
+            <span className="text-muted-foreground">That Matter.</span>
           </motion.h1>
           <motion.p
             variants={fadeUp}

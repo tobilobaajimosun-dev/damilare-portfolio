@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Maximize2, Target, Shield, Users } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const pillars = [
-  { number: "01", text: "Think Bigger." },
-  { number: "02", text: "Act With Purpose." },
-  { number: "03", text: "Build With Integrity." },
-  { number: "04", text: "Impact Others." },
+  { icon: Maximize2, text: "Think Bigger." },
+  { icon: Target, text: "Act With Purpose." },
+  { icon: Shield, text: "Build With Integrity." },
+  { icon: Users, text: "Impact Others." },
 ];
 
 export function Philosophy() {
@@ -17,7 +18,7 @@ export function Philosophy() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Sidebar */}
           <div className="lg:col-span-3">
-            <p className="text-xs tracking-[0.2em] uppercase text-primary font-sans lg:sticky lg:top-24">
+            <p className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans lg:sticky lg:top-24">
               Philosophy
             </p>
           </div>
@@ -31,15 +32,15 @@ export function Philosophy() {
               viewport={{ once: true, margin: "-80px" }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
-              {pillars.map((p) => (
+              {pillars.map(({ icon: Icon, text }) => (
                 <motion.div
-                  key={p.number}
+                  key={text}
                   variants={fadeUp}
-                  className="flex flex-col gap-3 pt-6 border-t border-border"
+                  className="flex flex-col gap-4 pt-6 border-t border-border"
                 >
-                  <span className="text-xs text-primary font-mono">{p.number}</span>
+                  <Icon size={20} className="text-primary" strokeWidth={1.5} />
                   <p className="font-display text-3xl md:text-4xl font-normal text-foreground leading-tight">
-                    {p.text}
+                    {text}
                   </p>
                 </motion.div>
               ))}
@@ -53,7 +54,7 @@ export function Philosophy() {
               transition={{ duration: 0.7 }}
               className="pt-8 border-t border-border"
             >
-              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-sans mb-4">
+              <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans mb-4">
                 Personal Mission
               </p>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Contact } from "@/components/sections/Contact";
-import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -16,7 +15,6 @@ export default function ContactPage() {
       <Navbar />
       <main>
         <Contact />
-        <HomeNewsletter />
       </main>
       <Footer />
     </>

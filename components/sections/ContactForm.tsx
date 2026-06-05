@@ -12,6 +12,16 @@ const initialState: ContactState = { status: "idle" };
 const inputClasses =
   "w-full px-4 py-3 text-sm bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-colors duration-200";
 
+const reasons = [
+  "Mentorship",
+  "Speaking Engagement",
+  "Business Consulting",
+  "Real Estate Enquiry",
+  "Media & Press",
+  "Partnership",
+  "General Enquiry",
+];
+
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
@@ -68,6 +78,24 @@ export function ContactForm() {
           placeholder="Phone number (optional)"
           className={inputClasses}
         />
+      </motion.div>
+
+      <motion.div variants={fadeUp}>
+        <select
+          name="reason"
+          required
+          defaultValue=""
+          className={`${inputClasses} cursor-pointer`}
+        >
+          <option value="" disabled>
+            Reason for contacting
+          </option>
+          {reasons.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
       </motion.div>
 
       <motion.div variants={fadeUp}>

@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { ventures, type Venture } from "@/content/ventures";
+import { ventures } from "@/content/ventures";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function Ventures() {
@@ -12,85 +13,95 @@ export function Ventures() {
       className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background scroll-mt-20"
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        {/* Header */}
+        {/* Centered header */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col gap-6 mb-16"
+          className="flex flex-col items-center text-center gap-4 mb-16"
         >
-          <motion.p
+          <motion.h2
             variants={fadeUp}
-            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
+            className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground"
           >
-            02 — Ventures
+            What I&apos;ve Built
+          </motion.h2>
+          <motion.p variants={fadeUp} className="text-base text-muted-foreground max-w-md leading-relaxed">
+            Each company started as a question: what does this market need,
+            and can we build it well?
           </motion.p>
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col md:flex-row md:items-end md:justify-between gap-4"
-          >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground">
-              What I&apos;ve built.
-            </h2>
-            <p className="text-muted-foreground max-w-xs text-sm leading-relaxed md:text-right">
-              Each company started as a question: what does this market need,
-              and can we build it well?
-            </p>
-          </motion.div>
         </motion.div>
 
-        {/* Venture list */}
+        {/* Card grid — like reference image */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col divide-y divide-border"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {ventures.map((venture) => (
-            <VentureRow key={venture.name} venture={venture} />
+          {ventures.map((v) => (
+            <motion.div
+              key={v.name}
+              variants={fadeUp}
+              className="group flex flex-col bg-background rounded-2xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 overflow-hidden"
+            >
+              {/* Colored accent strip */}
+              <div className="h-1 w-full" style={{ backgroundColor: v.accent }} />
+
+              {/* Logo area */}
+              <div className="flex items-center justify-between px-6 pt-6 pb-4">
+                <div className="h-8 flex items-center">
+                  {v.logo ? (
+                    <Image
+                      src={v.logo}
+                      alt={`${v.name} logo`}
+                      width={90}
+                      height={32}
+                      className="object-contain object-left max-h-8 w-auto"
+                      unoptimized
+                    />
+                  ) : (
+                    <span className="font-display text-lg font-normal text-foreground">
+                      {v.name}
+                    </span>
+                  )}
+                </div>
+                {v.url && (
+                  <a
+                    href={v.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${v.name}`}
+                    className="text-muted-foreground/40 hover:text-primary transition-colors duration-200 opacity-0 group-hover:opacity-100"
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                )}
+              </div>
+
+              {/* Content */}
+              <div className="flex flex-col gap-3 px-6 pb-8 flex-1">
+                <span
+                  className="text-[0.6rem] tracking-[0.2em] uppercase font-sans px-2 py-0.5 rounded-full border self-start"
+                  style={{ borderColor: `${v.accent}40`, color: v.accent }}
+                >
+                  {v.category}
+                </span>
+                {v.logo && (
+                  <p className="font-display text-xl font-normal text-foreground group-hover:text-primary transition-colors duration-200">
+                    {v.name}
+                  </p>
+                )}
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {v.description}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function VentureRow({ venture }: { venture: Venture }) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      whileHover={{ x: 4 }}
-      transition={{ duration: 0.2 }}
-      className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-8"
-    >
-      <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-5">
-        <h3 className="font-display text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors duration-200">
-          {venture.name}
-        </h3>
-        <span className="text-xs tracking-widest uppercase text-muted-foreground px-2.5 py-0.5 border border-border rounded-full self-start sm:self-auto">
-          {venture.category}
-        </span>
-      </div>
-
-      <div className="flex items-start sm:items-center gap-6 sm:gap-12 flex-1 sm:justify-end text-sm text-muted-foreground">
-        <p className="max-w-sm leading-relaxed">{venture.description}</p>
-        <div className="flex items-center gap-3 shrink-0">
-          <span className="text-xs font-mono">{venture.year}</span>
-          {venture.url && (
-            <a
-              href={venture.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit ${venture.name}`}
-              className="text-muted-foreground hover:text-primary transition-colors duration-200"
-            >
-              <ArrowUpRight size={16} />
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.div>
   );
 }

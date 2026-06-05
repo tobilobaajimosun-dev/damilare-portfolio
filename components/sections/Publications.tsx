@@ -19,9 +19,9 @@ export function Publications() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
+            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
           >
-            06 — Publications
+            Publications
           </motion.p>
           <motion.div
             variants={fadeUp}

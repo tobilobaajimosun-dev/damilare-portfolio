@@ -14,13 +14,6 @@ export function AboutStory() {
           viewport={{ once: true, margin: "-80px" }}
           className="flex flex-col gap-10"
         >
-          <motion.p
-            variants={fadeUp}
-            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
-          >
-            A Note From Damilare
-          </motion.p>
-
           <motion.div
             variants={fadeUp}
             className="flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-[1.85]"
@@ -44,34 +37,17 @@ export function AboutStory() {
             </p>
           </motion.div>
 
-          {/* Signature phrase */}
-          <motion.div
-            variants={fadeUp}
-            className="pt-6 border-t border-border flex flex-col gap-3"
-          >
+          <motion.div variants={fadeUp} className="flex flex-col gap-1 pt-2">
             <p
               className="text-foreground leading-tight"
               style={{
                 fontFamily: "var(--font-handwriting)",
-                fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
+                fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)",
+                fontWeight: 400,
               }}
             >
               Create value that lasts.
             </p>
-            <div className="flex flex-col gap-0.5 mt-2">
-              <p
-                className="text-foreground"
-                style={{
-                  fontFamily: "var(--font-handwriting)",
-                  fontSize: "1.35rem",
-                }}
-              >
-                Damilare Oshokoya
-              </p>
-              <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground font-sans">
-                Entrepreneur &amp; Founder
-              </p>
-            </div>
           </motion.div>
         </motion.div>
       </div>

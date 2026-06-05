@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { press } from "@/content/press";
@@ -14,22 +15,14 @@ export function InTheNews() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col gap-6 mb-16"
+          className="flex flex-col gap-4 mb-16"
         >
-          <motion.p
-            variants={fadeUp}
-            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
-          >
+          <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
             In The News
           </motion.p>
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground"
-          >
+          <motion.h2 variants={fadeUp} className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground">
             Ideas in the{" "}
-            <span className="text-muted-foreground">
-              public square.
-            </span>
+            <span className="text-muted-foreground">public square.</span>
           </motion.h2>
         </motion.div>
 
@@ -46,38 +39,38 @@ export function InTheNews() {
               variants={fadeUp}
               className="group flex flex-col border border-border rounded-2xl overflow-hidden hover:border-primary/25 transition-all duration-300"
             >
-              {/* Image */}
-              <div className="aspect-[16/10] bg-muted relative overflow-hidden">
-                {/* Replace with <Image src={item.image} ... /> */}
-                <div className="absolute inset-0 bg-gradient-to-br from-muted to-accent/20" />
-                <span className="absolute bottom-3 left-4 text-[10px] tracking-widest uppercase text-muted-foreground/40">
+              {/* Publication logo area */}
+              <div className="aspect-[16/9] bg-surface relative overflow-hidden flex items-center justify-center p-6 border-b border-border">
+                <Image
+                  src={`https://logo.clearbit.com/${item.domain}`}
+                  alt={item.outlet}
+                  width={160}
+                  height={60}
+                  className="object-contain max-h-12 w-auto"
+                  onError={() => {}}
+                />
+                <span className="absolute bottom-3 right-4 text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground/50 font-sans">
                   {item.outlet}
                 </span>
               </div>
 
               {/* Content */}
               <div className="flex flex-col gap-3 p-6 flex-1">
-                <h3 className="font-display text-lg font-medium text-foreground leading-snug group-hover:text-primary transition-colors duration-200">
+                <h3 className="font-display text-lg font-normal text-foreground leading-snug group-hover:text-primary transition-colors duration-200">
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                   {item.excerpt}
                 </p>
-                {item.url ? (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 mt-1"
-                  >
-                    Read more
-                    <ArrowUpRight size={14} />
-                  </a>
-                ) : (
-                  <span className="text-sm text-muted-foreground/50 mt-1">
-                    Link coming soon
-                  </span>
-                )}
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-200 mt-1"
+                >
+                  Read article
+                  <ArrowUpRight size={14} />
+                </a>
               </div>
             </motion.article>
           ))}

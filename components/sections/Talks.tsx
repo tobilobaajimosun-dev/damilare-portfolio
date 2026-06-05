@@ -1,35 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
-import { talks } from "@/content/talks";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+import { talks } from "@/content/talks";
 
 export function Talks() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface">
+    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col gap-6 mb-16"
+          className="flex flex-col gap-4 mb-10"
         >
-          <motion.p
-            variants={fadeUp}
-            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
-          >
+          <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
             Talks &amp; Media
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground"
+            className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground"
           >
             On the{" "}
-            <span className="text-muted-foreground">
-              stage.
-            </span>
+            <span className="text-muted-foreground">stage.</span>
           </motion.h2>
         </motion.div>
 
@@ -38,38 +32,24 @@ export function Talks() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="flex flex-col divide-y divide-border"
         >
-          {talks.map((talk) => (
-            <motion.a
+          {talks.map((talk, i) => (
+            <motion.div
               key={talk.title}
               variants={fadeUp}
-              href={talk.url ?? undefined}
-              target={talk.url ? "_blank" : undefined}
-              rel={talk.url ? "noopener noreferrer" : undefined}
-              className="group flex flex-col"
+              className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8 py-5"
             >
-              {/* Video thumbnail */}
-              <div className="aspect-video bg-foreground/90 rounded-2xl relative overflow-hidden flex items-center justify-center">
-                {/* Replace with <Image src={talk.thumbnail} ... /> */}
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground to-foreground/70" />
-                <div className="relative w-14 h-14 rounded-full bg-background/95 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Play
-                    size={20}
-                    className="text-foreground ml-0.5"
-                    fill="currentColor"
-                  />
-                </div>
-              </div>
-
-              {/* Caption */}
-              <div className="flex flex-col gap-1 pt-5">
-                <h3 className="font-display text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-200">
+              <span className="text-[0.65rem] text-primary font-mono tracking-[0.15em] shrink-0">
+                0{i + 1}
+              </span>
+              <div className="flex flex-col gap-0.5">
+                <p className="font-display text-xl font-normal text-foreground leading-snug">
                   {talk.title}
-                </h3>
+                </p>
                 <p className="text-sm text-muted-foreground">{talk.venue}</p>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </motion.div>
       </div>

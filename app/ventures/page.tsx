@@ -3,7 +3,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { VenturesHero } from "@/components/sections/VenturesHero";
 import { Ventures } from "@/components/sections/Ventures";
-import { VenturesClosing } from "@/components/sections/VenturesClosing";
 
 export const metadata: Metadata = {
   title: "Ventures",
@@ -18,7 +17,6 @@ export default function VenturesPage() {
       <main>
         <VenturesHero />
         <Ventures />
-        <VenturesClosing />
       </main>
       <Footer />
     </>

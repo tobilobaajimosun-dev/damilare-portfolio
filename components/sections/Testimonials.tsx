@@ -9,56 +9,47 @@ export function Testimonials() {
     <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
-        {/* Header */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col gap-4 mb-16"
+          transition={{ duration: 0.7 }}
+          className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-20"
         >
-          <motion.h2
-            variants={fadeUp}
-            className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight"
-          >
-            What clients{" "}
-            <span className="text-muted-foreground">say.</span>
-          </motion.h2>
-        </motion.div>
+          What clients{" "}
+          <span className="text-muted-foreground">say.</span>
+        </motion.h2>
 
-        {/* Testimonial cards — one per row, large */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col gap-6"
+          className="flex flex-col divide-y divide-border"
         >
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
               variants={fadeUp}
-              className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-end p-10 md:p-14 bg-background rounded-3xl border border-border"
+              className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 lg:gap-16 py-12 lg:py-16 items-start"
             >
-              {/* Quote */}
-              <div className="flex flex-col gap-6">
-                <span className="font-display text-primary text-5xl leading-none select-none">&ldquo;</span>
-                <p className="font-display text-2xl md:text-3xl lg:text-4xl font-normal text-foreground leading-snug -mt-4">
-                  {t.quote}
-                </p>
-              </div>
+              {/* Index */}
+              <p className="text-[0.65rem] text-primary font-mono tracking-[0.15em] lg:pt-1.5 lg:w-8">
+                0{i + 1}
+              </p>
 
-              {/* Attribution */}
-              <div className="flex flex-col gap-1 lg:text-right shrink-0">
-                <p className="text-sm font-semibold text-foreground tracking-tight">
-                  {t.name}
+              {/* Quote + attribution */}
+              <div className="flex flex-col gap-8">
+                <p className="font-display font-normal text-[clamp(1.35rem,2.5vw,1.9rem)] text-foreground leading-snug">
+                  &ldquo;{t.quote}&rdquo;
                 </p>
-                <p className="text-xs text-muted-foreground tracking-wide uppercase">
-                  {t.role}
-                </p>
-                <p className="text-[0.65rem] text-primary font-mono mt-2">
-                  0{i + 1}
-                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-px bg-primary" />
+                  <div>
+                    <p className="text-sm font-medium text-foreground">{t.name}</p>
+                    <p className="text-xs text-muted-foreground tracking-wide mt-0.5">{t.role}</p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
