@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { motion } from "framer-motion";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { brand } from "@/content/brand";
@@ -61,7 +61,7 @@ export function Footer() {
                     </span>
                     <span
                       aria-hidden
-                      className="absolute inset-0 block translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 text-muted-foreground"
+                      className="absolute inset-0 block translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 text-primary"
                     >
                       {link.label}
                     </span>
@@ -97,7 +97,7 @@ export function Footer() {
                     </span>
                     <span
                       aria-hidden
-                      className="absolute inset-0 flex items-center translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 text-muted-foreground"
+                      className="absolute inset-0 flex items-center translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 text-primary"
                     >
                       {label}
                     </span>
@@ -140,13 +140,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <Image
-            src="/logo.png"
-            alt="Damilare Oshokoya"
-            width={160}
-            height={52}
-            className="object-contain"
-          />
+          <BrandLogo />
           <p className="text-xs text-muted-foreground">
             © 2026 {brand.name}. All rights reserved.
           </p>

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { brand } from "@/content/brand";
 import { cn } from "@/lib/utils";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -26,33 +27,6 @@ function MailFilled({ size = 16 }: { size?: number }) {
     >
       <path d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2-8 5-8-5h16zm0 12H4V8.868l8 5 8-5V18z" />
     </svg>
-  );
-}
-
-function BrandLogo() {
-  return (
-    <div className="flex items-center leading-none select-none">
-      <span
-        className="font-display font-normal text-foreground"
-        style={{ fontSize: "2.6rem", lineHeight: 1 }}
-      >
-        D
-      </span>
-      <div className="flex flex-col justify-center ml-0.5">
-        <span
-          className="font-display font-normal text-foreground leading-none"
-          style={{ fontSize: "0.95rem" }}
-        >
-          amilare
-        </span>
-        <span
-          className="font-sans font-medium text-foreground leading-none tracking-[0.17em] uppercase"
-          style={{ fontSize: "0.58rem", marginTop: "0.15rem" }}
-        >
-          Oshokoya
-        </span>
-      </div>
-    </div>
   );
 }
 

@@ -6,9 +6,9 @@ export const brand = {
   tagline: "Empowering Africa through entrepreneurship, innovation, and impact.",
   location: "Lagos, Nigeria",
   social: {
-    twitter: "https://twitter.com/damilareoshokoya",
-    linkedin: "https://linkedin.com/in/damilareoshokoya",
-    instagram: "https://instagram.com/damilareoshokoya",
+    twitter: "https://x.com/DamiOshokoya",
+    linkedin: "https://www.linkedin.com/in/damilare-oshokoya-6b3989b1/",
+    instagram: "https://www.instagram.com/oshokoyadamilare/",
   },
   bookingUrl: "#",
   trainingUrl: "#",
