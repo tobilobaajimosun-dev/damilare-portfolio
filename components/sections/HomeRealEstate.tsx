@@ -20,12 +20,12 @@ export function HomeRealEstate() {
             viewport={{ once: true, margin: "-80px" }}
             className="flex flex-col gap-6"
           >
-            <motion.p variants={fadeUp} className="text-xs tracking-[0.22em] uppercase text-primary font-sans">
+            <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
               Real Estate
             </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground leading-tight"
+              className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight"
             >
               Real estate remains one of the most durable engines of wealth creation.
             </motion.h2>

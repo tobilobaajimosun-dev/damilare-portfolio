@@ -13,13 +13,6 @@ export function AboutHero() {
           animate="visible"
           className="flex flex-col gap-10 max-w-4xl"
         >
-          <motion.p
-            variants={fadeUp}
-            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
-          >
-            About
-          </motion.p>
-
           <motion.h1
             variants={fadeUp}
             className="font-display font-normal leading-[1.06] tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,4.75rem)]"

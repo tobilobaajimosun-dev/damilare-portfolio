@@ -49,7 +49,7 @@ export function LeadershipJourney() {
       {/* Header */}
       <div className="px-6 md:px-10 lg:px-16 mb-16">
         <div className="mx-auto w-full max-w-[var(--container-default)]">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground leading-tight">
+          <h2 className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight">
             Leadership Journey
           </h2>
           <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground font-sans mt-4">

@@ -37,10 +37,10 @@ export function ImpactStats() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-xs tracking-[0.22em] uppercase text-primary font-sans mb-3">
+            <p className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans mb-3">
               Impact
             </p>
-            <h2 className="font-display font-normal text-3xl md:text-4xl lg:text-5xl text-foreground max-w-2xl leading-tight">
+            <h2 className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground max-w-2xl leading-tight">
               Building businesses. Developing leaders. Creating opportunities.
             </h2>
           </motion.div>

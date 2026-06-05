@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const topics = [
@@ -46,62 +46,60 @@ export function HomeMentorship() {
             viewport={{ once: true, margin: "-80px" }}
             className="flex flex-col gap-8 lg:sticky lg:top-28"
           >
-            <motion.p variants={fadeUp} className="text-xs tracking-[0.22em] uppercase text-primary font-sans">
+            <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
               Mentorship &amp; Speaking
             </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground leading-tight"
+              className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight"
             >
               Developing leaders who create impact.
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
+            <motion.p variants={fadeUp} className="text-base text-muted-foreground leading-[1.8]">
               Damilare mentors entrepreneurs, founders, sales professionals, and
               emerging leaders navigating growth across African markets.
             </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col gap-3 pt-2">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground/30 pb-0.5 hover:text-primary hover:border-primary transition-colors duration-200 self-start"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors duration-200"
               >
-                Book a session
+                Book a Session
                 <ArrowRight size={13} />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 self-start"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:bg-surface hover:border-foreground/40 transition-colors duration-200"
               >
-                Invite to speak
-                <ArrowRight size={13} />
+                Invite to Speak
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* Right — topic cards */}
+          {/* Right — topic cards, no arrows */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 divide-y divide-x-0 sm:divide-y-0 divide-border border border-border rounded-2xl overflow-hidden"
+            className="grid grid-cols-1 sm:grid-cols-2 border border-border rounded-2xl overflow-hidden"
           >
             {topics.map((topic, i) => (
               <motion.div
                 key={topic.title}
                 variants={fadeUp}
-                className={`flex flex-col gap-3 p-6 bg-background hover:bg-surface transition-colors duration-200 border-border
-                  ${i < topics.length - 2 ? "sm:border-b" : ""}
-                  ${i % 2 === 0 ? "sm:border-r" : ""}
-                `}
+                className={[
+                  "flex flex-col gap-3 p-6 bg-background hover:bg-surface transition-colors duration-200",
+                  i % 2 === 0 && i < topics.length - 1 ? "sm:border-r border-border" : "",
+                  i < topics.length - 2 ? "border-b border-border" : "",
+                  i === topics.length - 2 ? "sm:border-b border-border" : "",
+                ].join(" ")}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-[10px] text-primary font-mono shrink-0">0{i + 1}</span>
-                    <p className="font-display text-lg font-normal text-foreground leading-snug">
-                      {topic.title}
-                    </p>
-                  </div>
-                  <ArrowUpRight size={14} className="text-muted-foreground/40 shrink-0 mt-0.5" />
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] text-primary font-mono shrink-0">0{i + 1}</span>
+                  <p className="font-display font-normal text-lg text-foreground leading-snug">
+                    {topic.title}
+                  </p>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed pl-6">
                   {topic.description}

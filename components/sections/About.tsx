@@ -27,7 +27,7 @@ export function About() {
           >
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight text-foreground"
+              className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] leading-tight tracking-tight text-foreground"
             >
               Faith-driven.
               <br />

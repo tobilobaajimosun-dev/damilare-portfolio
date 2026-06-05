@@ -19,7 +19,7 @@ export function Testimonials() {
         >
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground leading-tight"
+            className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight"
           >
             What clients{" "}
             <span className="text-muted-foreground">say.</span>
