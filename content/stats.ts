@@ -6,9 +6,14 @@ export type Stat = {
 
 export const stats: Stat[] = [
   {
-    value: "2+",
+    value: "2",
     label: "Books Published",
     description: "Practical frameworks on sales, entrepreneurship, and execution.",
+  },
+  {
+    value: "3",
+    label: "Global Mentorship",
+    description: "Programmes reaching leaders across African markets.",
   },
   {
     value: "5+",
@@ -23,11 +28,6 @@ export const stats: Stat[] = [
   {
     value: "3,500+",
     label: "Lives Impacted",
-    description: "Through business, mentorship, and leadership development.",
-  },
-  {
-    value: "Multiple",
-    label: "Ventures Built",
-    description: "Across real estate, finance, and technology sectors.",
+    description: "Through Abode, Realvest, mentorship, and leadership programmes.",
   },
 ]

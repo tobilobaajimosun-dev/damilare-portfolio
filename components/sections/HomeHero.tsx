@@ -56,13 +56,13 @@ export function HomeHero() {
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <a
                 href="mailto:damilareoshokoya@gmail.com"
-                className="inline-flex items-center gap-2.5 px-6 py-3 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-all duration-200"
+                className="inline-flex items-center gap-2.5 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-200"
               >
                 Work With Me
               </a>
               <a
                 href="/sales-academy"
-                className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:bg-surface transition-all duration-200"
+                className="inline-flex items-center gap-2.5 px-6 py-3 border border-primary text-primary text-sm font-medium rounded-full hover:bg-primary/10 transition-all duration-200"
               >
                 Join Sales Masterclass
               </a>
