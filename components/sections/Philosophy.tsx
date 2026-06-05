@@ -38,7 +38,7 @@ export function Philosophy() {
                   className="flex flex-col gap-3 pt-6 border-t border-border"
                 >
                   <span className="text-xs text-primary font-mono">{p.number}</span>
-                  <p className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                  <p className="font-display text-3xl md:text-4xl font-normal text-foreground leading-tight">
                     {p.text}
                   </p>
                 </motion.div>

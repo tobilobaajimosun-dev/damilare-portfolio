@@ -30,7 +30,7 @@ export function Ventures() {
             variants={fadeUp}
             className="flex flex-col md:flex-row md:items-end md:justify-between gap-4"
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground">
               What I&apos;ve built.
             </h2>
             <p className="text-muted-foreground max-w-xs text-sm leading-relaxed md:text-right">
@@ -66,7 +66,7 @@ function VentureRow({ venture }: { venture: Venture }) {
       className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-8"
     >
       <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-5">
-        <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+        <h3 className="font-display text-xl md:text-2xl font-medium text-foreground group-hover:text-primary transition-colors duration-200">
           {venture.name}
         </h3>
         <span className="text-xs tracking-widest uppercase text-muted-foreground px-2.5 py-0.5 border border-border rounded-full self-start sm:self-auto">

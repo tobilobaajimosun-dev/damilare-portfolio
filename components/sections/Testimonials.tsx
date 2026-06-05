@@ -24,10 +24,10 @@ export function Testimonials() {
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground"
+            className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground"
           >
             Results that speak{" "}
-            <span className="italic font-normal text-muted-foreground">
+            <span className="text-muted-foreground">
               for themselves.
             </span>
           </motion.h2>
@@ -47,7 +47,7 @@ export function Testimonials() {
               variants={fadeUp}
               className="flex flex-col justify-between gap-8 p-8 bg-background rounded-2xl border border-border"
             >
-              <p className="font-display text-lg font-normal italic text-foreground leading-relaxed">
+              <p className="font-display text-lg font-normal text-foreground leading-relaxed">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div>

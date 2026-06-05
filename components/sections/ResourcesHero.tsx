@@ -15,10 +15,10 @@ export function ResourcesHero() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.0]"
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground leading-[1.0]"
           >
             Books.{" "}
-            <span className="italic font-normal text-muted-foreground">
+            <span className="text-muted-foreground">
               Speaking.
             </span>{" "}
             Mentorship.

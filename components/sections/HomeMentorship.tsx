@@ -22,10 +22,10 @@ export function HomeMentorship() {
           >
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground leading-tight"
             >
               Helping people see bigger{" "}
-              <span className="italic font-normal text-muted-foreground">
+              <span className="text-muted-foreground">
                 possibilities.
               </span>
             </motion.h2>
@@ -65,7 +65,7 @@ export function HomeMentorship() {
                 className="flex flex-col gap-2 p-6 bg-background rounded-xl border border-border"
               >
                 <span className="text-xs text-primary font-mono">0{i + 1}</span>
-                <p className="font-display text-lg font-semibold text-foreground">
+                <p className="font-display text-lg font-medium text-foreground">
                   {p}
                 </p>
               </motion.div>

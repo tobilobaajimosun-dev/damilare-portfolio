@@ -18,7 +18,7 @@ export function HomeClosing() {
         >
           <motion.blockquote
             variants={fadeUp}
-            className="font-display text-2xl md:text-3xl lg:text-4xl font-normal italic text-background leading-snug"
+            className="font-display text-2xl md:text-3xl lg:text-4xl font-normal text-background leading-snug"
           >
             &ldquo;Great businesses are built by people willing to think
             differently, act courageously, and serve consistently.&rdquo;

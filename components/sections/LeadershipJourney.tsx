@@ -39,7 +39,7 @@ export function LeadershipJourney() {
                 variants={fadeUp}
                 className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-5"
               >
-                <span className="text-base font-semibold text-foreground font-display min-w-[180px]">
+                <span className="text-base font-medium text-foreground font-display min-w-[180px]">
                   {role.title}
                 </span>
                 <span className="text-sm text-muted-foreground leading-relaxed">

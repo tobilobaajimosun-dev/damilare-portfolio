@@ -34,11 +34,11 @@ export function About() {
 
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight text-foreground"
             >
               Faith-driven.
               <br />
-              <span className="italic font-normal text-muted-foreground">
+              <span className="text-muted-foreground">
                 Africa-focused.
               </span>
             </motion.h2>
@@ -70,7 +70,7 @@ export function About() {
             >
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                  <p className="font-display text-3xl md:text-4xl font-normal text-foreground">
                     {stat.value}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1.5 leading-snug">

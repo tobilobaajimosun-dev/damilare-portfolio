@@ -35,12 +35,12 @@ export function Mentorship() {
             </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground leading-tight"
             >
               Growing the
               <br />
               next{" "}
-              <span className="italic font-normal text-muted-foreground">
+              <span className="text-muted-foreground">
                 generation.
               </span>
             </motion.h2>
@@ -71,7 +71,7 @@ export function Mentorship() {
               variants={fadeUp}
               className="border-l-2 border-primary pl-7"
             >
-              <p className="font-display text-2xl md:text-3xl font-normal italic text-foreground leading-snug">
+              <p className="font-display text-2xl md:text-3xl font-normal text-foreground leading-snug">
                 &ldquo;The most meaningful work I do isn&apos;t measured in
                 revenue. It&apos;s measured in the founders who found their
                 footing.&rdquo;

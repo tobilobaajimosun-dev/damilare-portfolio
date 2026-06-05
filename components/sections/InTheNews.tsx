@@ -24,10 +24,10 @@ export function InTheNews() {
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground"
+            className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground"
           >
             Ideas in the{" "}
-            <span className="italic font-normal text-muted-foreground">
+            <span className="text-muted-foreground">
               public square.
             </span>
           </motion.h2>
@@ -57,7 +57,7 @@ export function InTheNews() {
 
               {/* Content */}
               <div className="flex flex-col gap-3 p-6 flex-1">
-                <h3 className="font-display text-lg font-semibold text-foreground leading-snug group-hover:text-primary transition-colors duration-200">
+                <h3 className="font-display text-lg font-medium text-foreground leading-snug group-hover:text-primary transition-colors duration-200">
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">

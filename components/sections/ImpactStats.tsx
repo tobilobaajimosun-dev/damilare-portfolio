@@ -21,7 +21,7 @@ export function ImpactStats() {
               variants={fadeUp}
               className="flex flex-col gap-2"
             >
-              <p className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+              <p className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground">
                 {stat.value}
                 <span className="text-primary">.</span>
               </p>

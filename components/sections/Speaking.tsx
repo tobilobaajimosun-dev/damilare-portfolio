@@ -30,11 +30,11 @@ export function Speaking() {
 
             <motion.h2
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-foreground leading-tight"
             >
               Let&apos;s talk about
               <br />
-              <span className="italic font-normal text-muted-foreground">
+              <span className="text-muted-foreground">
                 what matters.
               </span>
             </motion.h2>
@@ -76,7 +76,7 @@ export function Speaking() {
                 <span className="text-xs text-primary font-mono font-medium">
                   0{i + 1}
                 </span>
-                <h3 className="font-display text-lg font-semibold text-foreground leading-snug">
+                <h3 className="font-display text-lg font-medium text-foreground leading-snug">
                   {topic.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">

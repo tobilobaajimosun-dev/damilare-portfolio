@@ -24,10 +24,10 @@ export function Talks() {
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground"
+            className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground"
           >
             On the{" "}
-            <span className="italic font-normal text-muted-foreground">
+            <span className="text-muted-foreground">
               stage.
             </span>
           </motion.h2>
@@ -64,7 +64,7 @@ export function Talks() {
 
               {/* Caption */}
               <div className="flex flex-col gap-1 pt-5">
-                <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+                <h3 className="font-display text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-200">
                   {talk.title}
                 </h3>
                 <p className="text-sm text-muted-foreground">{talk.venue}</p>

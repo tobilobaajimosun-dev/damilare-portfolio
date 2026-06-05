@@ -22,7 +22,7 @@ export function HomeVenturesPreview() {
             variants={fadeUp}
             className="flex flex-col md:flex-row md:items-end md:justify-between gap-6"
           >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground max-w-xl">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground max-w-xl">
               Building solutions that solve real problems.
             </h2>
             <Link
@@ -46,7 +46,7 @@ export function HomeVenturesPreview() {
                 className="flex flex-col gap-3 p-5 border border-border rounded-xl hover:border-primary/20 hover:bg-surface transition-all duration-300"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-lg font-semibold text-foreground">
+                  <h3 className="font-display text-lg font-medium text-foreground">
                     {v.name}
                   </h3>
                   <span className="text-xs tracking-widest uppercase text-muted-foreground border border-border rounded-full px-2 py-0.5 shrink-0">

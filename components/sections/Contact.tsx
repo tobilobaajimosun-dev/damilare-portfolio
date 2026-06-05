@@ -34,10 +34,10 @@ export function Contact() {
           </motion.p>
           <motion.h1
             variants={fadeUp}
-            className="font-display font-bold tracking-tight text-foreground leading-[1.0] text-[clamp(2.5rem,6vw,4.5rem)]"
+            className="font-display font-normal tracking-tight text-foreground leading-[1.0] text-[clamp(2.5rem,6vw,4.5rem)]"
           >
             If you&apos;re building or scaling,{" "}
-            <span className="italic font-normal text-muted-foreground">
+            <span className="text-muted-foreground">
               let&apos;s talk.
             </span>
           </motion.h1>

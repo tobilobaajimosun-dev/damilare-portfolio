@@ -39,7 +39,7 @@ export function AboutStory() {
 
           <motion.p
             variants={fadeUp}
-            className="font-display text-4xl md:text-6xl font-bold tracking-tight text-foreground pt-8"
+            className="font-display text-4xl md:text-6xl font-normal tracking-tight text-foreground pt-8"
           >
             Create value that lasts.
           </motion.p>

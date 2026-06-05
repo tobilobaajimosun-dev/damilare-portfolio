@@ -35,7 +35,7 @@ export function HomeNewsletter() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight mb-4"
+            className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground leading-tight mb-4"
           >
             The Stewardship Letter
           </motion.h2>

@@ -25,13 +25,13 @@ export function Hero() {
             </motion.p>
 
             <motion.div variants={fadeUp}>
-              <h1 className="font-display font-bold leading-[1.0] tracking-tight text-foreground text-[clamp(3rem,7.5vw,6.5rem)]">
+              <h1 className="font-display font-normal leading-[1.0] tracking-tight text-foreground text-[clamp(3rem,7.5vw,6.5rem)]">
                 {brand.firstName}{" "}
                 <span className="text-muted-foreground font-medium">
                   {brand.lastName}
                 </span>
               </h1>
-              <p className="font-display italic font-normal text-muted-foreground mt-3 leading-tight text-[clamp(1.4rem,2.8vw,2.25rem)]">
+              <p className="font-display font-normal text-muted-foreground mt-3 leading-tight text-[clamp(1.4rem,2.8vw,2.25rem)]">
                 Empowering Africa through entrepreneurship and innovation.
               </p>
             </motion.div>

@@ -18,7 +18,7 @@ export function VenturesClosing() {
         >
           <motion.p
             variants={fadeUp}
-            className="font-display text-3xl md:text-4xl font-normal italic text-foreground leading-snug mb-6"
+            className="font-display text-3xl md:text-4xl font-normal text-foreground leading-snug mb-6"
           >
             The goal has never been to build businesses for their own sake.
           </motion.p>

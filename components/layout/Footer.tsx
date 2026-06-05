@@ -24,7 +24,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           {/* Brand */}
           <div className="md:col-span-4 flex flex-col gap-3">
-            <p className="font-display text-lg font-semibold tracking-tight text-foreground">
+            <p className="font-display text-lg font-medium tracking-tight text-foreground">
               {brand.firstName} {brand.lastName}
             </p>
             <p className="text-sm text-muted-foreground max-w-[24ch] leading-relaxed">
@@ -80,7 +80,7 @@ export function Footer() {
 
         {/* Oversized wordmark */}
         <div className="border-t border-border pt-10">
-          <p className="font-display font-bold tracking-tight text-foreground/[0.06] leading-[0.85] text-[clamp(3.5rem,17vw,16rem)] select-none">
+          <p className="font-display font-normal tracking-tight text-foreground/[0.06] leading-[0.85] text-[clamp(3.5rem,17vw,16rem)] select-none">
             {brand.firstName}
             <br />
             {brand.lastName}

@@ -146,9 +146,9 @@
     @apply font-display tracking-tight;
   }
 
-  /* LT Superior Serif has only Regular (400) and Medium (500) — prevent
-     the browser from synthesizing heavier weights. */
+  /* LT Superior Serif: Regular (400) + Medium (500) only — block all synthesis. */
   .font-display {
-    font-synthesis-weight: none;
+    font-synthesis: none;
+    font-style: normal;
   }
 }

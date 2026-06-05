@@ -32,14 +32,14 @@ function BrandLogo() {
   return (
     <div className="flex items-center leading-none select-none">
       <span
-        className="font-display italic font-normal text-foreground"
+        className="font-display font-normal text-foreground"
         style={{ fontSize: "2.6rem", lineHeight: 1 }}
       >
         D
       </span>
       <div className="flex flex-col justify-center ml-0.5">
         <span
-          className="font-display italic font-normal text-foreground leading-none"
+          className="font-display font-normal text-foreground leading-none"
           style={{ fontSize: "0.95rem" }}
         >
           amilare

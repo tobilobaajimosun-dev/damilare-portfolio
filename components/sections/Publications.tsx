@@ -27,7 +27,7 @@ export function Publications() {
             variants={fadeUp}
             className="flex flex-col md:flex-row md:items-end md:justify-between gap-4"
           >
-            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground">
               Books &amp; research.
             </h2>
             <p className="text-muted-foreground max-w-xs text-sm leading-relaxed md:text-right">
@@ -59,7 +59,7 @@ export function Publications() {
                   )}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-display text-xl font-semibold text-foreground leading-snug">
+                  <h3 className="font-display text-xl font-medium text-foreground leading-snug">
                     {pub.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">

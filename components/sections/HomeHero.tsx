@@ -17,7 +17,7 @@ export function HomeHero() {
         >
           <motion.h1
             variants={staggerContainer}
-            className="font-display font-bold leading-[1.0] tracking-tight"
+            className="font-display font-normal leading-[1.0] tracking-tight"
           >
             <motion.span
               variants={fadeUp}
@@ -27,7 +27,7 @@ export function HomeHero() {
             </motion.span>
             <motion.span
               variants={fadeUp}
-              className="block italic font-normal text-muted-foreground text-[clamp(2.5rem,6.5vw,5.75rem)]"
+              className="block font-normal text-muted-foreground text-[clamp(2.5rem,6.5vw,5.75rem)]"
             >
               Developing Leaders.
             </motion.span>
