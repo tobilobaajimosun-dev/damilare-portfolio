@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -10,34 +10,39 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "About", href: "/about" },
-  { label: "Ventures", href: "/ventures" },
   { label: "Resources", href: "/resources" },
+  { label: "Sales Academy", href: "/sales-academy" },
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY < lastScrollY.current) {
+        setVisible(true);
+      } else if (currentY > lastScrollY.current && currentY > 80) {
+        setVisible(false);
+      }
+      lastScrollY.current = currentY;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
-      )}
+    <motion.header
+      animate={{ y: visible ? 0 : "-100%" }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border/40"
     >
       <div className="mx-auto max-w-[var(--container-default)] px-6 md:px-10 h-16 flex items-center justify-between">
         <Link
@@ -69,7 +74,7 @@ export function Navbar() {
             href="/contact"
             className="hidden md:inline-flex items-center px-4 py-2 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors duration-200"
           >
-            Work With Me
+            Contact Me
           </Link>
           <button
             className="md:hidden p-1.5 text-foreground"
@@ -88,7 +93,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden bg-background border-b border-border"
+            className="md:hidden overflow-hidden bg-background/80 backdrop-blur-xl border-b border-border/40"
           >
             <div className="flex flex-col px-6 py-5 gap-4">
               {navLinks.map((link) => (
@@ -109,12 +114,12 @@ export function Navbar() {
                 href="/contact"
                 className="text-base font-semibold text-foreground pt-3 mt-1 border-t border-border"
               >
-                Work With Me →
+                Contact Me →
               </Link>
             </div>
           </motion.nav>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

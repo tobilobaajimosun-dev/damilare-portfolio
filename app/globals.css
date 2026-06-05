@@ -4,16 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Custom local display face — usage: className="font-stablecoin" */
-@utility font-stablecoin {
-  font-family: var(--font-stablecoin), "Playfair Display", ui-serif, serif;
+@utility font-body {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
-  /* Fonts — literal names required; @theme inline resolves at parse time */
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-general-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-display: var(--font-stablecoin), "Playfair Display", "Georgia", ui-serif, serif;
+  --font-display: var(--font-lt-superior), ui-serif, serif;
+  --font-body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
 
   /* Base colors mapped from CSS custom properties */
   --color-background: var(--background);
@@ -134,6 +133,10 @@
     @apply bg-background text-foreground antialiased;
   }
 
+  p {
+    @apply font-body;
+  }
+
   h1,
   h2,
   h3,
@@ -143,9 +146,8 @@
     @apply font-display tracking-tight;
   }
 
-  /* Stablecoin display face ships only a Light master — never fake-bold it,
-     so headings render at their true light weight. Italic synthesis stays on
-     for the editorial accent words. */
+  /* LT Superior Serif has only Regular (400) and Medium (500) — prevent
+     the browser from synthesizing heavier weights. */
   .font-display {
     font-synthesis-weight: none;
   }

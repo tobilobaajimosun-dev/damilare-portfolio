@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { geistSans, geistMono, playfair, stablecoin } from "@/lib/fonts";
+import { generalSans, ltSuperiorSerif, archivo, geistMono } from "@/lib/fonts";
 import { baseMetadata } from "@/lib/metadata";
 import "./globals.css";
 
@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${stablecoin.variable} h-full`}
+      className={`${generalSans.variable} ${ltSuperiorSerif.variable} ${archivo.variable} ${geistMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
