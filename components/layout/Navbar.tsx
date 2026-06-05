@@ -14,6 +14,47 @@ const navLinks = [
   { label: "Sales Academy", href: "/sales-academy" },
 ];
 
+function MailFilled({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2-8 5-8-5h16zm0 12H4V8.868l8 5 8-5V18z" />
+    </svg>
+  );
+}
+
+function BrandLogo() {
+  return (
+    <div className="flex items-center leading-none select-none">
+      <span
+        className="font-display italic font-normal text-foreground"
+        style={{ fontSize: "2.6rem", lineHeight: 1 }}
+      >
+        D
+      </span>
+      <div className="flex flex-col justify-center ml-0.5">
+        <span
+          className="font-display italic font-normal text-foreground leading-none"
+          style={{ fontSize: "0.95rem" }}
+        >
+          amilare
+        </span>
+        <span
+          className="font-sans font-medium text-foreground leading-none tracking-[0.17em] uppercase"
+          style={{ fontSize: "0.58rem", marginTop: "0.15rem" }}
+        >
+          Oshokoya
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function Navbar() {
   const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
@@ -45,11 +86,8 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border/40"
     >
       <div className="mx-auto max-w-[var(--container-default)] px-6 md:px-10 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className="font-display text-base font-semibold tracking-tight text-foreground hover:text-primary transition-colors duration-200"
-        >
-          {brand.firstName} {brand.lastName}
+        <Link href="/" aria-label="Damilare Oshokoya — home">
+          <BrandLogo />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -72,8 +110,9 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
-            className="hidden md:inline-flex items-center px-4 py-2 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors duration-200"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-colors duration-200"
           >
+            <MailFilled size={14} />
             Contact Me
           </Link>
           <button
@@ -112,8 +151,9 @@ export function Navbar() {
               ))}
               <Link
                 href="/contact"
-                className="text-base font-semibold text-foreground pt-3 mt-1 border-t border-border"
+                className="inline-flex items-center gap-2 text-base font-semibold text-foreground pt-3 mt-1 border-t border-border"
               >
+                <MailFilled size={16} />
                 Contact Me →
               </Link>
             </div>
