@@ -39,6 +39,12 @@ export function HomeRealEstate() {
               Learn More
               <ArrowRight size={14} />
             </Link>
+
+            {/* Image spot */}
+            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-surface border border-border flex items-end p-6">
+              {/* 👉 Add: <Image src="/images/real-estate.jpg" alt="Real Estate" fill className="object-cover" /> */}
+              <p className="text-xs text-muted-foreground tracking-widest uppercase">Image — Real Estate</p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

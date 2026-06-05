@@ -49,23 +49,30 @@ export function HomeBooks() {
               <motion.div
                 key={book.title}
                 variants={fadeUp}
-                className="flex flex-col justify-between gap-8 p-8 bg-background border border-border rounded-2xl"
+                className="flex flex-col gap-0 bg-background border border-border rounded-2xl overflow-hidden"
               >
-                <div className="flex flex-col gap-4">
-                  <h3 className="font-display text-2xl md:text-3xl font-normal text-foreground">
-                    {book.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {book.description}
-                  </p>
+                {/* Book cover image spot */}
+                <div className="w-full aspect-[4/3] bg-surface border-b border-border flex items-end p-6 relative">
+                  {/* 👉 Add: <Image src={`/images/${book.title.toLowerCase().replace(/ /g,'-')}.jpg`} alt={book.title} fill className="object-cover" /> */}
+                  <p className="text-xs text-muted-foreground tracking-widest uppercase">Book Cover</p>
                 </div>
-                <a
-                  href={book.href}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground/30 pb-0.5 hover:text-primary hover:border-primary transition-colors duration-200 self-start"
-                >
-                  {book.cta}
-                  <ArrowRight size={14} />
-                </a>
+                <div className="flex flex-col justify-between gap-8 p-8">
+                  <div className="flex flex-col gap-3">
+                    <h3 className="font-display text-2xl md:text-3xl font-normal text-foreground">
+                      {book.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {book.description}
+                    </p>
+                  </div>
+                  <a
+                    href={book.href}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground/30 pb-0.5 hover:text-primary hover:border-primary transition-colors duration-200 self-start"
+                  >
+                    {book.cta}
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
               </motion.div>
             ))}
           </motion.div>
