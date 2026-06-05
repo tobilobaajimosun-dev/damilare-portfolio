@@ -57,29 +57,31 @@ export function HomeMentorship() {
             </motion.div>
           </motion.div>
 
-          {/* Right — speaking topics */}
+          {/* Right — topic cards */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-2 lg:pt-20"
+            className="flex flex-col gap-3 lg:pt-20"
           >
-            <motion.p variants={fadeUp} className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-sans mb-4">
+            <motion.p variants={fadeUp} className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-sans mb-2">
               Speaking Topics
             </motion.p>
-            {topics.map((topic, i) => (
-              <motion.div
-                key={topic}
-                variants={fadeUp}
-                className="flex items-center gap-4 py-4 border-b border-border last:border-0"
-              >
-                <span className="text-xs text-primary font-mono">0{i + 1}</span>
-                <p className="font-display text-xl md:text-2xl font-normal text-foreground">
-                  {topic}
-                </p>
-              </motion.div>
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {topics.map((topic, i) => (
+                <motion.div
+                  key={topic}
+                  variants={fadeUp}
+                  className="flex items-start gap-3 p-5 rounded-2xl border border-border bg-background hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
+                >
+                  <span className="text-xs text-primary font-mono mt-0.5 shrink-0">0{i + 1}</span>
+                  <p className="font-display text-lg md:text-xl font-normal text-foreground leading-snug">
+                    {topic}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
         </div>

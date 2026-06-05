@@ -16,13 +16,29 @@ export function HomePhilosophy() {
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
-          {/* Left */}
+          {/* Left — image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full aspect-[4/3] rounded-2xl overflow-hidden relative"
+          >
+            <Image
+              src="/images/portrait-2.jpg"
+              alt="Damilare Oshokoya"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+
+          {/* Right — text */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-8 lg:pt-8"
           >
             <motion.p
               variants={fadeUp}
@@ -37,25 +53,6 @@ export function HomePhilosophy() {
               Entrepreneurship is more than opportunity. It is responsibility.
             </motion.h2>
 
-            {/* Portrait */}
-            <motion.div variants={fadeUp} className="w-full aspect-[4/3] rounded-2xl overflow-hidden relative">
-              <Image
-                src="/images/portrait-2.jpg"
-                alt="Damilare Oshokoya"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </motion.div>
-
-          {/* Right */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-8 lg:pt-16"
-          >
             <motion.div variants={fadeUp} className="flex flex-col gap-3">
               {beliefs.map((b) => (
                 <p

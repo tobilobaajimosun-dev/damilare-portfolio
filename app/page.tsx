@@ -9,7 +9,6 @@ import { HomeBooks } from "@/components/sections/HomeBooks";
 import { HomeRealEstate } from "@/components/sections/HomeRealEstate";
 import { HomeMentorship } from "@/components/sections/HomeMentorship";
 import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
-import { HomeClosing } from "@/components/sections/HomeClosing";
 
 export default function Home() {
   return (
@@ -25,7 +24,6 @@ export default function Home() {
         <HomeRealEstate />
         <HomeMentorship />
         <HomeNewsletter />
-        <HomeClosing />
       </main>
       <Footer />
     </>
