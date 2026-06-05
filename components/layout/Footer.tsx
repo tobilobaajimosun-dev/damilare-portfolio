@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { brand } from "@/content/brand";
+import { fadeUp } from "@/lib/motion";
+import type { Variants } from "framer-motion";
 
 const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Ventures", href: "/ventures" },
   { label: "Resources", href: "/resources" },
-  { label: "Sales Academy", href: "/sales-academy" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -17,59 +22,94 @@ const socials = [
   { label: "Instagram", href: brand.social.instagram },
 ];
 
+const container: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
+};
+
 export function Footer() {
   return (
     <footer className="bg-background border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)] px-6 md:px-10 lg:px-16 pt-16 md:pt-20 pb-10">
 
-        {/* Main section — 3 zones like &Fold */}
+        {/* Main columns */}
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-12 md:gap-6 pb-16 border-b border-border">
 
-          {/* Zone 1 — Navigate (large display links) */}
+          {/* Explore */}
           <div className="flex flex-col gap-6">
             <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
               Explore
             </p>
-            <nav className="flex flex-col gap-1">
+            <motion.nav
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              className="flex flex-col gap-0.5"
+            >
               {nav.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-display font-normal text-foreground hover:text-primary transition-colors duration-200 leading-tight self-start"
-                  style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)" }}
-                >
-                  {link.label}
-                </Link>
+                <motion.div key={link.href} variants={fadeUp}>
+                  <Link
+                    href={link.href}
+                    className="group relative inline-block font-display font-normal text-foreground leading-tight overflow-hidden"
+                    style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)" }}
+                  >
+                    <span className="block transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full">
+                      {link.label}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 block translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 text-muted-foreground"
+                    >
+                      {link.label}
+                    </span>
+                  </Link>
+                </motion.div>
               ))}
-            </nav>
+            </motion.nav>
           </div>
 
-          {/* Zone 2 — Follow (large display links) */}
+          {/* Follow */}
           <div className="flex flex-col gap-6">
             <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
               Follow
             </p>
-            <div className="flex flex-col gap-1">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              className="flex flex-col gap-0.5"
+            >
               {socials.map(({ label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-display font-normal text-foreground hover:text-primary transition-colors duration-200 leading-tight self-start"
-                  style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)" }}
-                >
-                  {label}
-                  <ArrowUpRight size={16} className="opacity-40" />
-                </a>
+                <motion.div key={label} variants={fadeUp}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center gap-2 font-display font-normal text-foreground leading-tight overflow-hidden"
+                    style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)" }}
+                  >
+                    <span className="block transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full">
+                      {label}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 flex items-center translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 text-muted-foreground"
+                    >
+                      {label}
+                    </span>
+                    <ArrowUpRight size={14} className="opacity-30 shrink-0 mt-1" />
+                  </a>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
-          {/* Zone 3 — Contact details (small, right-aligned like &Fold) */}
-          <div className="grid grid-cols-2 md:grid-cols-1 gap-8 md:gap-8 md:justify-items-start md:min-w-[220px]">
-
-            {/* Location */}
+          {/* Contact details */}
+          <div className="grid grid-cols-2 md:grid-cols-1 gap-8 md:min-w-[220px]">
             <div className="flex flex-col gap-2">
               <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
                 Location
@@ -84,23 +124,21 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Email */}
             <div className="flex flex-col gap-2">
               <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
                 Email
               </p>
               <a
-                href="mailto:hello@damilareoshokoya.com"
+                href="mailto:damilareoshokoya@gmail.com"
                 className="text-sm text-foreground hover:text-primary transition-colors duration-200 self-start"
               >
-                hello@damilareoshokoya.com
+                damilareoshokoya@gmail.com
               </a>
             </div>
-
           </div>
         </div>
 
-        {/* Bottom bar — logo left, copyright right */}
+        {/* Bottom bar */}
         <div className="pt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <Image
             src="/logo.png"
