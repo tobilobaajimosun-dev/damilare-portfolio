@@ -13,6 +13,7 @@
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
   --font-display: var(--font-lt-superior), ui-serif, serif;
   --font-body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-handwriting: var(--font-handwriting), cursive;
 
   /* Base colors mapped from CSS custom properties */
   --color-background: var(--background);

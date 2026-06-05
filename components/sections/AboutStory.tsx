@@ -12,18 +12,18 @@ export function AboutStory() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col items-center gap-10 text-center"
+          className="flex flex-col gap-10"
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
+            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
           >
-            The Story
+            A Note From Damilare
           </motion.p>
 
           <motion.div
             variants={fadeUp}
-            className="flex flex-col gap-7 text-lg md:text-xl text-muted-foreground leading-relaxed"
+            className="flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-[1.85]"
           >
             <p>
               My work spans property technology, real estate finance, financial
@@ -35,14 +35,44 @@ export function AboutStory() {
               farmers with better financing, every venture has been shaped by a
               single question — what does this community actually need?
             </p>
+            <p>
+              I believe that business, at its best, is an act of stewardship.
+              Every company I build, every person I mentor, every room I walk into
+              — I carry that responsibility. The goal is never just to grow a
+              balance sheet. The goal is to leave something that works long after
+              I am gone.
+            </p>
           </motion.div>
 
-          <motion.p
+          {/* Signature phrase */}
+          <motion.div
             variants={fadeUp}
-            className="font-display text-4xl md:text-6xl font-normal tracking-tight text-foreground pt-8"
+            className="pt-6 border-t border-border flex flex-col gap-3"
           >
-            Create value that lasts.
-          </motion.p>
+            <p
+              className="text-foreground leading-tight"
+              style={{
+                fontFamily: "var(--font-handwriting)",
+                fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
+              }}
+            >
+              Create value that lasts.
+            </p>
+            <div className="flex flex-col gap-0.5 mt-2">
+              <p
+                className="text-foreground"
+                style={{
+                  fontFamily: "var(--font-handwriting)",
+                  fontSize: "1.35rem",
+                }}
+              >
+                Damilare Oshokoya
+              </p>
+              <p className="text-xs tracking-[0.18em] uppercase text-muted-foreground font-sans">
+                Entrepreneur &amp; Founder
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

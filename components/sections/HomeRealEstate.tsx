@@ -55,7 +55,7 @@ export function HomeRealEstate() {
             <motion.div
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-full aspect-[4/3] rounded-2xl overflow-hidden relative bg-surface border border-border"
+              className="w-full min-h-[420px] h-full rounded-2xl overflow-hidden relative bg-surface border border-border"
             >
               <Image
                 src="/images/portrait.jpg"

@@ -89,13 +89,13 @@ export function HomeVenturesPreview() {
                 className="group flex flex-col gap-6 p-7 bg-background hover:bg-surface transition-colors duration-300"
               >
                 {/* Logo */}
-                <div className="h-10 flex items-center">
+                <div className="h-7 flex items-center">
                   <Image
                     src={v.logo}
                     alt={`${v.name} logo`}
-                    width={120}
-                    height={40}
-                    className="object-contain object-left max-h-10 w-auto"
+                    width={80}
+                    height={28}
+                    className="object-contain object-left max-h-7 w-auto"
                     unoptimized
                   />
                 </div>

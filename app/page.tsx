@@ -8,6 +8,7 @@ import { HomeVenturesPreview } from "@/components/sections/HomeVenturesPreview";
 import { HomeBooks } from "@/components/sections/HomeBooks";
 import { HomeRealEstate } from "@/components/sections/HomeRealEstate";
 import { HomeMentorship } from "@/components/sections/HomeMentorship";
+import { HomeFounderNote } from "@/components/sections/HomeFounderNote";
 import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
         <HomeBooks />
         <HomeRealEstate />
         <HomeMentorship />
+        <HomeFounderNote />
         <HomeNewsletter />
       </main>
       <Footer />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generalSans, ltSuperiorSerif, archivo, geistMono } from "@/lib/fonts";
+import { generalSans, ltSuperiorSerif, archivo, geistMono, dancingScript } from "@/lib/fonts";
 import { baseMetadata } from "@/lib/metadata";
 import { ScrollBlur } from "@/components/layout/ScrollBlur";
 import "./globals.css";
@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${generalSans.variable} ${ltSuperiorSerif.variable} ${archivo.variable} ${geistMono.variable} h-full`}
+      className={`${generalSans.variable} ${ltSuperiorSerif.variable} ${archivo.variable} ${geistMono.variable} ${dancingScript.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
         {children}

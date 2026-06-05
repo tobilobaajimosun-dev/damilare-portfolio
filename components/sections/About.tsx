@@ -25,13 +25,6 @@ export function About() {
             viewport={{ once: true, margin: "-80px" }}
             className="flex flex-col gap-8"
           >
-            <motion.p
-              variants={fadeUp}
-              className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
-            >
-              01 — About
-            </motion.p>
-
             <motion.h2
               variants={fadeUp}
               className="font-display text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight text-foreground"

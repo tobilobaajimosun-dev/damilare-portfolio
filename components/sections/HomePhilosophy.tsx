@@ -22,7 +22,7 @@ export function HomePhilosophy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full aspect-[4/3] rounded-2xl overflow-hidden relative"
+            className="w-full min-h-[420px] h-full rounded-2xl overflow-hidden relative"
           >
             <Image
               src="/images/portrait-2.jpg"
