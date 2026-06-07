@@ -3,13 +3,16 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
-const horizontalLines = `repeating-linear-gradient(180deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 22px)`;
+const sectionBg = [
+  "linear-gradient(to bottom, transparent 55%, oklch(0.99 0 0) 100%)",
+  "repeating-linear-gradient(90deg, rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px, transparent 1px, transparent 24px)",
+].join(", ");
 
 export function HomeFounderNote() {
   return (
     <section
       className="py-28 md:py-40 px-6 md:px-10 lg:px-16 bg-background"
-      style={{ backgroundImage: horizontalLines }}
+      style={{ backgroundImage: sectionBg }}
     >
       <div className="mx-auto w-full max-w-[var(--container-content)]">
         <motion.div

@@ -32,7 +32,7 @@ const container: Variants = {
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)] px-6 md:px-10 lg:px-16 pt-16 md:pt-20 pb-10">
 
         {/* Main columns */}

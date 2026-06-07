@@ -67,10 +67,10 @@ export function HomeVenturesPreview() {
             </div>
             <Link
               href="/ventures"
-              className="inline-flex items-center gap-2 text-sm font-medium text-foreground border-b border-foreground/30 pb-0.5 hover:text-primary hover:border-primary transition-colors duration-200 shrink-0"
+              className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200 shrink-0"
             >
               View All Ventures
-              <ArrowRight size={14} />
+              <ArrowRight size={13} />
             </Link>
           </motion.div>
 

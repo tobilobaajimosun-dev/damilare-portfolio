@@ -8,9 +8,12 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 export function HomeHero() {
   return (
     <section
-      className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-16 px-6 md:px-10 lg:px-16 relative overflow-hidden"
+      className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-16 px-6 md:px-10 lg:px-16 relative"
       style={{
-        backgroundImage: `repeating-linear-gradient(180deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 22px)`,
+        backgroundImage: [
+          "linear-gradient(to bottom, transparent 55%, oklch(0.99 0 0) 100%)",
+          "repeating-linear-gradient(90deg, rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px, transparent 1px, transparent 24px)",
+        ].join(", "),
       }}
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">

@@ -18,13 +18,13 @@ const cardIn: Variants = {
   },
 };
 
-// Deterministic barcode heights per card — seeded so they never re-randomise
+// Barcode heights sorted ascending — shortest bar left, tallest right
 const barcodes = [
-  [60,100,40,80,50,90,30,70,100,45,80,60,35,90,55,70,40,85,65,50,75,30,90,60,45,80],
-  [40,75,100,55,85,30,70,50,90,40,65,85,45,70,55,40,90,60,75,35,50,80,40,70,90,55],
-  [80,45,65,90,35,75,55,100,40,80,60,35,85,55,70,45,90,65,50,80,40,75,60,90,35,70],
-  [55,85,40,70,100,50,80,60,35,90,45,75,55,85,40,70,60,90,50,65,80,35,70,55,90,45],
-  [70,50,85,45,65,90,40,80,55,35,75,60,90,50,80,45,65,35,85,70,55,90,40,65,80,50],
+  [30,30,35,40,40,45,45,50,50,55,60,60,60,65,70,70,75,80,80,80,85,90,90,90,100,100],
+  [30,35,40,40,40,40,45,50,50,55,55,55,60,65,70,70,70,75,75,80,85,85,90,90,90,100],
+  [35,35,35,40,40,45,45,50,55,55,60,60,65,65,70,70,75,75,80,80,80,85,90,90,90,100],
+  [35,35,40,40,45,45,50,50,55,55,55,60,60,65,70,70,70,75,80,80,85,85,90,90,90,100],
+  [35,35,40,40,45,45,50,50,50,55,55,60,65,65,65,70,70,75,80,80,80,85,85,90,90,90],
 ];
 
 export function ImpactStats() {
@@ -32,7 +32,7 @@ export function ImpactStats() {
     <section className="py-20 md:py-32 px-6 md:px-10 lg:px-16 bg-foreground overflow-hidden">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
-        {/* Section header — no eyebrow, just the h2 */}
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,19 +45,19 @@ export function ImpactStats() {
           </h2>
         </motion.div>
 
-        {/* Cards — flat row, dark style */}
+        {/* Cards — no background, vertical dividers */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="hidden sm:flex gap-3 items-stretch"
+          className="hidden sm:flex divide-x divide-white/[0.08]"
         >
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               variants={cardIn}
-              className="flex flex-col flex-1 bg-white/[0.06] rounded-2xl p-6 min-h-[300px]"
+              className="flex flex-col flex-1 px-6 first:pl-0 last:pr-0 min-h-[300px]"
             >
               {/* Big number */}
               <p className="font-display font-normal text-[clamp(2.8rem,4.5vw,4.5rem)] text-white tracking-tight leading-none">
@@ -74,7 +74,7 @@ export function ImpactStats() {
                 {stat.description}
               </p>
 
-              {/* Barcode visualisation */}
+              {/* Barcode — ascending left to right */}
               <div className="flex gap-[2px] items-end h-10 mt-6">
                 {barcodes[i]?.map((h, j) => (
                   <div
@@ -94,13 +94,13 @@ export function ImpactStats() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex sm:hidden flex-col gap-3"
+          className="flex sm:hidden flex-col divide-y divide-white/[0.08]"
         >
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               variants={cardIn}
-              className="flex items-center justify-between gap-6 p-5 bg-white/[0.06] rounded-2xl"
+              className="flex items-center justify-between gap-6 py-5"
             >
               <div className="flex flex-col gap-1.5">
                 <p className="text-[0.6rem] tracking-[0.2em] uppercase text-white/50 font-sans">

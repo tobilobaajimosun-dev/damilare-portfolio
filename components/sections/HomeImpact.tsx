@@ -56,14 +56,15 @@ export function HomeVision() {
               variants={blurUp}
               className="font-display font-normal leading-tight text-[clamp(1.6rem,3.2vw,3.6rem)] tracking-tight text-center text-background/90"
             >
-              I build systems, I develop people — who multiplies impact?
+              <span className="block">I build systems, I develop people.</span>
+              <span className="block">Who multiplies impact?</span>
             </motion.p>
 
             <motion.div variants={blurUp} className="flex flex-col items-center gap-1">
-              <p className="text-sm text-background/45 text-center leading-relaxed">
+              <p className="text-base text-background/45 text-center leading-relaxed">
                 Sustainable growth starts with structure.
               </p>
-              <p className="text-sm text-background/45 text-center leading-relaxed">
+              <p className="text-base text-background/45 text-center leading-relaxed">
                 Everything I build is designed to outlast me.
               </p>
             </motion.div>
