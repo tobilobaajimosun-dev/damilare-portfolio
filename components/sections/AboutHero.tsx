@@ -13,23 +13,36 @@ export function AboutHero() {
           animate="visible"
           className="flex flex-col gap-10 max-w-4xl"
         >
+          <motion.p
+            variants={fadeUp}
+            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
+          >
+            About
+          </motion.p>
+
           <motion.h1
             variants={fadeUp}
             className="font-display font-normal leading-[1.06] tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,4.75rem)] max-w-3xl"
           >
-            Entrepreneurship is bigger{" "}
-            <span className="text-muted-foreground">
-              than building companies.
-            </span>
+            I build businesses, platforms, and systems that expand access to ownership.
           </motion.h1>
 
-          <motion.p
+          <motion.div
             variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
+            className="flex flex-col gap-5 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
           >
-            It has always been about building people, creating opportunities,
-            and solving problems that matter.
-          </motion.p>
+            <p>
+              My work sits across technology, finance, and real estate, with a
+              focus on solving structural problems that limit economic
+              participation across emerging markets.
+            </p>
+            <p>
+              I believe sustainable growth is built through disciplined
+              execution, responsible leadership, and institutions that create
+              value beyond the present moment.
+            </p>
+            <p>This website is a reflection of that work.</p>
+          </motion.div>
         </motion.div>
       </div>
     </section>

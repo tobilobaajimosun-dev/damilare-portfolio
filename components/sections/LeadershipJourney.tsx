@@ -83,10 +83,7 @@ export function LeadershipJourney() {
             <h2 className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight">
               Leadership Journey
             </h2>
-            <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans mt-3">
-              Scroll to explore →
-            </p>
-          </div>
+            </div>
         </div>
 
         {/* Timeline track */}

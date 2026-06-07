@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AboutHero } from "@/components/sections/AboutHero";
-import { AboutCarousel } from "@/components/sections/AboutCarousel";
 import { AboutStory } from "@/components/sections/AboutStory";
 import { About } from "@/components/sections/About";
 import { LeadershipJourney } from "@/components/sections/LeadershipJourney";
@@ -27,7 +26,6 @@ export default function AboutPage() {
       <Navbar />
       <main id="main-content">
         <AboutHero />
-        <AboutCarousel />
         <AboutStory />
         <About />
         <LeadershipJourney />

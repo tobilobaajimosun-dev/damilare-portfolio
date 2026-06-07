@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function Testimonials() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface">
+    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
         <motion.h2
@@ -14,10 +14,10 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7 }}
-          className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-20"
+          className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-16"
         >
-          What clients{" "}
-          <span className="text-muted-foreground">say.</span>
+          Hear from satisfied{" "}
+          <span className="text-muted-foreground">property owners.</span>
         </motion.h2>
 
         <motion.div
@@ -25,26 +25,29 @@ export function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col divide-y divide-border"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {testimonials.map((t, i) => (
+          {testimonials.map((t) => (
             <motion.div
               key={t.name}
               variants={fadeUp}
-              className="flex flex-col gap-6 py-12 lg:py-16"
+              className="flex flex-col rounded-2xl overflow-hidden bg-surface"
             >
-                  {/* Quote + attribution */}
-              <div className="flex flex-col gap-8">
-                <p className="font-display font-normal text-[clamp(1.35rem,2.5vw,1.9rem)] text-foreground leading-snug">
-                  &ldquo;{t.quote}&rdquo;
+              <div className="flex flex-col gap-5 p-8 flex-1">
+                <span
+                  className="font-display text-foreground leading-none select-none"
+                  style={{ fontSize: "clamp(3.5rem, 6vw, 5rem)", lineHeight: 1 }}
+                  aria-hidden
+                >
+                  &ldquo;&rdquo;
+                </span>
+                <p className="text-sm md:text-base text-foreground leading-relaxed flex-1">
+                  {t.quote}
                 </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-px bg-primary" />
-                  <div>
-                    <p className="text-sm font-medium text-foreground">{t.name}</p>
-                    <p className="text-xs text-muted-foreground tracking-wide mt-0.5">{t.role}</p>
-                  </div>
-                </div>
+              </div>
+              <div className="bg-foreground px-8 py-5">
+                <p className="text-sm font-semibold text-background leading-snug">{t.name}</p>
+                <p className="text-xs text-background/60 mt-0.5 leading-snug">{t.role}</p>
               </div>
             </motion.div>
           ))}

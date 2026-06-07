@@ -14,40 +14,32 @@ export function AboutStory() {
           viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-10"
         >
+          <motion.h2
+            variants={fadeUp}
+            className="font-display font-normal text-[clamp(2rem,4vw,3.25rem)] leading-tight tracking-tight text-foreground"
+          >
+            What I Believe
+          </motion.h2>
+
           <motion.div
             variants={fadeUp}
             className="flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-[1.85]"
           >
             <p>
-              My work spans property technology, real estate finance, financial
-              inclusion, agricultural innovation, leadership development, and
-              entrepreneurship.
+              Entrepreneurship, to me, is not simply the pursuit of profitable
+              ventures.
             </p>
             <p>
-              From helping ordinary Nigerians access homeownership to empowering
-              farmers with better financing, every venture has been shaped by a
-              single question — what does this community actually need?
+              It is the work of structuring access to capital, ownership, and
+              opportunity.
             </p>
             <p>
-              I believe that business, at its best, is an act of stewardship.
-              Every company I build, every person I mentor, every room I walk into
-              — I carry that responsibility. The goal is never just to grow a
-              balance sheet. The goal is to leave something that works long after
-              I am gone.
+              Across African markets, ambition is abundant. What is often missing
+              are the systems that transform ambition into durable outcomes.
+              Strong ideas need clear incentives, repeatable processes, and
+              long-term thinking to become meaningful institutions.
             </p>
-          </motion.div>
-
-          <motion.div variants={fadeUp} className="flex flex-col gap-1 pt-2">
-            <p
-              className="text-foreground leading-tight"
-              style={{
-                fontFamily: "var(--font-handwriting)",
-                fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)",
-                fontWeight: 400,
-              }}
-            >
-              Create value that lasts.
-            </p>
+            <p>My work has focused on building those foundations.</p>
           </motion.div>
         </motion.div>
       </div>
