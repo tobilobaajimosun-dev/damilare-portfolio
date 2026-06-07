@@ -19,6 +19,8 @@ export default function Home() {
       <main id="main-content">
         <HomeHero />
         <HomeMarquee />
+        {/* Breathing room between marquee and I build systems section */}
+        <div className="h-20 md:h-28" />
         <HomeVision />
         <ImpactStats />
         <HomePhilosophy />

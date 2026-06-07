@@ -86,7 +86,7 @@ export function HomeVision() {
                 className="font-display font-normal leading-tight text-[clamp(1.6rem,3.2vw,3.6rem)] tracking-tight text-center text-background/90"
               >
                 <span className="block">I build systems, I develop people.</span>
-                <span className="block">Who multiplies impact?</span>
+                <span className="block">Who multiplies impact</span>
               </motion.p>
 
               <motion.div variants={blurUp} className="flex flex-col items-center gap-1.5">

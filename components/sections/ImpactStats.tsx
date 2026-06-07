@@ -18,23 +18,11 @@ const cardIn: Variants = {
   },
 };
 
-// 32 bars per card, sorted ascending — shortest left, tallest right
-// Each card grows taller in proportion to the stat magnitude
-const barcodes = [
-  // Card 1 — 2 books (smallest, tops at ~62)
-  [14,16,17,19,20,22,23,25,26,28,30,32,33,35,36,38,40,42,43,45,47,49,51,53,56,58,60,61,62,62,62,62],
-  // Card 2 — 3 programmes
-  [16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,69,70,70,70,70],
-  // Card 3 — 5+ roles
-  [18,21,24,26,29,32,34,37,39,42,44,47,50,52,55,57,60,62,65,67,69,72,74,76,78,79,80,80,80,80,80,80],
-  // Card 4 — 19 countries
-  [20,23,27,30,33,37,40,43,46,49,52,55,58,61,64,67,70,72,75,77,80,82,84,86,87,88,88,88,88,88,88,88],
-  // Card 5 — 3 500+ lives (tallest, hits 100)
-  [24,27,31,34,38,41,45,48,52,55,59,62,66,69,72,75,78,81,84,87,90,92,94,96,97,98,99,100,100,100,100,100],
-];
-
-// Container height grows with each card to visually show scale
-const barcodeHeight = ["h-10", "h-14", "h-18", "h-22", "h-28"];
+// All bars within a card are the SAME height (h-full fills the container).
+// The container height per card is what changes — shortest for card 1,
+// tallest for card 5 — so the visual scale reads correctly across cards.
+const BARS = 30;
+const barcodeHeight = ["h-8", "h-12", "h-16", "h-22", "h-28"];
 
 export function ImpactStats() {
   return (
@@ -55,7 +43,7 @@ export function ImpactStats() {
           </h2>
         </motion.div>
 
-        {/* Desktop — no card backgrounds, vertical dividers, variable bar heights */}
+        {/* Desktop — transparent cards, divide-x separators, uniform bars per card */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -79,13 +67,13 @@ export function ImpactStats() {
                 {stat.description}
               </p>
 
-              {/* Ascending barcode — height grows per card to show relative scale */}
+              {/* Uniform-height bars — all same height within this card.
+                  Container height (barcodeHeight) grows per card to show scale. */}
               <div className={`flex gap-px items-end ${barcodeHeight[i]} mt-6`}>
-                {barcodes[i]?.map((h, j) => (
+                {Array.from({ length: BARS }).map((_, j) => (
                   <div
                     key={j}
-                    className="flex-1 bg-white/[0.18] rounded-[1px]"
-                    style={{ height: `${h}%` }}
+                    className="flex-1 h-full bg-white/[0.18] rounded-[1px]"
                   />
                 ))}
               </div>
@@ -101,7 +89,7 @@ export function ImpactStats() {
           viewport={{ once: true, margin: "-60px" }}
           className="flex sm:hidden flex-col divide-y divide-white/[0.08]"
         >
-          {stats.map((stat) => (
+          {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               variants={cardIn}

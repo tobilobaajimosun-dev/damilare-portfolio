@@ -34,9 +34,6 @@ export function HomeBooks() {
           className="flex flex-col gap-12"
         >
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
-            <p className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
-              Books
-            </p>
             <h2 className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight">
               Ideas translated into execution.
             </h2>

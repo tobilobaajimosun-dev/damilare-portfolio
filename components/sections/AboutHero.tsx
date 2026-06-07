@@ -15,11 +15,11 @@ export function AboutHero() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-display font-normal leading-[1.06] tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,4.75rem)]"
+            className="font-display font-normal leading-[1.06] tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,4.75rem)] max-w-3xl"
           >
-            Entrepreneurship was never only about building{" "}
+            Entrepreneurship is bigger{" "}
             <span className="text-muted-foreground">
-              companies.
+              than building companies.
             </span>
           </motion.h1>
 

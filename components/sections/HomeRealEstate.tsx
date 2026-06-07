@@ -19,15 +19,12 @@ export function HomeRealEstate() {
             viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col gap-6"
           >
-            <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
-              Real Estate
-            </motion.p>
             <motion.h2
               variants={fadeUp}
               className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight"
             >
-              Property is patient capital.
-              <br />Africa&apos;s most enduring store of wealth.
+              Property builds wealth.
+              <br />Africa&apos;s greatest long-term asset.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
               Through property innovation, structured financing, and

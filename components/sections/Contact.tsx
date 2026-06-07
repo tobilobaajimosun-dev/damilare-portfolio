@@ -36,9 +36,9 @@ export function Contact() {
             variants={fadeUp}
             className="font-display font-normal tracking-tight text-foreground leading-[1.0] text-[clamp(2.5rem,6vw,4.5rem)]"
           >
-            If you&apos;re building or scaling,{" "}
+            Building or scaling?{" "}
             <span className="text-muted-foreground">
-              let&apos;s talk.
+              Let&apos;s talk.
             </span>
           </motion.h1>
         </motion.div>
