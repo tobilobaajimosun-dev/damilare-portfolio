@@ -8,10 +8,10 @@ const milestones = [
   { year: "2016", title: "Lead Consultant", org: "Integrated Acquest Global" },
   { year: "2018", title: "Global Mentor", org: "Wadhwani Foundation · Enactus · Futurize" },
   { year: "2019", title: "COO", org: "Pettysave" },
-  { year: "2020", title: "Co-Founder", org: "Abode" },
+  { year: "2020", title: "CEO", org: "Abode", current: true },
   { year: "2021", title: "CEO", org: "Realvest" },
   { year: "2022", title: "COO", org: "Agbeloba" },
-];
+] satisfies { year: string; title: string; org: string; current?: boolean }[];
 
 const CARD_W = 280;
 const GAP = 48;
@@ -62,7 +62,14 @@ export function LeadershipJourney() {
               </div>
               <div className="flex flex-col gap-0.5 pb-2">
                 <p className="font-display font-normal text-2xl text-foreground leading-none mb-1">{m.year}</p>
-                <p className="text-sm font-medium text-foreground">{m.title}</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-medium text-foreground">{m.title}</p>
+                  {m.current && (
+                    <span className="text-[0.6rem] tracking-widest uppercase bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none">
+                      Now
+                    </span>
+                  )}
+                </div>
                 <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">{m.org}</p>
               </div>
             </div>
@@ -112,7 +119,14 @@ export function LeadershipJourney() {
                     {above && (
                       <>
                         <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-foreground leading-none mb-1.5">{m.year}</p>
-                        <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
+                        <div className="flex items-center justify-center gap-2">
+                          <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
+                          {m.current && (
+                            <span className="text-[0.6rem] tracking-widest uppercase bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none shrink-0">
+                              Now
+                            </span>
+                          )}
+                        </div>
                         <p className="text-xs text-muted-foreground leading-relaxed mt-1" style={{ maxWidth: 200 }}>{m.org}</p>
                       </>
                     )}
@@ -129,7 +143,14 @@ export function LeadershipJourney() {
                     {!above && (
                       <>
                         <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-muted-foreground leading-none mb-1.5">{m.year}</p>
-                        <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
+                        <div className="flex items-center justify-center gap-2">
+                          <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
+                          {m.current && (
+                            <span className="text-[0.6rem] tracking-widest uppercase bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none shrink-0">
+                              Now
+                            </span>
+                          )}
+                        </div>
                         <p className="text-xs text-muted-foreground leading-relaxed mt-1" style={{ maxWidth: 200 }}>{m.org}</p>
                       </>
                     )}
