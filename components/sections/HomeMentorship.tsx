@@ -36,76 +36,67 @@ export function HomeMentorship() {
   return (
     <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-start">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="flex flex-col items-center text-center gap-8"
+        >
 
-          {/* Left */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="flex flex-col gap-8 lg:sticky lg:top-28"
+          {/* Heading */}
+          <motion.h2
+            variants={fadeUp}
+            className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight max-w-xl"
           >
-            <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
-              Mentorship &amp; Speaking
-            </motion.p>
-            <motion.h2
-              variants={fadeUp}
-              className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight"
+            Developing leaders who create impact.
+          </motion.h2>
+
+          {/* Sub-copy */}
+          <motion.p variants={fadeUp} className="text-base text-muted-foreground leading-[1.8] max-w-md">
+            I mentor entrepreneurs, founders, sales professionals, and emerging
+            leaders navigating growth across African markets.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200"
             >
-              Developing leaders who create impact.
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-base text-muted-foreground leading-[1.8]">
-              Damilare mentors entrepreneurs, founders, sales professionals, and
-              emerging leaders navigating growth across African markets.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200"
-              >
-                Book a Session
-                <ArrowRight size={13} />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200"
-              >
-                Invite to Speak
-              </Link>
-            </motion.div>
+              Book a Session
+              <ArrowRight size={13} />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200"
+            >
+              Invite to Speak
+            </Link>
           </motion.div>
 
-          {/* Right — topic cards, no arrows */}
+          {/* Topic cards — 3-col grid, below CTAs */}
           <motion.div
             variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 border border-border rounded-2xl overflow-hidden"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-border rounded-2xl overflow-hidden w-full mt-4"
           >
-            {topics.map((topic, i) => (
+            {topics.map((topic) => (
               <motion.div
                 key={topic.title}
                 variants={fadeUp}
-                className={[
-                  "flex flex-col gap-3 p-6 bg-background hover:bg-surface transition-colors duration-200",
-                  i % 2 === 0 && i < topics.length - 1 ? "sm:border-r border-border" : "",
-                  i < topics.length - 2 ? "border-b border-border" : "",
-                  i === topics.length - 2 ? "sm:border-b border-border" : "",
-                ].join(" ")}
+                className="flex flex-col gap-3 p-6 bg-background hover:bg-surface transition-colors duration-200 text-left border-r border-b border-border"
               >
                 <p className="font-display font-normal text-lg text-foreground leading-snug">
                   {topic.title}
                 </p>
-                <p className="text-sm text-muted-foreground leading-relaxed pl-6">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {topic.description}
                 </p>
               </motion.div>
             ))}
           </motion.div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -3,16 +3,21 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
+const horizontalLines = `repeating-linear-gradient(180deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 22px)`;
+
 export function HomeFounderNote() {
   return (
-    <section className="py-28 md:py-40 px-6 md:px-10 lg:px-16 bg-background">
+    <section
+      className="py-28 md:py-40 px-6 md:px-10 lg:px-16 bg-background"
+      style={{ backgroundImage: horizontalLines }}
+    >
       <div className="mx-auto w-full max-w-[var(--container-content)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col items-center text-center gap-10"
+          className="flex flex-col items-center text-center gap-8"
         >
           <motion.p
             variants={fadeUp}
@@ -50,19 +55,18 @@ export function HomeFounderNote() {
             </p>
           </motion.div>
 
-          {/* Handwritten signature — Homemade Apple */}
-          <motion.div variants={fadeUp} className="pt-2">
-            <p
-              className="text-foreground"
-              style={{
-                fontFamily: "var(--font-handwriting)",
-                fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-                lineHeight: 1.3,
-              }}
-            >
-              Damilare Oshokoya
-            </p>
-          </motion.div>
+          {/* Handwritten signature — Homemade Apple, tighter spacing */}
+          <motion.p
+            variants={fadeUp}
+            className="text-foreground"
+            style={{
+              fontFamily: "var(--font-handwriting)",
+              fontSize: "clamp(1.55rem, 2.6vw, 2.35rem)",
+              lineHeight: 1.3,
+            }}
+          >
+            Damilare Oshokoya
+          </motion.p>
         </motion.div>
       </div>
     </section>

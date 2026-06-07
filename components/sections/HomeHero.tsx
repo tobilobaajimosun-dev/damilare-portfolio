@@ -10,10 +10,7 @@ export function HomeHero() {
     <section
       className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-16 px-6 md:px-10 lg:px-16 relative overflow-hidden"
       style={{
-        backgroundImage: `
-          repeating-linear-gradient(45deg, rgba(0,0,0,0.022) 0px, rgba(0,0,0,0.022) 1px, transparent 1px, transparent 18px),
-          repeating-linear-gradient(-45deg, rgba(0,0,0,0.022) 0px, rgba(0,0,0,0.022) 1px, transparent 1px, transparent 18px)
-        `,
+        backgroundImage: `repeating-linear-gradient(180deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 22px)`,
       }}
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">

@@ -4,12 +4,6 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { Variants } from "framer-motion";
 
-const lines = [
-  { text: "Build systems.", accent: false },
-  { text: "Develop people.", accent: false },
-  { text: "Multiply impact.", accent: true },
-];
-
 const blurUp: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
   visible: {
@@ -34,14 +28,14 @@ export function HomeVision() {
   });
 
   // Text fades and lifts out early
-  const textOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.22], [0, -40]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.2], [0, -36]);
 
-  // Video grows from a centred rounded rect to full-bleed
-  const videoTop = useTransform(scrollYProgress, [0.1, 0.82], ["44%", "0%"]);
-  const videoLeft = useTransform(scrollYProgress, [0.1, 0.82], ["8%", "0%"]);
-  const videoRight = useTransform(scrollYProgress, [0.1, 0.82], ["8%", "0%"]);
-  const videoBorderRadius = useTransform(scrollYProgress, [0.1, 0.72], ["24px", "0px"]);
+  // Portrait video — starts narrow + tall, expands to full bleed
+  const videoTop    = useTransform(scrollYProgress, [0.1, 0.82], ["28%", "0%"]);
+  const videoLeft   = useTransform(scrollYProgress, [0.1, 0.82], ["30%", "0%"]);
+  const videoRight  = useTransform(scrollYProgress, [0.1, 0.82], ["30%", "0%"]);
+  const videoBorderRadius = useTransform(scrollYProgress, [0.1, 0.72], ["20px", "0px"]);
 
   return (
     <div ref={sectionRef} style={{ height: "280vh" }} className="relative">
@@ -50,30 +44,44 @@ export function HomeVision() {
         {/* ── Text — top centre, fades on scroll ── */}
         <motion.div
           style={{ opacity: textOpacity, y: textY }}
-          className="absolute inset-x-0 top-0 flex flex-col items-center justify-center h-[44%] z-10 px-6"
+          className="absolute inset-x-0 top-0 flex flex-col items-center justify-center h-[28%] z-10 px-6 gap-4"
         >
           <motion.div
             variants={stagger}
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-center gap-2 md:gap-3"
+            className="flex flex-col items-center gap-3"
           >
-            {lines.map(({ text, accent }) => (
-              <motion.p
-                key={text}
-                variants={blurUp}
-                className={`font-display font-normal leading-tight text-[clamp(2.4rem,5vw,5.5rem)] tracking-tight text-center ${
-                  accent ? "text-primary" : "text-background"
-                }`}
-              >
-                {text}
-              </motion.p>
-            ))}
+            <motion.p
+              variants={blurUp}
+              className="font-display font-normal leading-tight text-[clamp(1.6rem,3.2vw,3.6rem)] tracking-tight text-center text-background/90"
+            >
+              I build systems, I develop people — who multiplies impact?
+            </motion.p>
+
+            <motion.div variants={blurUp} className="flex flex-col items-center gap-1">
+              <p className="text-sm text-background/45 text-center leading-relaxed">
+                Sustainable growth starts with structure.
+              </p>
+              <p className="text-sm text-background/45 text-center leading-relaxed">
+                Everything I build is designed to outlast me.
+              </p>
+            </motion.div>
           </motion.div>
         </motion.div>
 
-        {/* ── Video — expands from below text to full bleed ── */}
-        {/* Portrait video: object-cover fills the frame and looks cinematic at full bleed */}
+        {/* ── Portrait video — starts as narrow tall rect, expands to full bleed ── */}
+        {/*
+          Portrait video tip: use object-cover so the video fills the frame at all sizes.
+          At full bleed on a landscape screen it will crop slightly L/R — looks cinematic.
+
+          Replace the placeholder div with:
+          <video
+            src="/videos/damilare-reel.mp4"
+            autoPlay muted loop playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        */}
         <motion.div
           style={{
             position: "absolute",
@@ -85,17 +93,6 @@ export function HomeVision() {
           }}
           className="overflow-hidden bg-neutral-900"
         >
-          {/*
-            Replace this with your <video> tag when footage is ready.
-            For portrait video, object-cover is recommended — it fills the frame
-            at all sizes and looks cinematic. Example:
-
-            <video
-              src="/videos/damilare-reel.mp4"
-              autoPlay muted loop playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          */}
           <div className="absolute inset-0 flex items-end p-8">
             <p className="text-[0.6rem] text-white/20 tracking-widest uppercase">
               Video — add your footage here
