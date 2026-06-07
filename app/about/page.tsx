@@ -8,6 +8,7 @@ import { About } from "@/components/sections/About";
 import { LeadershipJourney } from "@/components/sections/LeadershipJourney";
 import { Philosophy } from "@/components/sections/Philosophy";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
 
 export const metadata: Metadata = {
   title: "About",
@@ -32,6 +33,7 @@ export default function AboutPage() {
         <LeadershipJourney />
         <Philosophy />
         <Testimonials />
+        <HomeNewsletter />
       </main>
       <Footer />
     </>

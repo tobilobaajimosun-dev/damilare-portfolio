@@ -6,6 +6,7 @@ import { SalesAcademyCurriculum } from "@/components/sections/SalesAcademyCurric
 import { SalesAcademyWhoIsItFor } from "@/components/sections/SalesAcademyWhoIsItFor";
 import { SalesAcademyIncludes } from "@/components/sections/SalesAcademyIncludes";
 import { SalesAcademyApply } from "@/components/sections/SalesAcademyApply";
+import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
 
 export const metadata: Metadata = {
   title: "Sales Masterclass — Damilare Oshokoya",
@@ -28,6 +29,7 @@ export default function SalesAcademyPage() {
         <SalesAcademyWhoIsItFor />
         <SalesAcademyIncludes />
         <SalesAcademyApply />
+        <HomeNewsletter />
       </main>
       <Footer />
     </>

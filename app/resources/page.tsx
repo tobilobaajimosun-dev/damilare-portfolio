@@ -7,6 +7,7 @@ import { Speaking } from "@/components/sections/Speaking";
 import { Talks } from "@/components/sections/Talks";
 import { InTheNews } from "@/components/sections/InTheNews";
 import { Mentorship } from "@/components/sections/Mentorship";
+import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -30,6 +31,7 @@ export default function ResourcesPage() {
         <Talks />
         <InTheNews />
         <Mentorship />
+        <HomeNewsletter />
       </main>
       <Footer />
     </>
