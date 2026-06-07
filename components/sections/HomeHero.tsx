@@ -81,7 +81,7 @@ export function HomeHero() {
               className="relative w-full max-w-[540px] aspect-[3/4] rounded-2xl overflow-hidden bg-surface border border-border"
             >
               <Image
-                src="/images/portrait.jpg"
+                src="/images/hero.jpg"
                 alt="Damilare Oshokoya"
                 fill
                 className="object-cover"

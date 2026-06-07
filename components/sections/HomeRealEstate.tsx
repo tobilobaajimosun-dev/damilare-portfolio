@@ -57,7 +57,7 @@ export function HomeRealEstate() {
               className="w-full min-h-[420px] h-full rounded-2xl overflow-hidden relative bg-surface border border-border"
             >
               <Image
-                src="/images/portrait.jpg"
+                src="/images/real-estate.jpg"
                 alt="Real Estate — Damilare Oshokoya"
                 fill
                 className="object-cover"

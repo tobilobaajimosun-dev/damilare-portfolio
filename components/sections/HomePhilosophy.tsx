@@ -19,7 +19,7 @@ export function HomePhilosophy() {
             className="w-full min-h-[460px] rounded-2xl overflow-hidden relative"
           >
             <Image
-              src="/images/portrait-2.jpg"
+              src="/images/philosophy.jpg"
               alt="Damilare Oshokoya"
               fill
               className="object-cover"

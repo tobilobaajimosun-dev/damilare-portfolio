@@ -87,15 +87,11 @@ export function HomeNewsletter() {
 
               {/* 3D logo — gentle float + pendulum twirl (not full rotation) */}
               <motion.div
-                animate={{
-                  y: [0, -6, 0, -6, 0],
-                  rotate: [0, -10, 0, 10, 0],
-                }}
+                animate={{ y: [0, -3, 0] }}
                 transition={{
                   duration: 5,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  times: [0, 0.25, 0.5, 0.75, 1],
                 }}
                 className="mb-8 self-start"
               >

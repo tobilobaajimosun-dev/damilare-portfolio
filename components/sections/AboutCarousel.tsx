@@ -4,12 +4,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const images = [
-  { src: "/images/portrait.jpg", alt: "Damilare Oshokoya" },
-  { src: "/images/portrait-2.jpg", alt: "Damilare Oshokoya" },
-  { src: "/images/portrait.jpg", alt: "Damilare Oshokoya" },
-  { src: "/images/portrait-2.jpg", alt: "Damilare Oshokoya" },
-  { src: "/images/portrait.jpg", alt: "Damilare Oshokoya" },
-  { src: "/images/portrait-2.jpg", alt: "Damilare Oshokoya" },
+  { src: "/images/about-1.jpg", alt: "Damilare Oshokoya" },
+  { src: "/images/about-2.jpg", alt: "Damilare Oshokoya" },
+  { src: "/images/about-3.jpg", alt: "Damilare Oshokoya" },
+  { src: "/images/about-4.jpg", alt: "Damilare Oshokoya" },
+  { src: "/images/about-5.jpg", alt: "Damilare Oshokoya" },
+  { src: "/images/about-6.jpg", alt: "Damilare Oshokoya" },
 ];
 
 const allImages = [...images, ...images];
