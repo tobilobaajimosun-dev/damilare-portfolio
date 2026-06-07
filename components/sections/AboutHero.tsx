@@ -5,13 +5,13 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function AboutHero() {
   return (
-    <section className="pt-44 pb-24 md:pt-52 md:pb-36 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="pt-36 pb-16 md:pt-52 md:pb-36 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-10 max-w-4xl"
+          className="flex flex-col gap-7 md:gap-10 max-w-4xl"
         >
           <motion.h1
             variants={fadeUp}

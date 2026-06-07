@@ -5,7 +5,7 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function AboutStory() {
   return (
-    <section className="py-28 md:py-40 px-6 md:px-10 lg:px-16 bg-foreground">
+    <section className="py-20 md:py-40 px-6 md:px-10 lg:px-16 bg-foreground">
       <div className="mx-auto w-full max-w-[var(--container-content)]">
         <motion.div
           variants={staggerContainer}

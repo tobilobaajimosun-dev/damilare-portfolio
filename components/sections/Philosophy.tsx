@@ -52,12 +52,12 @@ export function Philosophy() {
 
       {/* ── Areas of Focus ─────────────────────────────────────── */}
       <div
-        className="py-24 md:py-32 px-6 md:px-10 lg:px-16"
+        className="py-20 md:py-32 px-6 md:px-10 lg:px-16 relative overflow-hidden"
         style={{ backgroundColor: "oklch(0.05 0.015 152)" }}
       >
-        {/* Noise overlay */}
+        {/* Noise overlay — absolute, not fixed */}
         <div
-          className="pointer-events-none fixed inset-0 z-0 opacity-30"
+          className="absolute inset-0 pointer-events-none z-0 opacity-30"
           style={{ backgroundImage: NOISE_SVG, backgroundSize: "200px 200px" }}
           aria-hidden
         />
@@ -68,7 +68,7 @@ export function Philosophy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7 }}
-            className="font-display font-normal text-[clamp(2.25rem,5vw,4rem)] leading-tight tracking-tight text-white mb-10 md:mb-14 max-w-lg"
+            className="font-display font-normal text-[clamp(2rem,5vw,4rem)] leading-tight tracking-tight text-white mb-8 md:mb-14 max-w-lg"
           >
             Where I focus<br />my work.
           </motion.h2>
@@ -78,7 +78,7 @@ export function Philosophy() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-2 gap-3"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3"
           >
             {focusAreas.map(({ label, description }, i) => {
               const isActive = active === i;
@@ -92,7 +92,7 @@ export function Philosophy() {
                       ? "bg-[oklch(0.12_0.02_152)]"
                       : "bg-[oklch(0.09_0.01_152)]"
                   }`}
-                  style={{ minHeight: isActive ? 260 : 160 }}
+                  style={{ minHeight: isActive ? 200 : 120 }}
                   aria-pressed={isActive}
                 >
                   {/* Noise */}
@@ -109,8 +109,8 @@ export function Philosophy() {
                     aria-hidden
                   />
 
-                  <div className="relative flex flex-col h-full p-6 md:p-8 gap-4">
-                    <p className="font-display font-normal text-white text-[clamp(1.25rem,2.5vw,1.75rem)] leading-tight">
+                  <div className="relative flex flex-col h-full p-5 sm:p-6 md:p-8 gap-3">
+                    <p className="font-display font-normal text-white text-lg sm:text-[clamp(1.25rem,2.5vw,1.75rem)] leading-tight">
                       {label}
                     </p>
 
@@ -131,12 +131,12 @@ export function Philosophy() {
 
                     <div className="flex justify-between items-end mt-auto pt-2">
                       {isActive ? (
-                        <span className="block w-8 h-px bg-primary" />
+                        <span className="block w-6 h-px bg-primary" />
                       ) : (
                         <span />
                       )}
                       <span
-                        className="text-white/30 text-xl leading-none select-none"
+                        className="text-white/30 text-lg leading-none select-none"
                         aria-hidden
                       >
                         {isActive ? "−" : "+"}
@@ -151,18 +151,18 @@ export function Philosophy() {
       </div>
 
       {/* ── Mission ────────────────────────────────────────────── */}
-      <div className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-black">
+      <div className="py-20 md:py-36 px-6 md:px-10 lg:px-16 bg-black">
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="flex flex-col items-center gap-14"
+            className="flex flex-col items-center gap-10 md:gap-14"
           >
             <motion.h2
               variants={fadeUp}
-              className="font-display font-normal text-[clamp(2rem,4vw,3.25rem)] leading-tight tracking-tight text-white text-center"
+              className="font-display font-normal text-[clamp(1.75rem,4vw,3.25rem)] leading-tight tracking-tight text-white text-center"
             >
               The mission{" "}
               <span className="text-white/30">remains simple.</span>
@@ -176,9 +176,9 @@ export function Philosophy() {
                 <motion.div
                   key={label}
                   variants={fadeUp}
-                  className="relative overflow-hidden border border-white/10 flex flex-col gap-4 p-10"
+                  className="relative overflow-hidden border border-white/10 flex flex-col gap-4 p-6 sm:p-8 md:p-10"
                   style={{
-                    minHeight: 280,
+                    minHeight: 220,
                     borderRadius: "1rem",
                     backgroundColor: "oklch(0.08 0.008 152)",
                   }}
@@ -190,7 +190,7 @@ export function Philosophy() {
                     aria-hidden
                   />
 
-                  <p className="relative font-display font-normal text-white text-xl leading-tight">
+                  <p className="relative font-display font-normal text-white text-lg md:text-xl leading-tight">
                     Continue {label}.
                   </p>
                   <p className="relative text-sm text-white/40 leading-relaxed">

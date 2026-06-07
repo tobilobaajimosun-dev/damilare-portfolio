@@ -28,17 +28,17 @@ export function About() {
       {/* ── The Foundation ─────────────────────────────────────── */}
       <section
         id="about"
-        className="py-24 md:py-36 px-6 md:px-10 lg:px-16 scroll-mt-20"
+        className="py-20 md:py-36 px-6 md:px-10 lg:px-16 scroll-mt-20"
         style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.04)" }}
       >
         <div className="mx-auto w-full max-w-[var(--container-default)]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
-              className="flex flex-col gap-8 lg:sticky lg:top-24"
+              className="flex flex-col gap-6 md:gap-8 lg:sticky lg:top-24"
             >
               <motion.h2
                 variants={fadeUp}
@@ -49,7 +49,7 @@ export function About() {
 
               <motion.div
                 variants={fadeUp}
-                className="flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-[1.85]"
+                className="flex flex-col gap-5 text-base md:text-lg text-muted-foreground leading-[1.85]"
               >
                 <p>My perspective is shaped by faith, family, and stewardship.</p>
                 <p>
@@ -86,14 +86,17 @@ export function About() {
       </section>
 
       {/* ── By the numbers ─────────────────────────────────────── */}
-      <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 border-t border-border" style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.03)" }}>
+      <section
+        className="py-20 md:py-36 px-6 md:px-10 lg:px-16 border-t border-border"
+        style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.03)" }}
+      >
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7 }}
-            className="font-display font-normal text-[clamp(2.5rem,6vw,5rem)] leading-tight tracking-tight text-foreground mb-4"
+            className="font-display font-normal text-[clamp(2rem,6vw,5rem)] leading-tight tracking-tight text-foreground mb-4"
           >
             By the numbers
           </motion.h2>
@@ -106,17 +109,17 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_1fr_260px] items-center gap-6 md:gap-10 py-10 border-t border-border"
+                className="grid grid-cols-1 md:grid-cols-[1fr_1fr_260px] md:items-center gap-1 md:gap-10 py-8 md:py-10 border-t border-border"
               >
-                <p className="text-sm md:text-base text-muted-foreground leading-snug max-w-[220px] md:max-w-none">
+                <p className="text-sm md:text-base text-muted-foreground leading-snug order-2 md:order-1 mt-2 md:mt-0 max-w-xs md:max-w-none">
                   {stat.label}
                 </p>
 
-                <p className="font-display font-normal text-primary leading-none tracking-tight text-[clamp(4.5rem,10vw,9rem)]">
+                <p className="font-display font-normal text-primary leading-none tracking-tight text-[clamp(3.5rem,9vw,9rem)] order-1 md:order-2">
                   {stat.value}
                 </p>
 
-                <div className="hidden md:block aspect-square w-[260px] rounded-xl overflow-hidden relative shrink-0">
+                <div className="hidden md:block aspect-square w-[260px] rounded-xl overflow-hidden relative shrink-0 order-3">
                   <Image
                     src={stat.img}
                     alt=""
