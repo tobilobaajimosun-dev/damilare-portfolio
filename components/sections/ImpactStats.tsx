@@ -18,14 +18,23 @@ const cardIn: Variants = {
   },
 };
 
-// Barcode heights sorted ascending — shortest bar left, tallest right
+// 32 bars per card, sorted ascending — shortest left, tallest right
+// Each card grows taller in proportion to the stat magnitude
 const barcodes = [
-  [30,30,35,40,40,45,45,50,50,55,60,60,60,65,70,70,75,80,80,80,85,90,90,90,100,100],
-  [30,35,40,40,40,40,45,50,50,55,55,55,60,65,70,70,70,75,75,80,85,85,90,90,90,100],
-  [35,35,35,40,40,45,45,50,55,55,60,60,65,65,70,70,75,75,80,80,80,85,90,90,90,100],
-  [35,35,40,40,45,45,50,50,55,55,55,60,60,65,70,70,70,75,80,80,85,85,90,90,90,100],
-  [35,35,40,40,45,45,50,50,50,55,55,60,65,65,65,70,70,75,80,80,80,85,85,90,90,90],
+  // Card 1 — 2 books (smallest, tops at ~62)
+  [14,16,17,19,20,22,23,25,26,28,30,32,33,35,36,38,40,42,43,45,47,49,51,53,56,58,60,61,62,62,62,62],
+  // Card 2 — 3 programmes
+  [16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,69,70,70,70,70],
+  // Card 3 — 5+ roles
+  [18,21,24,26,29,32,34,37,39,42,44,47,50,52,55,57,60,62,65,67,69,72,74,76,78,79,80,80,80,80,80,80],
+  // Card 4 — 19 countries
+  [20,23,27,30,33,37,40,43,46,49,52,55,58,61,64,67,70,72,75,77,80,82,84,86,87,88,88,88,88,88,88,88],
+  // Card 5 — 3 500+ lives (tallest, hits 100)
+  [24,27,31,34,38,41,45,48,52,55,59,62,66,69,72,75,78,81,84,87,90,92,94,96,97,98,99,100,100,100,100,100],
 ];
+
+// Container height grows with each card to visually show scale
+const barcodeHeight = ["h-10", "h-14", "h-18", "h-22", "h-28"];
 
 export function ImpactStats() {
   return (
@@ -40,12 +49,13 @@ export function ImpactStats() {
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
-          <h2 className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-background max-w-2xl leading-tight">
-            Building businesses. Developing leaders. Creating opportunities.
+          <h2 className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-background leading-tight">
+            Building businesses,
+            <br />developing leaders.
           </h2>
         </motion.div>
 
-        {/* Cards — no background, vertical dividers */}
+        {/* Desktop — no card backgrounds, vertical dividers, variable bar heights */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -59,27 +69,22 @@ export function ImpactStats() {
               variants={cardIn}
               className="flex flex-col flex-1 px-6 first:pl-0 last:pr-0 min-h-[300px]"
             >
-              {/* Big number */}
               <p className="font-display font-normal text-[clamp(2.8rem,4.5vw,4.5rem)] text-white tracking-tight leading-none">
                 {stat.value}
               </p>
-
-              {/* Label */}
               <p className="text-[0.6rem] tracking-[0.22em] uppercase text-white/50 font-sans mt-4">
                 {stat.label}
               </p>
-
-              {/* Description */}
               <p className="text-[0.72rem] text-white/30 leading-snug mt-2 flex-1">
                 {stat.description}
               </p>
 
-              {/* Barcode — ascending left to right */}
-              <div className="flex gap-[2px] items-end h-10 mt-6">
+              {/* Ascending barcode — height grows per card to show relative scale */}
+              <div className={`flex gap-px items-end ${barcodeHeight[i]} mt-6`}>
                 {barcodes[i]?.map((h, j) => (
                   <div
                     key={j}
-                    className="flex-1 bg-white/20 rounded-[1px]"
+                    className="flex-1 bg-white/[0.18] rounded-[1px]"
                     style={{ height: `${h}%` }}
                   />
                 ))}
@@ -88,7 +93,7 @@ export function ImpactStats() {
           ))}
         </motion.div>
 
-        {/* Mobile: simple vertical stack */}
+        {/* Mobile — stacked */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -96,7 +101,7 @@ export function ImpactStats() {
           viewport={{ once: true, margin: "-60px" }}
           className="flex sm:hidden flex-col divide-y divide-white/[0.08]"
         >
-          {stats.map((stat, i) => (
+          {stats.map((stat) => (
             <motion.div
               key={stat.label}
               variants={cardIn}

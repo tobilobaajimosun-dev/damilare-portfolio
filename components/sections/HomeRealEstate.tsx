@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -27,7 +26,8 @@ export function HomeRealEstate() {
               variants={fadeUp}
               className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight"
             >
-              Property is patient capital — and Africa&apos;s most enduring store of wealth.
+              Property is patient capital.
+              <br />Africa&apos;s most enduring store of wealth.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
               Through property innovation, structured financing, and
@@ -35,13 +35,15 @@ export function HomeRealEstate() {
               ownership and generational wealth creation across Africa.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link
-                href="/ventures"
+              <a
+                href="https://www.abodeflex.ng/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200 self-start"
               >
-                Learn More
+                Learn more on Abode
                 <ArrowRight size={13} />
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
 

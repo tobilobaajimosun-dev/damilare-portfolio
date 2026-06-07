@@ -11,8 +11,8 @@ export function HomeHero() {
       className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-16 px-6 md:px-10 lg:px-16 relative"
       style={{
         backgroundImage: [
-          "linear-gradient(to bottom, transparent 55%, oklch(0.99 0 0) 100%)",
-          "repeating-linear-gradient(90deg, rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px, transparent 1px, transparent 24px)",
+          "linear-gradient(to bottom, transparent 15%, oklch(0.99 0 0) 48%)",
+          "repeating-linear-gradient(90deg, rgba(0,0,0,0.025) 0px, rgba(0,0,0,0.025) 1px, transparent 1px, transparent 24px)",
         ].join(", "),
       }}
     >

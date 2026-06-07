@@ -64,7 +64,7 @@ export function HomeFounderNote() {
             className="text-foreground"
             style={{
               fontFamily: "var(--font-handwriting)",
-              fontSize: "clamp(1.55rem, 2.6vw, 2.35rem)",
+              fontSize: "clamp(1.1rem, 2.1vw, 1.85rem)",
               lineHeight: 1.3,
             }}
           >

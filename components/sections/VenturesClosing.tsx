@@ -20,7 +20,7 @@ export function VenturesClosing() {
             variants={fadeUp}
             className="font-display text-3xl md:text-4xl font-normal text-foreground leading-snug mb-6"
           >
-            The goal has never been to build businesses for their own sake.
+            I build businesses to improve lives — not for their own sake.
           </motion.p>
           <motion.p
             variants={fadeUp}

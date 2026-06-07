@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Mail, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import confetti from "canvas-confetti";
 
 function fireConfetti() {
@@ -85,15 +85,39 @@ export function HomeNewsletter() {
             {/* Main letter card */}
             <div className="relative bg-white rounded-3xl px-10 py-12 md:px-14 md:py-14 shadow-[0_20px_60px_oklch(0.26_0.07_152_/12%)] border border-primary/8 z-10">
 
-              {/* Icon */}
-              <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center mb-8">
-                <Mail size={18} className="text-primary" strokeWidth={1.5} />
+              {/* 3D animated envelope */}
+              <div style={{ perspective: "600px" }} className="mb-8 self-start">
+                <motion.div
+                  animate={{
+                    rotateY: [0, 18, 0, -18, 0],
+                    y: [0, -7, 0, -7, 0],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    times: [0, 0.25, 0.5, 0.75, 1],
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <svg width="72" height="54" viewBox="0 0 72 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Depth shadow */}
+                    <rect x="6" y="8" width="64" height="44" rx="6" fill="oklch(0.18 0.06 152)" opacity="0.55"/>
+                    {/* Main body */}
+                    <rect x="2" y="4" width="64" height="44" rx="6" fill="oklch(0.26 0.07 152)"/>
+                    {/* Top shine */}
+                    <rect x="2" y="4" width="64" height="7" rx="6" fill="rgba(255,255,255,0.08)"/>
+                    {/* Envelope V-flap */}
+                    <path d="M2 4 L34 30 L66 4" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1.5" strokeLinejoin="round"/>
+                    {/* Left crease */}
+                    <path d="M2 48 L30 28" stroke="rgba(255,255,255,0.09)" strokeWidth="1" strokeLinecap="round"/>
+                    {/* Right crease */}
+                    <path d="M66 48 L38 28" stroke="rgba(255,255,255,0.09)" strokeWidth="1" strokeLinecap="round"/>
+                    {/* Inner shine dot */}
+                    <circle cx="60" cy="12" r="2.5" fill="rgba(255,255,255,0.12)"/>
+                  </svg>
+                </motion.div>
               </div>
-
-              {/* Eyebrow */}
-              <p className="text-[0.6rem] tracking-[0.28em] uppercase text-primary font-sans font-medium mb-3">
-                Monthly Dispatch
-              </p>
 
               {/* Heading */}
               <h2 className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.8rem)] text-foreground tracking-tight leading-tight mb-5">

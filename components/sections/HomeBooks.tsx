@@ -11,14 +11,14 @@ const books = [
     description:
       "A practical exploration of customer psychology, sales systems, and business growth for entrepreneurs seeking predictable results.",
     cta: "Get The Book",
-    href: "#",
+    href: "https://selar.co/buyologyguide",
   },
   {
     title: "Smash It",
     description:
       "A disciplined framework for setting goals, maintaining momentum, and executing with clarity.",
     cta: "Get The Book",
-    href: "#",
+    href: "https://selar.co/smashit",
   },
 ];
 
@@ -72,6 +72,8 @@ export function HomeBooks() {
                   </div>
                   <a
                     href={book.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200 self-start"
                   >
                     {book.cta}

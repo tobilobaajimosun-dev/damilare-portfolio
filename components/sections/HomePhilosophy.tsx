@@ -44,7 +44,8 @@ export function HomePhilosophy() {
               variants={fadeUp}
               className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] text-background leading-tight tracking-tight"
             >
-              Entrepreneurship is more than opportunity. It is responsibility.
+              Build with purpose.
+              <br />Lead with integrity.
             </motion.h2>
 
             <motion.div variants={fadeUp} className="flex flex-col gap-5">
