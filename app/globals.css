@@ -89,9 +89,11 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.09 0 0);
 
-  /* Primary = brand gold */
-  --primary: oklch(0.55 0.14 80);
+  /* Primary = deep forest green */
+  --primary: oklch(0.26 0.07 152);
   --primary-foreground: oklch(0.99 0 0);
+  --primary-shadow: 0 6px 24px oklch(0.26 0.07 152 / 45%);
+  --primary-shadow-hover: 0 10px 32px oklch(0.26 0.07 152 / 58%);
 
   --secondary: oklch(0.95 0 0);
   --secondary-foreground: oklch(0.09 0 0);
@@ -106,7 +108,7 @@
 
   --border: oklch(0.09 0 0 / 10%);
   --input: oklch(0.09 0 0 / 8%);
-  --ring: oklch(0.55 0.14 80 / 50%);
+  --ring: oklch(0.26 0.07 152 / 50%);
 
   /* Brand gold system */
   --gold: oklch(0.55 0.14 80);

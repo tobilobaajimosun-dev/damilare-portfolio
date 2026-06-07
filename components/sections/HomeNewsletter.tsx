@@ -92,7 +92,7 @@ export function HomeNewsletter() {
                   />
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-200 shrink-0"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200 shrink-0"
                   >
                     Subscribe
                     <ArrowRight size={14} />

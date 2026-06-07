@@ -53,7 +53,7 @@ export function SalesAcademyHero() {
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <a
                 href="#apply"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:bg-primary/90 transition-all duration-200"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200"
               >
                 Apply Now
               </a>
