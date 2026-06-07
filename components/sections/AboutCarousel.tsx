@@ -4,12 +4,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const images = [
-  { src: "/images/hero.jpg", alt: "Oshokoya Damilare" },
-  { src: "/images/portrait-2.jpg", alt: "Oshokoya Damilare" },
-  { src: "/images/philosophy.jpg", alt: "Oshokoya Damilare" },
-  { src: "/images/real-estate.jpg", alt: "Oshokoya Damilare" },
-  { src: "/images/buyology-guide.jpg", alt: "Oshokoya Damilare" },
-  { src: "/images/smash-it.jpg", alt: "Oshokoya Damilare" },
+  { src: "/images/hero.jpg", alt: "Oshokoya Damilare", slot: 1, filename: "hero.jpg" },
+  { src: "/images/portrait-2.jpg", alt: "Oshokoya Damilare", slot: 2, filename: "portrait-2.jpg" },
+  { src: "/images/philosophy.jpg", alt: "Oshokoya Damilare", slot: 3, filename: "philosophy.jpg" },
+  { src: "/images/real-estate.jpg", alt: "Oshokoya Damilare", slot: 4, filename: "real-estate.jpg" },
+  { src: "/images/buyology-guide.jpg", alt: "Oshokoya Damilare", slot: 5, filename: "buyology-guide.jpg" },
+  { src: "/images/smash-it.jpg", alt: "Oshokoya Damilare", slot: 6, filename: "smash-it.jpg" },
 ];
 
 const allImages = [...images, ...images];
@@ -37,6 +37,10 @@ export function AboutCarousel() {
                 className="object-cover"
                 sizes="340px"
               />
+              {/* Slot number — helps identify which image goes where */}
+              <div className="absolute top-3 left-3 w-7 h-7 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center">
+                <span className="text-white text-xs font-medium leading-none">{img.slot}</span>
+              </div>
             </div>
           ))}
         </motion.div>

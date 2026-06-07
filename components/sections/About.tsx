@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, scaleIn } from "@/lib/motion";
 
 const stats = [
-  { value: "19", label: "African countries" },
-  { value: "9", label: "Research papers published" },
-  { value: "100+", label: "Entrepreneurs mentored" },
+  { value: "19", label: "African countries with direct venture or mentorship reach" },
+  { value: "9", label: "Academic research papers on entrepreneurship & SME growth" },
+  { value: "100+", label: "Founders and entrepreneurs personally mentored" },
 ];
 
 export function About() {
@@ -17,7 +17,7 @@ export function About() {
       className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background scroll-mt-20"
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -51,20 +51,22 @@ export function About() {
               </motion.div>
             </div>
 
-            <motion.div
-              variants={fadeUp}
-              className="grid grid-cols-3 gap-6 pt-6 border-t border-border"
-            >
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-display text-3xl md:text-4xl font-normal text-foreground">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1.5 leading-snug">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+            <motion.div variants={fadeUp} className="flex flex-col gap-5 pt-6 border-t border-border">
+              <p className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
+                By the numbers
+              </p>
+              <div className="grid grid-cols-3 gap-4">
+                {stats.map((stat) => (
+                  <div key={stat.value}>
+                    <p className="font-display text-3xl md:text-4xl font-normal text-foreground">
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1.5 leading-snug">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
 

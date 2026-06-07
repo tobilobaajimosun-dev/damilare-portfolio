@@ -63,14 +63,14 @@ export function Philosophy() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-3"
             >
               {focusAreas.map(({ label, description, bg }) => (
                 <motion.div
                   key={label}
                   variants={fadeUp}
-                  className="relative aspect-[4/3] rounded-2xl overflow-hidden"
-                  style={{ background: bg }}
+                  className="relative rounded-xl overflow-hidden flex flex-col justify-between"
+                  style={{ background: bg, minHeight: "220px" }}
                 >
                   {/* Noise overlay */}
                   <div
@@ -78,16 +78,16 @@ export function Philosophy() {
                     style={{ backgroundImage: NOISE_SVG, backgroundSize: "200px 200px" }}
                   />
                   {/* Subtle inner border */}
-                  <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/8 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/8 pointer-events-none" />
 
-                  <div className="absolute top-6 left-6 right-6">
-                    <p className="font-display font-bold text-white text-[clamp(1.75rem,3vw,2.5rem)] leading-tight">
+                  <div className="relative p-4 pt-4">
+                    <p className="font-display font-semibold text-white text-base leading-tight">
                       {label}
                     </p>
                   </div>
 
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <p className="text-sm text-white/55 leading-relaxed">
+                  <div className="relative p-4 pb-4">
+                    <p className="text-xs text-white/50 leading-relaxed">
                       {description}
                     </p>
                   </div>
@@ -99,7 +99,16 @@ export function Philosophy() {
       </div>
 
       {/* Looking Ahead */}
-      <div className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-surface">
+      <div
+        className="py-24 md:py-32 px-6 md:px-10 lg:px-16"
+        style={{
+          backgroundImage: [
+            "repeating-linear-gradient(90deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 24px)",
+            "repeating-linear-gradient(0deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 24px)",
+          ].join(", "),
+          backgroundColor: "var(--background)",
+        }}
+      >
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <motion.div
             variants={staggerContainer}
@@ -124,9 +133,9 @@ export function Philosophy() {
                 <motion.div
                   key={label}
                   variants={fadeUp}
-                  className="flex flex-col gap-4 p-7 rounded-2xl border border-border bg-background"
+                  className="flex flex-col gap-3 p-8 md:p-10 rounded-2xl border border-border bg-background/80 backdrop-blur-sm"
                 >
-                  <p className="font-display text-[clamp(1.5rem,2.5vw,2rem)] font-normal text-foreground leading-tight">
+                  <p className="font-display text-lg md:text-xl font-normal text-foreground leading-tight">
                     Continue {label}.
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>

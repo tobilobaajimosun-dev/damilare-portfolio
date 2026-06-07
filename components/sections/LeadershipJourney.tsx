@@ -46,9 +46,14 @@ export function LeadershipJourney() {
   if (isMobile) {
     return (
       <section className="py-14 px-6 bg-background border-t border-border">
-        <h2 className="font-display font-normal text-[clamp(2rem,8vw,3rem)] tracking-tight text-foreground leading-tight mb-12">
-          Leadership Journey
-        </h2>
+        <div className="mb-10 flex flex-col gap-3">
+          <h2 className="font-display font-normal text-[clamp(2rem,8vw,3rem)] tracking-tight text-foreground leading-tight">
+            My Leadership Journey
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+            From research labs to boardrooms — each chapter built the next.
+          </p>
+        </div>
         <div className="relative flex flex-col gap-0">
           {/* Vertical line */}
           <div className="absolute left-[5px] top-2 bottom-2 w-px bg-border" />
@@ -88,8 +93,11 @@ export function LeadershipJourney() {
         <div className="absolute top-0 left-0 right-0 px-6 md:px-10 lg:px-16 pt-14 z-10">
           <div className="mx-auto w-full max-w-[var(--container-default)]">
             <h2 className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight">
-              Leadership Journey
+              My Leadership Journey
             </h2>
+            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+              From research labs to boardrooms — each chapter built the next.
+            </p>
             </div>
         </div>
 

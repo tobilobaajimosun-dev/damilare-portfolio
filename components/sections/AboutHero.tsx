@@ -15,7 +15,7 @@ export function AboutHero() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-display font-normal leading-[1.06] tracking-tight text-foreground text-[clamp(2.25rem,5.5vw,4.75rem)] max-w-3xl"
+            className="font-display font-normal leading-[1.02] tracking-tight text-foreground text-[clamp(3rem,7vw,6rem)] max-w-3xl"
           >
             Building platforms that{" "}
             <span className="text-muted-foreground">expand access to ownership.</span>
@@ -23,7 +23,7 @@ export function AboutHero() {
 
           <motion.div
             variants={fadeUp}
-            className="flex flex-col gap-5 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
+            className="flex flex-col gap-5 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
             <p>
               My work sits across technology, finance, and real estate — focused
