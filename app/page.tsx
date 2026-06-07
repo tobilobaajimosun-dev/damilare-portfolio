@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HomeHero } from "@/components/sections/HomeHero";
+import { HomeMarquee } from "@/components/sections/HomeMarquee";
 import { HomeVision } from "@/components/sections/HomeImpact";
 import { ImpactStats } from "@/components/sections/ImpactStats";
 import { HomePhilosophy } from "@/components/sections/HomePhilosophy";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <HomeHero />
+        <HomeMarquee />
         <HomeVision />
         <ImpactStats />
         <HomePhilosophy />

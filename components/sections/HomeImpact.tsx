@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { Variants } from "framer-motion";
 
@@ -20,106 +20,86 @@ const blurUp: Variants = {
   },
 };
 
-const container: Variants = {
+const stagger: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.05 } },
 };
 
 export function HomeVision() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [videoHovered, setVideoHovered] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const videoRight = useTransform(scrollYProgress, [0, 0.75], ["54%", "0%"]);
-  const videoTop = useTransform(scrollYProgress, [0, 0.75], ["5%", "0%"]);
-  const videoBottom = useTransform(scrollYProgress, [0, 0.75], ["5%", "0%"]);
-  const videoBorderRadius = useTransform(scrollYProgress, [0, 0.75], ["1.5rem", "0rem"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.35], [0, -24]);
+  // Text fades and lifts out early
+  const textOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.22], [0, -40]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
+  // Video grows from a centred rounded rect to full-bleed
+  const videoTop = useTransform(scrollYProgress, [0.1, 0.82], ["44%", "0%"]);
+  const videoLeft = useTransform(scrollYProgress, [0.1, 0.82], ["8%", "0%"]);
+  const videoRight = useTransform(scrollYProgress, [0.1, 0.82], ["8%", "0%"]);
+  const videoBorderRadius = useTransform(scrollYProgress, [0.1, 0.72], ["24px", "0px"]);
 
   return (
-    <div ref={sectionRef} style={{ height: "260vh" }} className="relative">
-      <div className="sticky top-0 h-screen overflow-hidden bg-surface">
+    <div ref={sectionRef} style={{ height: "280vh" }} className="relative">
+      <div className="sticky top-0 h-screen overflow-hidden bg-foreground">
 
-        {/* Expanding video rect */}
+        {/* ── Text — top centre, fades on scroll ── */}
+        <motion.div
+          style={{ opacity: textOpacity, y: textY }}
+          className="absolute inset-x-0 top-0 flex flex-col items-center justify-center h-[44%] z-10 px-6"
+        >
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-center gap-2 md:gap-3"
+          >
+            {lines.map(({ text, accent }) => (
+              <motion.p
+                key={text}
+                variants={blurUp}
+                className={`font-display font-normal leading-tight text-[clamp(2.4rem,5vw,5.5rem)] tracking-tight text-center ${
+                  accent ? "text-primary" : "text-background"
+                }`}
+              >
+                {text}
+              </motion.p>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* ── Video — expands from below text to full bleed ── */}
+        {/* Portrait video: object-cover fills the frame and looks cinematic at full bleed */}
         <motion.div
           style={{
             position: "absolute",
             top: videoTop,
-            bottom: videoBottom,
-            left: 0,
+            left: videoLeft,
             right: videoRight,
+            bottom: 0,
             borderRadius: videoBorderRadius,
           }}
-          className="overflow-hidden bg-[#e8e6e0] cursor-none"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setVideoHovered(true)}
-          onMouseLeave={() => setVideoHovered(false)}
+          className="overflow-hidden bg-neutral-900"
         >
-          {/* Placeholder — replace inner content with <video> or <Image> */}
+          {/*
+            Replace this with your <video> tag when footage is ready.
+            For portrait video, object-cover is recommended — it fills the frame
+            at all sizes and looks cinematic. Example:
+
+            <video
+              src="/videos/damilare-reel.mp4"
+              autoPlay muted loop playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          */}
           <div className="absolute inset-0 flex items-end p-8">
-            <p className="text-xs text-muted-foreground tracking-widest uppercase">Video</p>
-          </div>
-
-          {/* Custom play cursor */}
-          {videoHovered && (
-            <div
-              className="absolute pointer-events-none z-10"
-              style={{ left: cursorPos.x, top: cursorPos.y }}
-            >
-              <div className="flex items-center gap-1.5 bg-foreground text-background text-xs font-medium px-3.5 py-2 rounded-full -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
-                ▶ Play Video
-              </div>
-            </div>
-          )}
-        </motion.div>
-
-        {/* Text on right */}
-        <motion.div
-          style={{ opacity: textOpacity, y: textY }}
-          className="absolute right-0 top-0 w-[46%] h-full flex items-center px-10 lg:px-16 xl:px-20"
-        >
-          <div className="flex flex-col gap-8 max-w-md">
-            <motion.div
-              variants={container}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-col gap-2"
-            >
-              {lines.map(({ text, accent }) => (
-                <motion.p
-                  key={text}
-                  variants={blurUp}
-                  className={`font-display font-normal leading-tight text-[clamp(2rem,3.5vw,3.5rem)] tracking-tight ${
-                    accent ? "text-primary" : "text-foreground"
-                  }`}
-                >
-                  {text}
-                </motion.p>
-              ))}
-            </motion.div>
-
-            <div className="flex flex-col gap-3 border-t border-border pt-6">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Sustainable growth does not happen by accident.
-              </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                It requires structure, disciplined execution, and leaders
-                willing to think beyond themselves. Across business, real
-                estate, mentorship, and leadership development, the goal
-                remains the same: create value that lasts.
-              </p>
-            </div>
+            <p className="text-[0.6rem] text-white/20 tracking-widest uppercase">
+              Video — add your footage here
+            </p>
           </div>
         </motion.div>
 

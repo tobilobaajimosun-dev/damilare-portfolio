@@ -27,12 +27,12 @@ export function HomeRealEstate() {
               variants={fadeUp}
               className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight"
             >
-              Real estate remains one of the most durable engines of wealth creation.
+              Property is patient capital — and Africa&apos;s most enduring store of wealth.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
               Through property innovation, structured financing, and
-              technology-driven platforms, Damilare continues to champion
-              broader access to ownership and long-term wealth creation.
+              technology-driven platforms, I champion broader access to
+              ownership and generational wealth creation across Africa.
             </motion.p>
             <motion.div variants={fadeUp}>
               <Link

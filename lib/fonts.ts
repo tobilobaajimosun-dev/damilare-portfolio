@@ -1,4 +1,4 @@
-import { Archivo, Geist_Mono, Dancing_Script } from "next/font/google";
+import { Archivo, Geist_Mono, Homemade_Apple } from "next/font/google";
 import localFont from "next/font/local";
 
 export const generalSans = localFont({
@@ -31,8 +31,8 @@ export const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const dancingScript = Dancing_Script({
+export const homemadeApple = Homemade_Apple({
   variable: "--font-handwriting",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400"],
 });

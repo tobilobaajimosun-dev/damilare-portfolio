@@ -18,11 +18,8 @@ const cardIn: Variants = {
   },
 };
 
-// Alternating stagger offsets — faithful to image 2 zigzag
+// Alternating stagger offsets
 const offsets = [0, 80, 0, 80, 40];
-
-// Small decorative icon per card — mirrors image 2's watermark icons
-const icons = ["✦", "◈", "⊕", "◉", "✧"];
 
 export function ImpactStats() {
   return (
@@ -46,7 +43,7 @@ export function ImpactStats() {
           </motion.div>
         </div>
 
-        {/* Staggered cards — image 2 layout */}
+        {/* Desktop: staggered cards */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -59,33 +56,22 @@ export function ImpactStats() {
               key={stat.label}
               variants={cardIn}
               style={{ marginTop: offsets[i] ?? 0 }}
-              className="flex flex-col flex-1 bg-surface border border-border rounded-[1.25rem] p-6 min-h-[280px] justify-between"
+              className="flex flex-col flex-1 bg-surface border border-border rounded-[1.25rem] p-7 min-h-[280px] justify-between"
             >
-              {/* Tag */}
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-sm bg-primary shrink-0" />
-                <p className="text-[0.6rem] tracking-[0.22em] uppercase text-muted-foreground font-sans leading-none">
-                  {stat.label}
-                </p>
-              </div>
+              {/* Label */}
+              <p className="text-[0.6rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
+                {stat.label}
+              </p>
 
               {/* Number */}
               <p className="font-display font-normal text-[clamp(3rem,5vw,5rem)] text-foreground tracking-tight leading-none">
                 {stat.value}
               </p>
 
-              {/* Divider + description + icon */}
-              <div className="flex flex-col gap-3">
-                <div className="h-px bg-border" />
-                <div className="flex items-end justify-between gap-2">
-                  <p className="text-[0.7rem] text-muted-foreground leading-snug max-w-[14ch]">
-                    {stat.description}
-                  </p>
-                  <span className="text-muted-foreground/30 text-xl shrink-0 leading-none">
-                    {icons[i]}
-                  </span>
-                </div>
-              </div>
+              {/* Description */}
+              <p className="text-[0.72rem] text-muted-foreground leading-snug">
+                {stat.description}
+              </p>
             </motion.div>
           ))}
         </motion.div>
@@ -104,7 +90,7 @@ export function ImpactStats() {
               variants={cardIn}
               className="flex items-center justify-between gap-6 p-5 bg-surface border border-border rounded-2xl"
             >
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1.5">
                 <p className="text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground font-sans">
                   {stat.label}
                 </p>

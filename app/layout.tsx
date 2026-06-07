@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generalSans, ltSuperiorSerif, archivo, geistMono, dancingScript } from "@/lib/fonts";
+import { generalSans, ltSuperiorSerif, archivo, geistMono, homemadeApple } from "@/lib/fonts";
 import { baseMetadata, siteConfig } from "@/lib/metadata";
 import { ScrollBlur } from "@/components/layout/ScrollBlur";
 import { Analytics } from "@vercel/analytics/next";
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${generalSans.variable} ${ltSuperiorSerif.variable} ${archivo.variable} ${geistMono.variable} ${dancingScript.variable} h-full`}
+      className={`${generalSans.variable} ${ltSuperiorSerif.variable} ${archivo.variable} ${geistMono.variable} ${homemadeApple.variable} h-full`}
     >
       <head>
         <script

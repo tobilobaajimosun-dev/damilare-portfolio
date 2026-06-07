@@ -36,7 +36,7 @@ export function HomePhilosophy() {
           >
             <motion.p
               variants={fadeUp}
-              className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
+              className="text-[0.65rem] tracking-[0.22em] uppercase text-background/50 font-sans"
             >
               Philosophy
             </motion.p>
@@ -49,14 +49,14 @@ export function HomePhilosophy() {
 
             <motion.div variants={fadeUp} className="flex flex-col gap-5">
               <p className="text-base text-background/60 leading-[1.8]">
-                For Damilare, building companies is not only about growth. It is
+                Building companies, for me, is never only about growth. It is
                 about developing people, creating access, and building systems
                 that deliver lasting value.
               </p>
               <p className="text-base text-background/60 leading-[1.8]">
-                His work across real estate, fintech, agritech, and
-                entrepreneurship reflects a consistent belief: sustainable
-                progress requires disciplined builders and long-term thinking.
+                My work across real estate, fintech, and agritech is grounded
+                in one belief: sustainable progress needs disciplined builders
+                and long-term thinking.
               </p>
             </motion.div>
           </motion.div>

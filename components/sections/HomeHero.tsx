@@ -7,7 +7,15 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function HomeHero() {
   return (
-    <section className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-24 px-6 md:px-10 lg:px-16">
+    <section
+      className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-16 px-6 md:px-10 lg:px-16 relative overflow-hidden"
+      style={{
+        backgroundImage: `
+          repeating-linear-gradient(45deg, rgba(0,0,0,0.022) 0px, rgba(0,0,0,0.022) 1px, transparent 1px, transparent 18px),
+          repeating-linear-gradient(-45deg, rgba(0,0,0,0.022) 0px, rgba(0,0,0,0.022) 1px, transparent 1px, transparent 18px)
+        `,
+      }}
+    >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -18,16 +26,9 @@ export function HomeHero() {
             animate="visible"
             className="flex flex-col gap-8"
           >
-            <motion.p
-              variants={fadeUp}
-              className="text-xs tracking-[0.22em] uppercase text-primary font-sans"
-            >
-              Entrepreneur. Founder. Mentor.
-            </motion.p>
-
             <motion.h1
               variants={staggerContainer}
-              className="font-display font-normal leading-[1.05] tracking-tight text-[clamp(2.4rem,5.5vw,4.5rem)]"
+              className="font-display font-normal leading-[1.02] tracking-tight text-[clamp(3.5rem,8vw,7rem)]"
             >
               <motion.span variants={fadeUp} className="block text-foreground">
                 Damilare
@@ -39,20 +40,11 @@ export function HomeHero() {
 
             <motion.p
               variants={fadeUp}
-              className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed"
+              className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed"
             >
-              A faith-driven entrepreneur and business leader committed to
-              building sustainable businesses, developing leaders, and creating
-              opportunities across Africa.
-            </motion.p>
-
-            <motion.p
-              variants={fadeUp}
-              className="text-sm text-muted-foreground max-w-lg leading-relaxed"
-            >
-              Through entrepreneurship, mentorship, and leadership development,
-              he helps people think bigger, build boldly, and create meaningful
-              impact.
+              Building businesses, developing leaders, and creating
+              opportunities across Africa — with faith, discipline, and
+              long-term vision.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
@@ -64,7 +56,7 @@ export function HomeHero() {
               </a>
               <a
                 href="/sales-academy"
-                className="inline-flex items-center gap-2.5 px-6 py-3 border border-primary text-primary text-sm font-medium rounded-full hover:bg-primary/10 transition-all duration-200"
+                className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200"
               >
                 Join Sales Masterclass
               </a>
@@ -86,7 +78,7 @@ export function HomeHero() {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="relative w-full max-w-[420px] aspect-[3/4] rounded-2xl overflow-hidden bg-surface border border-border"
+              className="relative w-full max-w-[540px] aspect-[3/4] rounded-2xl overflow-hidden bg-surface border border-border"
             >
               <Image
                 src="/images/portrait.jpg"

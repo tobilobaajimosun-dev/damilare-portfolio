@@ -92,8 +92,8 @@
   /* Primary = deep forest green */
   --primary: oklch(0.26 0.07 152);
   --primary-foreground: oklch(0.99 0 0);
-  --primary-shadow: 0 6px 24px oklch(0.26 0.07 152 / 45%);
-  --primary-shadow-hover: 0 10px 32px oklch(0.26 0.07 152 / 58%);
+  --primary-shadow: 0 2px 6px oklch(0.26 0.07 152 / 18%), 0 6px 18px oklch(0.26 0.07 152 / 22%);
+  --primary-shadow-hover: 0 4px 10px oklch(0.26 0.07 152 / 20%), 0 10px 26px oklch(0.26 0.07 152 / 28%);
 
   --secondary: oklch(0.95 0 0);
   --secondary-foreground: oklch(0.09 0 0);
@@ -171,4 +171,10 @@
   :focus:not(:focus-visible) {
     outline: none;
   }
+}
+
+/* ── Marquee animation ───────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
