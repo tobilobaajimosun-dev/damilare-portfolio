@@ -46,7 +46,7 @@ export function Testimonials() {
                 </p>
               </div>
               <div className="bg-foreground px-8 py-5">
-                <p className="text-sm font-semibold text-background leading-snug">{t.name}</p>
+                <p className="text-sm font-normal text-background leading-snug">{t.name}</p>
                 <p className="text-xs text-background/60 mt-0.5 leading-snug">{t.role}</p>
               </div>
             </motion.div>

@@ -37,10 +37,6 @@ export function AboutCarousel() {
                 className="object-cover"
                 sizes="340px"
               />
-              {/* Slot number — helps identify which image goes where */}
-              <div className="absolute top-3 left-3 w-7 h-7 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center">
-                <span className="text-white text-xs font-medium leading-none">{img.slot}</span>
-              </div>
             </div>
           ))}
         </motion.div>

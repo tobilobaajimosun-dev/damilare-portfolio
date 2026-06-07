@@ -68,7 +68,7 @@ export function LeadershipJourney() {
               <div className="flex flex-col gap-0.5 pb-2">
                 <p className="font-display font-normal text-2xl text-foreground leading-none mb-1">{m.year}</p>
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-foreground">{m.title}</p>
+                  <p className="text-sm font-normal text-foreground">{m.title}</p>
                   {m.current && (
                     <span className="text-[0.6rem] tracking-widest uppercase bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none">
                       Now
@@ -128,7 +128,7 @@ export function LeadershipJourney() {
                       <>
                         <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-foreground leading-none mb-1.5">{m.year}</p>
                         <div className="flex items-center justify-center gap-2">
-                          <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
+                          <p className="text-sm font-normal text-foreground leading-snug">{m.title}</p>
                           {m.current && (
                             <span className="text-[0.6rem] tracking-widest uppercase bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none shrink-0">
                               Now
@@ -152,7 +152,7 @@ export function LeadershipJourney() {
                       <>
                         <p className="font-display font-normal text-[clamp(1.6rem,2.2vw,2.2rem)] text-muted-foreground leading-none mb-1.5">{m.year}</p>
                         <div className="flex items-center justify-center gap-2">
-                          <p className="text-sm font-medium text-foreground leading-snug">{m.title}</p>
+                          <p className="text-sm font-normal text-foreground leading-snug">{m.title}</p>
                           {m.current && (
                             <span className="text-[0.6rem] tracking-widest uppercase bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full leading-none shrink-0">
                               Now

@@ -15,7 +15,7 @@ export function AboutHero() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-display font-normal leading-[1.02] tracking-tight text-foreground text-[clamp(3rem,7vw,6rem)] max-w-3xl"
+            className="font-display font-normal leading-[1.02] tracking-tight text-foreground text-[clamp(2rem,5vw,4.5rem)] max-w-3xl"
           >
             Building platforms that{" "}
             <span className="text-muted-foreground">expand access to ownership.</span>
