@@ -40,9 +40,8 @@ export function SalesAcademyWhoIsItFor() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="hidden lg:block"
           >
-            <div className="w-full aspect-square rounded-2xl overflow-hidden bg-background border border-border flex items-end p-8">
+            <div className="w-full aspect-square rounded-2xl overflow-hidden bg-background">
               {/* 👉 Add: <Image src="/images/sales-training.jpg" alt="Sales Training" fill className="object-cover" /> */}
-              <p className="text-xs text-muted-foreground tracking-widest uppercase">Image</p>
             </div>
           </motion.div>
 

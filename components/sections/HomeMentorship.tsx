@@ -84,7 +84,7 @@ export function HomeMentorship() {
               <motion.div
                 key={topic.title}
                 variants={fadeUp}
-                className="flex flex-col gap-3 p-6 bg-background hover:bg-surface transition-colors duration-200 text-left border-r border-b border-border"
+                className="flex flex-col gap-3 p-6 bg-background hover:bg-surface transition-colors duration-200 text-left border-b border-border sm:border-r"
               >
                 <p className="font-display font-normal text-lg text-foreground leading-snug">
                   {topic.title}

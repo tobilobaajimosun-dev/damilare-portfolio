@@ -53,9 +53,12 @@ export function HomeVision() {
   const textY       = useTransform(scrollYProgress, [0, 0.2], [0, -36]);
 
   // Portrait video — starts narrow + tall, expands to full bleed
+  // On mobile use tighter margins so the initial frame isn't too narrow
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const startMargin = isMobile ? "10%" : "30%";
   const videoTop          = useTransform(scrollYProgress, [0.1, 0.82], ["34%", "0%"]);
-  const videoLeft         = useTransform(scrollYProgress, [0.1, 0.82], ["30%", "0%"]);
-  const videoRight        = useTransform(scrollYProgress, [0.1, 0.82], ["30%", "0%"]);
+  const videoLeft         = useTransform(scrollYProgress, [0.1, 0.82], [startMargin, "0%"]);
+  const videoRight        = useTransform(scrollYProgress, [0.1, 0.82], [startMargin, "0%"]);
   const videoBorderRadius = useTransform(scrollYProgress, [0.1, 0.72], ["20px", "0px"]);
 
   return (
@@ -101,14 +104,6 @@ export function HomeVision() {
           </motion.div>
 
           {/* ── Portrait video ── */}
-          {/*
-            Replace placeholder with:
-            <video
-              src="/videos/damilare-reel.mp4"
-              autoPlay muted loop playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          */}
           <motion.div
             style={{
               position: "absolute",
@@ -120,11 +115,14 @@ export function HomeVision() {
             }}
             className="overflow-hidden bg-neutral-900"
           >
-            <div className="absolute inset-0 flex items-end p-8">
-              <p className="text-[0.6rem] text-white/20 tracking-widest uppercase">
-                Video — add your footage here
-              </p>
-            </div>
+            <video
+              src="/videos/damilare-reel.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </motion.div>
 
         </div>

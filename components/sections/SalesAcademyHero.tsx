@@ -89,9 +89,8 @@ export function SalesAcademyHero() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
             className="hidden lg:flex justify-end"
           >
-            <div className="relative w-full max-w-[460px] aspect-[3/4] rounded-2xl overflow-hidden bg-background/10 border border-background/10 flex items-center justify-center">
+            <div className="relative w-full max-w-[460px] aspect-[3/4] rounded-2xl overflow-hidden bg-background/10">
               {/* 👉 Add: <Image src="/images/sales-academy.jpg" alt="Sales Masterclass" fill className="object-cover" /> */}
-              <p className="text-xs text-background/30 tracking-widest uppercase">Image</p>
             </div>
           </motion.div>
 

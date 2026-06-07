@@ -47,10 +47,10 @@ export function HomeBooks() {
               <motion.div
                 key={book.title}
                 variants={fadeUp}
-                className="flex flex-col gap-0 bg-background border border-border rounded-2xl overflow-hidden"
+                className="flex flex-col gap-0 bg-background rounded-2xl overflow-hidden"
               >
                 {/* Book cover */}
-                <div className="w-full aspect-[4/3] bg-surface border-b border-border relative overflow-hidden">
+                <div className="w-full aspect-[4/3] bg-surface relative overflow-hidden">
                   <Image
                     src={`/images/${book.title.toLowerCase().replace(/ /g, "-")}.jpg`}
                     alt={book.title}

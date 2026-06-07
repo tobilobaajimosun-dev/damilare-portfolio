@@ -78,7 +78,7 @@ export function HomeHero() {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="relative w-full max-w-[540px] aspect-[3/4] rounded-2xl overflow-hidden bg-surface border border-border"
+              className="relative w-full max-w-[540px] aspect-[3/4] max-h-[70vh] lg:max-h-none rounded-2xl overflow-hidden bg-surface"
             >
               <Image
                 src="/images/hero.jpg"
