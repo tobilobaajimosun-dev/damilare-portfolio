@@ -1,100 +1,95 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+
+const stats = [
+  { value: "8", label: "Weeks" },
+  { value: "Live", label: "Sessions" },
+  { value: "30", label: "Seats max" },
+];
 
 export function SalesAcademyHero() {
   return (
-    <section className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-24 px-6 md:px-10 lg:px-16 bg-foreground">
-      <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="min-h-[100dvh] flex flex-col justify-end pb-16 md:pb-24 pt-36 px-6 md:px-10 lg:px-16 bg-foreground relative overflow-hidden">
+      {/* Subtle grid — matches homepage hero */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: [
+            "repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 24px)",
+            "repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 24px)",
+          ].join(", "),
+        }}
+        aria-hidden
+      />
 
-          {/* Left */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col gap-8"
+      <div className="relative mx-auto w-full max-w-[var(--container-default)]">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-10 md:gap-14"
+        >
+          {/* Label */}
+          <motion.p
+            variants={fadeUp}
+            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
           >
-            <motion.p
-              variants={fadeUp}
-              className="text-xs tracking-[0.22em] uppercase text-primary font-sans"
-            >
-              Sales Masterclass
-            </motion.p>
+            Sales Masterclass
+          </motion.p>
 
-            <motion.h1
-              variants={staggerContainer}
-              className="font-display font-normal leading-[1.05] tracking-tight text-[clamp(2.6rem,5.5vw,5rem)] text-background"
-            >
-              <motion.span variants={fadeUp} className="block">
-                Close with
-              </motion.span>
-              <motion.span variants={fadeUp} className="block text-primary">
-                conviction.
-              </motion.span>
-              <motion.span variants={fadeUp} className="block">
-                Build with
-              </motion.span>
-              <motion.span variants={fadeUp} className="block">
-                systems.
-              </motion.span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="text-base md:text-lg text-background/60 max-w-lg leading-relaxed"
-            >
-              A practical training programme for entrepreneurs, founders, and
-              sales professionals who want to master the art and science of
-              selling — and build sustainable businesses around it.
-            </motion.p>
-
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <a
-                href="#apply"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200"
-              >
-                Apply Now
-              </a>
-              <a
-                href="#curriculum"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-background/20 text-background text-sm font-medium rounded-full hover:bg-background/10 transition-all duration-200"
-              >
-                See Curriculum
-              </a>
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              className="flex items-center gap-8 pt-4 border-t border-background/10"
-            >
-              {[
-                { value: "8", label: "Weeks" },
-                { value: "Live", label: "Sessions" },
-                { value: "Africa", label: "Focus" },
-              ].map((s) => (
-                <div key={s.label} className="flex flex-col gap-0.5">
-                  <p className="font-display text-2xl text-background">{s.value}</p>
-                  <p className="text-xs text-background/40 uppercase tracking-widest">{s.label}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Right — image spot */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="hidden lg:flex justify-end"
+          {/* Headline */}
+          <motion.h1
+            variants={fadeUp}
+            className="font-display font-normal leading-[1.02] tracking-tight text-background text-[clamp(3rem,7vw,6.5rem)] max-w-5xl"
           >
-            <div className="relative w-full max-w-[460px] aspect-[3/4] rounded-2xl overflow-hidden bg-background/10">
-              {/* 👉 Add: <Image src="/images/sales-academy.jpg" alt="Sales Masterclass" fill className="object-cover" /> */}
-            </div>
-          </motion.div>
+            Close with conviction.{" "}
+            <span className="text-background/30">Build with systems.</span>
+          </motion.h1>
 
-        </div>
+          {/* Subline */}
+          <motion.p
+            variants={fadeUp}
+            className="text-base md:text-lg text-background/50 max-w-lg leading-relaxed"
+          >
+            A practical training programme for entrepreneurs, founders, and
+            sales professionals — built around the systems that actually close
+            deals.
+          </motion.p>
+
+          {/* Stats row */}
+          <motion.div
+            variants={fadeUp}
+            className="flex items-center gap-0 border-t border-background/10 pt-10 flex-wrap"
+          >
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex flex-col gap-1 pr-10 mr-10 ${
+                  i < stats.length - 1 ? "border-r border-background/10" : ""
+                }`}
+              >
+                <p className="font-display text-2xl md:text-3xl text-background leading-none">
+                  {s.value}
+                </p>
+                <p className="text-[0.65rem] text-background/30 uppercase tracking-widest">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+
+            {/* CTA inline with stats on desktop */}
+            <a
+              href="#apply"
+              className="ml-auto inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground text-sm rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200 shrink-0 mt-6 md:mt-0"
+            >
+              Apply Now
+              <ArrowRight size={14} />
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
