@@ -51,10 +51,13 @@ export function Philosophy() {
     <section className="bg-background">
 
       {/* ── Areas of Focus ─────────────────────────────────────── */}
-      <div className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-[#0c0c0c]">
-        {/* Noise overlay on dark section */}
+      <div
+        className="py-24 md:py-32 px-6 md:px-10 lg:px-16"
+        style={{ backgroundColor: "oklch(0.05 0.015 152)" }}
+      >
+        {/* Noise overlay */}
         <div
-          className="pointer-events-none fixed inset-0 z-0 opacity-40"
+          className="pointer-events-none fixed inset-0 z-0 opacity-30"
           style={{ backgroundImage: NOISE_SVG, backgroundSize: "200px 200px" }}
           aria-hidden
         />
@@ -85,7 +88,9 @@ export function Philosophy() {
                   variants={fadeUp}
                   onClick={() => setActive(i)}
                   className={`relative text-left rounded-2xl overflow-hidden transition-colors duration-300 flex flex-col ${
-                    isActive ? "bg-[#1c1c1c]" : "bg-[#141414]"
+                    isActive
+                      ? "bg-[oklch(0.12_0.02_152)]"
+                      : "bg-[oklch(0.09_0.01_152)]"
                   }`}
                   style={{ minHeight: isActive ? 260 : 160 }}
                   aria-pressed={isActive}
@@ -96,9 +101,11 @@ export function Philosophy() {
                     style={{ backgroundImage: NOISE_SVG, backgroundSize: "200px 200px" }}
                     aria-hidden
                   />
-                  {/* Subtle border */}
+                  {/* Border */}
                   <div
-                    className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/[0.06] pointer-events-none"
+                    className={`absolute inset-0 rounded-2xl ring-1 ring-inset pointer-events-none transition-colors duration-300 ${
+                      isActive ? "ring-primary/30" : "ring-white/[0.06]"
+                    }`}
                     aria-hidden
                   />
 
@@ -169,16 +176,17 @@ export function Philosophy() {
                 <motion.div
                   key={label}
                   variants={fadeUp}
-                  className="relative rounded-2xl overflow-hidden bg-zinc-900 p-10 flex flex-col gap-4"
-                  style={{ minHeight: 260 }}
+                  className="relative overflow-hidden border border-white/10 flex flex-col gap-4 p-10"
+                  style={{
+                    minHeight: 280,
+                    borderRadius: "1rem",
+                    backgroundColor: "oklch(0.08 0.008 152)",
+                  }}
                 >
-                  {/* Arc shapes — large concentric circles at bottom-right */}
+                  {/* D-shape arc — circle centered on the right edge */}
                   <div
-                    className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full border border-white/[0.07] pointer-events-none"
-                    aria-hidden
-                  />
-                  <div
-                    className="absolute -bottom-10 -right-10 w-44 h-44 rounded-full border border-white/[0.05] pointer-events-none"
+                    className="absolute top-0 bottom-0 right-0 translate-x-1/2 rounded-full border border-white/[0.12] pointer-events-none"
+                    style={{ aspectRatio: "1 / 1" }}
                     aria-hidden
                   />
 

@@ -87,7 +87,23 @@ export function LeadershipJourney() {
   // ── Desktop: sticky + horizontal scroll ──────────────────────────────
   return (
     <div ref={sectionRef} style={{ height: sectionH }}>
-      <div className="sticky top-0 h-screen overflow-hidden bg-background">
+      <div
+        className="sticky top-0 h-screen overflow-hidden"
+        style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.03)" }}
+      >
+        {/* D-shape background decorations */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          {/* Primary D — large, right edge */}
+          <div
+            className="absolute top-1/2 -translate-y-1/2 rounded-full border border-border"
+            style={{ width: "68vh", height: "68vh", right: "-34vh" }}
+          />
+          {/* Secondary D — smaller, inset */}
+          <div
+            className="absolute top-1/2 -translate-y-1/2 rounded-full border border-border/50"
+            style={{ width: "46vh", height: "46vh", right: "-23vh" }}
+          />
+        </div>
 
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 px-6 md:px-10 lg:px-16 pt-14 z-10">

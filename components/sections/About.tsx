@@ -28,10 +28,11 @@ export function About() {
       {/* ── The Foundation ─────────────────────────────────────── */}
       <section
         id="about"
-        className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background scroll-mt-20"
+        className="py-24 md:py-36 px-6 md:px-10 lg:px-16 scroll-mt-20"
+        style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.04)" }}
       >
         <div className="mx-auto w-full max-w-[var(--container-default)]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -69,7 +70,8 @@ export function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
-              className="aspect-[3/4] rounded-2xl overflow-hidden relative"
+              className="rounded-2xl overflow-hidden relative w-full"
+              style={{ aspectRatio: "4/3" }}
             >
               <Image
                 src="/images/philosophy.jpg"
@@ -84,7 +86,7 @@ export function About() {
       </section>
 
       {/* ── By the numbers ─────────────────────────────────────── */}
-      <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
+      <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 border-t border-border" style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.03)" }}>
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
