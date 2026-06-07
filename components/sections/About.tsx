@@ -8,17 +8,17 @@ const stats = [
   {
     value: "19",
     label: "African countries with direct venture or mentorship reach",
-    img: "/images/real-estate.jpg",
+    img: "/images/about-stat-1.jpg",
   },
   {
     value: "9",
     label: "Academic research papers on entrepreneurship & SME growth",
-    img: "/images/philosophy.jpg",
+    img: "/images/about-stat-2.jpg",
   },
   {
     value: "100+",
     label: "Founders and entrepreneurs personally mentored",
-    img: "/images/hero.jpg",
+    img: "/images/about-stat-3.jpg",
   },
 ];
 
@@ -74,7 +74,7 @@ export function About() {
               style={{ aspectRatio: "4/3" }}
             >
               <Image
-                src="/images/philosophy.jpg"
+                src="/images/about-foundation.jpg"
                 alt="Oshokoya Damilare"
                 fill
                 className="object-cover"
