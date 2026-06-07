@@ -12,7 +12,7 @@ export function AboutStory() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col gap-10"
+          className="flex flex-col items-center text-center gap-10"
         >
           <motion.h2
             variants={fadeUp}
@@ -23,7 +23,7 @@ export function AboutStory() {
 
           <motion.div
             variants={fadeUp}
-            className="flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-[1.85]"
+            className="flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-[1.85] max-w-2xl"
           >
             <p>
               Entrepreneurship, to me, is not simply the pursuit of profitable

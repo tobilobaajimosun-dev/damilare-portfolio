@@ -45,7 +45,7 @@ export function LeadershipJourney() {
   // ── Mobile: simple vertical list ──────────────────────────────────────
   if (isMobile) {
     return (
-      <section className="py-24 px-6 bg-background border-t border-border">
+      <section className="py-14 px-6 bg-background border-t border-border">
         <h2 className="font-display font-normal text-[clamp(2rem,8vw,3rem)] tracking-tight text-foreground leading-tight mb-12">
           Leadership Journey
         </h2>
@@ -78,7 +78,7 @@ export function LeadershipJourney() {
       <div className="sticky top-0 h-screen overflow-hidden bg-background">
 
         {/* Header */}
-        <div className="absolute top-0 left-0 right-0 px-6 md:px-10 lg:px-16 pt-20 z-10">
+        <div className="absolute top-0 left-0 right-0 px-6 md:px-10 lg:px-16 pt-14 z-10">
           <div className="mx-auto w-full max-w-[var(--container-default)]">
             <h2 className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight">
               Leadership Journey

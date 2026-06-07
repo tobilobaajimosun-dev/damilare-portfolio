@@ -14,10 +14,10 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7 }}
-          className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-16"
+          className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-16 text-center"
         >
-          Hear from satisfied{" "}
-          <span className="text-muted-foreground">property owners.</span>
+          What clients{" "}
+          <span className="text-muted-foreground">say.</span>
         </motion.h2>
 
         <motion.div
