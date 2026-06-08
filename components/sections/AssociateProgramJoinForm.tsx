@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
+import { sendApplication, type ApplicationState } from "@/app/actions/application";
 
 const POWER3_INOUT = [0.7, 0, 0.3, 1] as const;
 
@@ -26,20 +28,24 @@ const referralOptions = [
 const inputBase =
   "w-full px-4 py-3 text-sm bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-200";
 
-export function AssociateProgramJoinForm() {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName:  "",
-    email:     "",
-    phone:     "",
-    source:    "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+const initialState: ApplicationState = { status: "idle" };
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground text-sm rounded-xl [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200 font-medium disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+    >
+      {pending ? "Submitting…" : "Apply to Join"}
+      {!pending && <ArrowRight size={14} />}
+    </button>
+  );
+}
+
+export function AssociateProgramJoinForm() {
+  const [state, formAction] = useActionState(sendApplication, initialState);
 
   return (
     <section
@@ -67,7 +73,6 @@ export function AssociateProgramJoinForm() {
         >
           <div className="px-8 md:px-10 py-10 md:py-12">
 
-            {/* Card heading */}
             <motion.h2
               {...scrollFade(0.05)}
               className="font-display font-normal text-[clamp(1.6rem,3vw,2.2rem)] leading-tight tracking-tight text-primary mb-3"
@@ -83,7 +88,7 @@ export function AssociateProgramJoinForm() {
               steps.
             </motion.p>
 
-            {submitted ? (
+            {state.status === "success" ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.97 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -92,12 +97,13 @@ export function AssociateProgramJoinForm() {
               >
                 <p className="font-display text-xl text-foreground">Application received.</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Thank you — we&apos;ll be in touch within 3–5 business days to
-                  discuss next steps.
+                  Thank you for reaching out — every application is reviewed personally.
+                  If it&apos;s the right fit, we&apos;ll be in touch within a few days
+                  with everything you need to get started.
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form action={formAction} className="flex flex-col gap-5">
 
                 {/* First / Last name */}
                 <div className="grid grid-cols-2 gap-4">
@@ -106,11 +112,10 @@ export function AssociateProgramJoinForm() {
                       First Name
                     </label>
                     <input
+                      name="firstName"
                       type="text"
                       required
-                      placeholder="Enter your full name"
-                      value={form.firstName}
-                      onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                      placeholder="Enter your first name"
                       className={inputBase}
                     />
                   </div>
@@ -119,11 +124,10 @@ export function AssociateProgramJoinForm() {
                       Last Name
                     </label>
                     <input
+                      name="lastName"
                       type="text"
                       required
                       placeholder="Enter your last name"
-                      value={form.lastName}
-                      onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                       className={inputBase}
                     />
                   </div>
@@ -136,11 +140,10 @@ export function AssociateProgramJoinForm() {
                       Email Address <span className="text-primary">(required)</span>
                     </label>
                     <input
+                      name="email"
                       type="email"
                       required
                       placeholder="Enter your email address"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className={inputBase}
                     />
                   </div>
@@ -148,7 +151,6 @@ export function AssociateProgramJoinForm() {
                     <label className="text-xs text-foreground/70 font-medium">
                       Phone Number <span className="text-primary">(required)</span>
                     </label>
-                    {/* Phone with flag prefix */}
                     <div className="flex items-stretch border border-border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/40 transition-all duration-200 bg-background">
                       <div className="flex items-center gap-1.5 px-3 py-3 bg-surface border-r border-border shrink-0 text-sm text-foreground/70">
                         <span>🇳🇬</span>
@@ -156,11 +158,10 @@ export function AssociateProgramJoinForm() {
                         <ChevronDown size={11} className="text-muted-foreground" />
                       </div>
                       <input
+                        name="phone"
                         type="tel"
                         required
                         placeholder="000000000"
-                        value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         className="flex-1 px-3 py-3 text-sm bg-transparent outline-none placeholder:text-muted-foreground/50 text-foreground"
                       />
                     </div>
@@ -174,9 +175,9 @@ export function AssociateProgramJoinForm() {
                   </label>
                   <div className="relative">
                     <select
+                      name="source"
                       required
-                      value={form.source}
-                      onChange={(e) => setForm({ ...form, source: e.target.value })}
+                      defaultValue=""
                       className={`${inputBase} appearance-none pr-10 cursor-pointer`}
                     >
                       <option value="" disabled>
@@ -193,14 +194,11 @@ export function AssociateProgramJoinForm() {
                   </div>
                 </div>
 
-                {/* Submit */}
-                <button
-                  type="submit"
-                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground text-sm rounded-xl [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200 font-medium"
-                >
-                  Apply to Join
-                  <ArrowRight size={14} />
-                </button>
+                <SubmitButton />
+
+                {state.status === "error" && (
+                  <p className="text-xs text-destructive text-center">{state.message}</p>
+                )}
 
               </form>
             )}

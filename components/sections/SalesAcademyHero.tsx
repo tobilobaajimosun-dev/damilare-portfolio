@@ -145,8 +145,8 @@ export function SalesAcademyHero() {
           transition={{ duration: 1, ease: POWER3_INOUT, delay: 0.75 }}
           className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed"
         >
-          A structured community designed to train, develop, and reward
-          ambitious professionals seeking long-term growth in real estate.
+          Structured mentorship, real opportunities, and a community built
+          for long-term growth in real estate.
         </motion.p>
 
         {/* CTAs */}

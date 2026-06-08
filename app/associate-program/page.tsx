@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SalesAcademyHero } from "@/components/sections/SalesAcademyHero";
 import { SalesAcademyCurriculum } from "@/components/sections/SalesAcademyCurriculum";
+import { AssociateProgramIncludes } from "@/components/sections/AssociateProgramIncludes";
 import { AssociateProgramWhoIsItFor } from "@/components/sections/AssociateProgramWhoIsItFor";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { AssociateProgramFAQ } from "@/components/sections/AssociateProgramFAQ";
@@ -29,6 +30,7 @@ export default function AssociateProgramPage() {
       <main id="main-content">
         <SalesAcademyHero />
         <SalesAcademyCurriculum />
+        <AssociateProgramIncludes />
         <AssociateProgramWhoIsItFor />
         <Testimonials />
         <AssociateProgramFAQ />
