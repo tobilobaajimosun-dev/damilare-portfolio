@@ -12,5 +12,5 @@ export const brand = {
     instagram: "https://www.instagram.com/oshokoyadamilare/",
   },
   bookingUrl: "/contact",
-  trainingUrl: "/sales-academy",
+  trainingUrl: "/associate-program",
 } as const;

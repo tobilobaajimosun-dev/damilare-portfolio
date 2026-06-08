@@ -2,11 +2,9 @@
 
 import { motion } from "framer-motion";
 
-// Detroit Paris easing
 const POWER3_INOUT = [0.7, 0, 0.3, 1] as const;
 const EXPO_OUT     = [0.16, 1, 0.3, 1] as const;
 
-// Line mask reveal
 const lineReveal = {
   hidden: { y: "110%" },
   visible: (i: number) => ({
@@ -15,17 +13,15 @@ const lineReveal = {
   }),
 };
 
-// Standard scroll fade — trigger at top 90% like Detroit Paris
 const scrollFade = (delay = 0) => ({
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
-  viewport: { once: true, margin: "-10%" }, // fires at ~90% viewport entry
+  viewport: { once: true, margin: "-10%" },
   transition: { duration: 1, ease: POWER3_INOUT, delay },
 });
 
-// Row slide-up fade — staggered
 const rowVariants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -33,121 +29,147 @@ const rowVariants = {
   }),
 };
 
-const modules = [
-  { number: "01", title: "The Psychology of Selling",    description: "Understand how buyers think and decide. Build trust that converts." },
-  { number: "02", title: "Building a Sales System",      description: "Repeatable frameworks for prospecting, qualifying, and moving deals forward." },
-  { number: "03", title: "Communication & Persuasion",   description: "Pitch, present, and negotiate with clarity, confidence, and conviction." },
-  { number: "04", title: "Closing & Follow-Through",     description: "When to push, when to wait, and how to seal with integrity." },
-  { number: "05", title: "Pipeline & Lead Generation",   description: "Consistent qualified leads — outreach, referrals, relationship-led selling." },
-  { number: "06", title: "Scaling Through Sales",        description: "Build a team, set targets, create infrastructure for predictable revenue." },
-];
-
-const profiles = [
-  { title: "Entrepreneurs & Founders",      description: "You have a product but struggle to sell it consistently." },
-  { title: "Sales Professionals",           description: "You want to sharpen skills and develop a more strategic approach." },
-  { title: "Business Development Leads",    description: "You need structured frameworks, not just tactics." },
-  { title: "Career Changers",               description: "You want to enter sales and need a strong foundation fast." },
+const pillars = [
+  {
+    number: "01",
+    title: "Structured Learning",
+    description: "Learn documentation, customer engagement, sales systems, negotiation, and disciplined execution.",
+  },
+  {
+    number: "02",
+    title: "Practical Mentorship",
+    description: "Receive guidance from experienced professionals who have built businesses and led teams.",
+  },
+  {
+    number: "03",
+    title: "Performance-Based Growth",
+    description: "Progress through measurable action and consistent execution.",
+  },
+  {
+    number: "04",
+    title: "Access To Opportunities",
+    description: "Participate within a network connected to real projects, partnerships, and business opportunities.",
+  },
+  {
+    number: "05",
+    title: "Community",
+    description: "Grow alongside people committed to learning, accountability, and long-term thinking.",
+  },
 ];
 
 export function SalesAcademyCurriculum() {
   return (
-    <section id="curriculum" className="py-20 md:py-32 px-6 md:px-10 lg:px-16 bg-background">
-      <div className="mx-auto w-full max-w-[var(--container-default)]">
+    <section id="programme" className="bg-background">
 
-        {/* Section header — line reveal */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 md:pb-16 border-b border-border overflow-hidden">
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="font-display font-normal text-[clamp(2rem,4.5vw,3.75rem)] leading-tight tracking-tight text-foreground"
-          >
-            {["The", "Programme"].map((word, i) => (
-              <span key={word} className="block overflow-hidden">
-                <motion.span className="block" custom={i} variants={lineReveal}>
-                  {word}
-                </motion.span>
-              </span>
-            ))}
-          </motion.h2>
+      {/* ── Why This Exists ──────────────────────────────── */}
+      <div className="py-20 md:py-32 px-6 md:px-10 lg:px-16 border-t border-border">
+        <div className="mx-auto w-full max-w-[var(--container-default)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
 
-          <motion.p
-            {...scrollFade(0.2)}
-            className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right"
-          >
-            Six modules covering every dimension of sales mastery —
-            mindset to system to scale.
-          </motion.p>
-        </div>
+            {/* Left — headline */}
+            <div className="overflow-hidden">
+              <motion.p
+                {...scrollFade(0)}
+                className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans mb-6"
+              >
+                Why This Exists
+              </motion.p>
+              <motion.h2
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-10%" }}
+                className="font-display font-normal text-[clamp(2rem,4.5vw,3.75rem)] leading-tight tracking-tight text-foreground"
+              >
+                {["Opportunity", "should not", "be chaotic."].map((line, i) => (
+                  <span key={i} className="block overflow-hidden">
+                    <motion.span className="block" custom={i} variants={lineReveal}>
+                      {line}
+                    </motion.span>
+                  </span>
+                ))}
+              </motion.h2>
+            </div>
 
-        {/* Module rows — staggered scroll reveal */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-10%" }}
-          className="flex flex-col"
-        >
-          {modules.map((mod, i) => (
+            {/* Right — body */}
             <motion.div
-              key={mod.number}
-              custom={i}
-              variants={rowVariants}
-              className="grid grid-cols-[36px_1fr] md:grid-cols-[52px_1fr_1fr] items-start gap-4 md:gap-10 py-6 md:py-8 border-b border-border group hover:bg-surface/60 transition-colors duration-300 -mx-6 md:-mx-10 lg:-mx-16 px-6 md:px-10 lg:px-16"
+              {...scrollFade(0.2)}
+              className="flex flex-col gap-5 text-base text-muted-foreground leading-relaxed self-end"
             >
-              <span className="font-mono text-xs text-muted-foreground/50 pt-0.5 tabular-nums">
-                {mod.number}
-              </span>
-              <p className="font-display text-base md:text-lg font-normal text-foreground leading-snug">
-                {mod.title}
+              <p>
+                Too many people enter real estate without structure, mentorship,
+                or a clear growth path.
               </p>
-              <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
-                {mod.description}
+              <p>
+                The Associate Program was created to help people grow through
+                systems, accountability, and practical execution. Members
+                receive guidance, develop skills, and build confidence within
+                an ecosystem designed for long-term success.
               </p>
+              <p className="text-foreground">This is organised opportunity.</p>
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
+        </div>
+      </div>
 
-        {/* Who it's for */}
-        <div className="mt-20 md:mt-28">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 border-b border-border overflow-hidden">
+      {/* ── What Members Experience ───────────────────────── */}
+      <div className="py-20 md:py-32 px-6 md:px-10 lg:px-16 border-t border-border">
+        <div className="mx-auto w-full max-w-[var(--container-default)]">
+
+          {/* Section header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 md:pb-16 border-b border-border overflow-hidden">
             <motion.h2
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-10%" }}
-              className="font-display font-normal text-[clamp(1.75rem,3.5vw,3rem)] leading-tight tracking-tight text-foreground"
+              className="font-display font-normal text-[clamp(2rem,4.5vw,3.75rem)] leading-tight tracking-tight text-foreground"
             >
-              {["Who", "it's for"].map((word, i) => (
-                <span key={word} className="block overflow-hidden">
+              {["What Members", "Experience"].map((line, i) => (
+                <span key={i} className="block overflow-hidden">
                   <motion.span className="block" custom={i} variants={lineReveal}>
-                    {word}
+                    {line}
                   </motion.span>
                 </span>
               ))}
             </motion.h2>
-
             <motion.p
-              {...scrollFade(0.15)}
+              {...scrollFade(0.2)}
               className="text-sm text-muted-foreground max-w-xs leading-relaxed"
             >
-              Built for people who are serious about sustainable growth.
+              Five pillars that define how members learn, grow, and succeed
+              within the programme.
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border">
-            {profiles.map((p, i) => (
+          {/* Pillar rows — Detroit Paris editorial style */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-10%" }}
+            className="flex flex-col"
+          >
+            {pillars.map((p, i) => (
               <motion.div
-                key={p.title}
-                {...scrollFade(i * 0.08)}
-                className="bg-background flex flex-col gap-1.5 py-6 md:py-8 pr-6"
+                key={p.number}
+                custom={i}
+                variants={rowVariants}
+                className="grid grid-cols-[36px_1fr] md:grid-cols-[52px_1fr_1fr] items-start gap-4 md:gap-10 py-6 md:py-8 border-b border-border hover:bg-surface/60 transition-colors duration-300 -mx-6 md:-mx-10 lg:-mx-16 px-6 md:px-10 lg:px-16"
               >
-                <p className="text-sm font-normal text-foreground">{p.title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+                <span className="font-mono text-xs text-muted-foreground/50 pt-0.5 tabular-nums">
+                  {p.number}
+                </span>
+                <p className="font-display text-base md:text-lg font-normal text-foreground leading-snug">
+                  {p.title}
+                </p>
+                <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
+                  {p.description}
+                </p>
               </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
 
+        </div>
       </div>
+
     </section>
   );
 }
