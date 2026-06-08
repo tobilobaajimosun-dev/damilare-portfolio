@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const POWER3_INOUT = [0.7, 0, 0.3, 1] as const;
@@ -20,40 +21,51 @@ const scrollFade = (delay = 0) => ({
   transition: { duration: 1, ease: POWER3_INOUT, delay },
 });
 
-const rowVariants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: POWER3_INOUT, delay: i * 0.06 },
-  }),
-};
+// ── Stats ──────────────────────────────────────────────────────
+const stats = [
+  { number: "200+",  label: "Professionals mentored" },
+  { number: "₦1B+",  label: "Opportunities shared"   },
+  { number: "10+",   label: "Expert mentors"          },
+  { number: "3",     label: "Cohorts completed"       },
+];
 
+// ── Pillars ─────────────────────────────────────────────────────
+// Replace image src values with programme-specific photos when ready.
 const pillars = [
   {
     number: "01",
     title: "Structured Learning",
-    description: "Learn documentation, customer engagement, sales systems, negotiation, and disciplined execution.",
+    description:
+      "Learn documentation, customer engagement, negotiation frameworks, and disciplined execution — the building blocks of a sustainable real estate business.",
+    image: "/images/real-estate.jpg",
   },
   {
     number: "02",
     title: "Practical Mentorship",
-    description: "Receive guidance from experienced professionals who have built businesses and led teams.",
+    description:
+      "Receive guidance from experienced professionals who have built businesses and navigated the real estate landscape across multiple cycles.",
+    image: "/images/portrait-2.jpg",
   },
   {
     number: "03",
     title: "Performance-Based Growth",
-    description: "Progress through measurable action and consistent execution.",
+    description:
+      "Progress through measurable action and consistent execution. Growth within the programme reflects real-world competence, not time served.",
+    image: "/images/about-foundation.jpg",
   },
   {
     number: "04",
     title: "Access To Opportunities",
-    description: "Participate within a network connected to real projects, partnerships, and business opportunities.",
+    description:
+      "Participate within a network connected to real projects, partnerships, and deal flow. Active members gain access as they demonstrate readiness.",
+    image: "/images/philosophy.jpg",
   },
   {
     number: "05",
     title: "Community",
-    description: "Grow alongside people committed to learning, accountability, and long-term thinking.",
+    description:
+      "Grow alongside people committed to learning, accountability, and long-term thinking. The network compounds over time.",
+    image: "/images/about-stat-1.jpg",
   },
 ];
 
@@ -66,8 +78,7 @@ export function SalesAcademyCurriculum() {
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
 
-            {/* Left — headline */}
-            <div className="overflow-hidden">
+            <div>
               <motion.p
                 {...scrollFade(0)}
                 className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans mb-6"
@@ -90,7 +101,6 @@ export function SalesAcademyCurriculum() {
               </motion.h2>
             </div>
 
-            {/* Right — body */}
             <motion.div
               {...scrollFade(0.2)}
               className="flex flex-col gap-5 text-base text-muted-foreground leading-relaxed self-end"
@@ -105,18 +115,42 @@ export function SalesAcademyCurriculum() {
                 receive guidance, develop skills, and build confidence within
                 an ecosystem designed for long-term success.
               </p>
-              <p className="text-foreground">This is organised opportunity.</p>
+              <p className="text-foreground font-normal">This is organised opportunity.</p>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* ── What Members Experience ───────────────────────── */}
-      <div className="py-20 md:py-32 px-6 md:px-10 lg:px-16 border-t border-border">
+      {/* ── Stats ────────────────────────────────────────── */}
+      <div className="border-t border-border px-6 md:px-10 lg:px-16 py-16 md:py-20">
         <div className="mx-auto w-full max-w-[var(--container-default)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.8, ease: POWER3_INOUT, delay: i * 0.07 }}
+                className="flex flex-col gap-2"
+              >
+                <span className="font-display font-normal text-[clamp(2.5rem,6vw,5rem)] leading-none tracking-tight text-foreground">
+                  {s.number}
+                </span>
+                <span className="text-sm text-muted-foreground leading-snug">
+                  {s.label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-          {/* Section header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 md:pb-16 border-b border-border overflow-hidden">
+      {/* ── What Members Experience ───────────────────────── */}
+      <div className="border-t border-border">
+        {/* Header */}
+        <div className="px-6 md:px-10 lg:px-16 py-16 md:py-20 mx-auto w-full max-w-[var(--container-default)]">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <motion.h2
               initial="hidden"
               whileInView="visible"
@@ -139,35 +173,52 @@ export function SalesAcademyCurriculum() {
               within the programme.
             </motion.p>
           </div>
+        </div>
 
-          {/* Pillar rows — Detroit Paris editorial style */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="flex flex-col"
-          >
-            {pillars.map((p, i) => (
-              <motion.div
-                key={p.number}
-                custom={i}
-                variants={rowVariants}
-                className="grid grid-cols-[36px_1fr] md:grid-cols-[52px_1fr_1fr] items-start gap-4 md:gap-10 py-6 md:py-8 border-b border-border hover:bg-surface/60 transition-colors duration-300 -mx-6 md:-mx-10 lg:-mx-16 px-6 md:px-10 lg:px-16"
+        {/* Alternating image / text rows */}
+        {pillars.map((p, i) => {
+          const imageLeft = i % 2 === 0;
+          return (
+            <motion.div
+              key={p.number}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-8%" }}
+              transition={{ duration: 0.9, ease: POWER3_INOUT }}
+              className="grid grid-cols-1 md:grid-cols-2 border-t border-border min-h-[400px] md:min-h-[500px]"
+            >
+              {/* Image panel */}
+              <div
+                className={`relative h-64 md:h-auto ${imageLeft ? "md:order-1" : "md:order-2"}`}
               >
-                <span className="font-mono text-xs text-muted-foreground/50 pt-0.5 tabular-nums">
+                <Image
+                  src={p.image}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                  alt={p.title}
+                />
+              </div>
+
+              {/* Text panel */}
+              <div
+                className={`flex flex-col justify-center gap-5 px-8 md:px-12 lg:px-16 py-10 md:py-0 ${
+                  imageLeft ? "md:order-2" : "md:order-1"
+                }`}
+              >
+                <span className="font-mono text-xs text-muted-foreground/40 tabular-nums">
                   {p.number}
                 </span>
-                <p className="font-display text-base md:text-lg font-normal text-foreground leading-snug">
+                <h3 className="font-display font-normal text-2xl md:text-3xl leading-snug text-foreground">
                   {p.title}
-                </p>
-                <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
+                </h3>
+                <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
                   {p.description}
                 </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-        </div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
     </section>
