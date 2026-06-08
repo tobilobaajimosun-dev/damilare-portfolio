@@ -102,7 +102,7 @@ export function Footer() {
                     >
                       {label}
                     </span>
-                    <ArrowUpRight size={14} className="opacity-30 shrink-0 mt-1" />
+                    <ArrowUpRight size={14} className="opacity-30 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 shrink-0 mt-1" />
                   </a>
                 </motion.div>
               ))}

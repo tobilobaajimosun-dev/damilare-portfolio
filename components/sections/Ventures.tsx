@@ -45,8 +45,19 @@ export function Ventures() {
             <motion.div
               key={v.name}
               variants={fadeUp}
-              className="group flex flex-col bg-background rounded-2xl border border-border hover:border-foreground/20 hover:shadow-sm transition-all duration-300 overflow-hidden"
+              className="relative group flex flex-col bg-background rounded-2xl border border-border hover:border-foreground/20 hover:shadow-sm transition-all duration-300 overflow-hidden"
             >
+              {/* Full-card click target for ventures with a URL */}
+              {v.url && (
+                <a
+                  href={v.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${v.name}`}
+                  className="absolute inset-0 z-10"
+                />
+              )}
+
               {/* Logo area — always present; blank for ventures without a logo */}
               <div className="flex items-center justify-between px-6 pt-6 pb-4 min-h-[56px]">
                 <div className="h-8 flex items-center">
@@ -63,15 +74,10 @@ export function Ventures() {
                   )}
                 </div>
                 {v.url && (
-                  <a
-                    href={v.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${v.name}`}
-                    className="text-muted-foreground/40 hover:text-primary transition-colors duration-200 opacity-0 group-hover:opacity-100 shrink-0"
-                  >
-                    <ArrowUpRight size={16} />
-                  </a>
+                  <ArrowUpRight
+                    size={16}
+                    className="text-muted-foreground/40 group-hover:text-primary opacity-0 group-hover:opacity-100 transition-all duration-200 shrink-0"
+                  />
                 )}
               </div>
 
