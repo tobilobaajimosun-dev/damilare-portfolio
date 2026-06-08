@@ -1,16 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
-const programmes = [
-  { name: "Wadhwani Foundation", logo: "/images/Wadhwani Foundation Logo.webp" },
-  { name: "Enactus", logo: "/images/enactus.png" },
-  { name: "Futurize", logo: null },
-];
+const programmes = ["Wadhwani Foundation", "Enactus", "Futurize"];
 
 export function Mentorship() {
   return (
@@ -66,26 +61,15 @@ export function Mentorship() {
           viewport={{ once: true, margin: "-60px" }}
           className="flex flex-wrap items-center justify-center gap-8 mb-12"
         >
-          {programmes.map(({ name, logo }) => (
+          {programmes.map((name) => (
             <motion.div
               key={name}
               variants={fadeUp}
-              className="flex items-center justify-center h-12 px-6 bg-surface border border-border rounded-xl min-w-[140px]"
+              className="flex items-center justify-center h-10 px-5 bg-surface border border-border rounded-full"
             >
-              {logo ? (
-                <Image
-                  src={logo}
-                  alt={name}
-                  width={120}
-                  height={36}
-                  className="object-contain max-h-7 w-auto grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-                  unoptimized
-                />
-              ) : (
-                <span className="text-xs font-medium text-muted-foreground/60 tracking-wide">
-                  {name}
-                </span>
-              )}
+              <span className="text-xs font-medium text-muted-foreground tracking-wide whitespace-nowrap">
+                {name}
+              </span>
             </motion.div>
           ))}
         </motion.div>
