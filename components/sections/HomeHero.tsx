@@ -42,8 +42,8 @@ export function HomeHero() {
               className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed"
             >
               Building businesses, developing leaders, and creating
-              opportunities across Africa — with faith, discipline, and
-              long-term vision.
+              opportunities across Africa — with faith, discipline, and{" "}
+              <span className="text-[oklch(0.52_0.16_152)]">long-term vision.</span>
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">

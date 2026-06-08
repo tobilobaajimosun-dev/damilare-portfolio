@@ -131,7 +131,7 @@ export function SalesAcademyCurriculum() {
                 transition={{ duration: 0.8, ease: POWER3_INOUT, delay: i * 0.07 }}
                 className="flex flex-col gap-2"
               >
-                <span className="font-display font-normal text-[clamp(2.5rem,6vw,5rem)] leading-none tracking-tight text-foreground">
+                <span className="font-display font-normal text-[clamp(2.5rem,6vw,5rem)] leading-none tracking-tight text-[oklch(0.52_0.16_152)]">
                   {s.number}
                 </span>
                 <span className="text-sm text-muted-foreground leading-snug">

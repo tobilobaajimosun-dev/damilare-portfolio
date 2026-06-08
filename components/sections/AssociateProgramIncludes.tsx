@@ -73,7 +73,7 @@ export function AssociateProgramIncludes() {
                 <item.Icon
                   size={20}
                   strokeWidth={1.5}
-                  className="text-background/60"
+                  className="text-[oklch(0.72_0.18_152)]"
                 />
                 <h3 className="font-display text-lg font-normal text-background">{item.title}</h3>
                 <p className="text-sm text-background/50 leading-relaxed">{item.description}</p>

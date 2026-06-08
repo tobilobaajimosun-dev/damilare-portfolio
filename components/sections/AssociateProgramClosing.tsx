@@ -33,17 +33,7 @@ export function AssociateProgramClosing() {
         </div>
 
         {/* Quote + CTA */}
-        <div className="flex flex-col justify-center gap-7 px-8 md:px-12 lg:px-16 py-16 md:py-20">
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.8, ease: POWER3_INOUT }}
-            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
-          >
-            The Programme
-          </motion.p>
+        <div className="flex flex-col justify-center gap-7 px-8 md:px-12 lg:px-16 py-24 md:py-36">
 
           <motion.h2
             initial="hidden"
@@ -51,10 +41,17 @@ export function AssociateProgramClosing() {
             viewport={{ once: true, margin: "-10%" }}
             className="font-display font-normal text-[clamp(2rem,4vw,3.5rem)] leading-tight tracking-tight text-foreground"
           >
-            {["The right guidance", "changes everything."].map((line, i) => (
+            {[
+              { text: "The right guidance",  accent: false },
+              { text: "changes everything.", accent: true  },
+            ].map(({ text, accent }, i) => (
               <span key={i} className="block overflow-hidden">
-                <motion.span className="block" custom={i} variants={lineReveal}>
-                  {line}
+                <motion.span
+                  className={`block ${accent ? "text-[oklch(0.52_0.16_152)]" : ""}`}
+                  custom={i}
+                  variants={lineReveal}
+                >
+                  {text}
                 </motion.span>
               </span>
             ))}
