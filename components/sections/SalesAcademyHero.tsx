@@ -15,61 +15,93 @@ const lineReveal = {
   }),
 };
 
-// Fan layout — center tallest, progressively smaller outward.
-// Edge photos clip naturally on small screens (intentional, matches reference).
+// Each card has a fixed tilt. Index 2 (centre of the initial set) is straight.
+// Alternating angles give the scattered, scattered-grid look from the reference.
 const photos = [
-  { src: "/images/about-c1.jpg", w: 156, h: 208, rotate: -9  },
-  { src: "/images/about-c2.jpg", w: 190, h: 253, rotate: -4  },
-  { src: "/images/about-c3.jpg", w: 228, h: 304, rotate:  0  },
-  { src: "/images/about-c4.jpg", w: 190, h: 253, rotate:  4  },
-  { src: "/images/about-c5.jpg", w: 156, h: 208, rotate:  9  },
+  { src: "/images/about-c4.jpg", rotate: -6  },
+  { src: "/images/about-c2.jpg", rotate:  8  },
+  { src: "/images/about-c3.jpg", rotate:  0  }, // centre — stays straight
+  { src: "/images/about-c1.jpg", rotate: -4  },
+  { src: "/images/about-c5.jpg", rotate:  6  },
 ];
+
+// Duplicate for seamless loop: animate x from 0 → -50% of total width
+const track = [...photos, ...photos];
+
+// Card inner image dimensions (3:4 portrait, white mat around it)
+const IMG_W = 196;
+const IMG_H = 260;
+const MAT   = 10; // white frame padding
 
 export function SalesAcademyHero() {
   return (
     <section className="flex flex-col items-center pt-16 md:pt-20 bg-background overflow-hidden">
 
-      {/* ── Photo fan ─────────────────────────────────────────── */}
-      {/* overflow-hidden on section clips edge photos on narrow screens */}
-      <div className="flex items-end justify-center w-full">
-        {photos.map((photo, i) => (
-          // Outer div: handles reveal animation + rotation
-          <motion.div
-            key={i}
-            className="flex-shrink-0"
-            style={{ rotate: photo.rotate, marginLeft: -10, marginRight: -10 }}
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: EXPO_OUT, delay: 0.05 + i * 0.07 }}
-          >
-            {/* Inner div: continuous float, is the relative container for Image */}
-            <motion.div
-              className="relative rounded-2xl overflow-hidden shadow-[0_6px_30px_rgba(0,0,0,0.11)]"
-              style={{ width: photo.w, height: photo.h }}
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 4.2 + i * 0.55,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "mirror",
-                delay: i * 0.45,
+      {/* ── Infinite marquee ──────────────────────────────── */}
+      {/*
+        Outer div clips the track; no padding so cards bleed edge-to-edge.
+        Track is 2× the original set width → animate x: 0 to -50% = one full set.
+      */}
+      <div className="w-full overflow-hidden select-none" aria-hidden>
+        <motion.div
+          className="flex items-end"
+          style={{ width: "fit-content", gap: 20 }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              duration: 32,
+              ease: "linear",
+              repeat: Infinity,
+              repeatType: "loop",
+            },
+          }}
+        >
+          {track.map((photo, i) => (
+            /*
+              Each card wrapper applies its fixed rotation via CSS transform.
+              The outer motion.div (the track) translates; the inner style
+              applies the tilt so tilt never drifts during scroll.
+            */
+            <div
+              key={i}
+              className="flex-shrink-0"
+              style={{
+                transform: `rotate(${photo.rotate}deg)`,
+                // Shift each card down slightly so the arc bottom aligns and
+                // taller/straighter centre cards feel "raised".
+                marginBottom: Math.abs(photo.rotate) * 3,
               }}
             >
-              <Image
-                src={photo.src}
-                fill
-                sizes={`${photo.w}px`}
-                className="object-cover"
-                alt=""
-                priority={i === 2}
-              />
-            </motion.div>
-          </motion.div>
-        ))}
+              {/* White mat / polaroid frame */}
+              <div
+                style={{
+                  padding: MAT,
+                  background: "#ffffff",
+                  borderRadius: 6,
+                  boxShadow: "0 4px 28px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05)",
+                }}
+              >
+                <div
+                  className="relative overflow-hidden"
+                  style={{ width: IMG_W, height: IMG_H }}
+                >
+                  <Image
+                    src={photo.src}
+                    fill
+                    sizes={`${IMG_W}px`}
+                    className="object-cover object-top"
+                    alt=""
+                    draggable={false}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* ── Text ──────────────────────────────────────────────── */}
-      <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-6 mt-12 md:mt-14 pb-20 md:pb-24">
+      {/* ── Text ──────────────────────────────────────────── */}
+      <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-5 mt-12 md:mt-14 pb-20 md:pb-24">
 
         <motion.h1
           initial="hidden"
