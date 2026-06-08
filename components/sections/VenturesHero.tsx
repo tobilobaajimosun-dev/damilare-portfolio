@@ -13,7 +13,7 @@ export function VenturesHero() {
           "linear-gradient(to bottom, transparent 15%, oklch(0.99 0 0) 72%)",
       }}
     >
-      <BackgroundPattern variant="light" className="opacity-[0.03]" />
+      <BackgroundPattern variant="light" />
 
       <div className="relative mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
