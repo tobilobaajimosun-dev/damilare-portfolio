@@ -17,17 +17,16 @@ const lineReveal = {
 };
 
 // ── Carousel config ────────────────────────────────────────────────
-const CARD_W  = 224;
-const CARD_H  = 316;
-const X_STEP  = 248;  // px between card centres (equal gap between all adjacent cards)
-const ARC_Y   = 24;   // px the arc drops per step from centre
-const ARC_ROT = 7;    // deg tilt per step from centre
-const SCALE_S = 0.06; // scale reduction per step from centre
+const CARD_W  = 280;
+const CARD_H  = 400;
+const X_STEP  = 320;  // px between card centres — 40px gap between card edges
+const ARC_Y   = 30;   // px the arc drops per step from centre
+const ARC_ROT = 6;    // deg tilt per step from centre
+const SCALE_S = 0.05; // scale reduction per step from centre
 
-const PHOTO_REGION_H = 430;
+const PHOTO_REGION_H = 520;
 const PT = 112; // pt-28
-// Centre card sits at this Y so the whole arc fits within PHOTO_REGION_H
-const BASE_Y = Math.round((PHOTO_REGION_H - CARD_H) / 2) - 12;
+const BASE_Y = Math.round((PHOTO_REGION_H - CARD_H) / 2) - 10;
 
 const photos = [
   "/images/about-c1.jpg",

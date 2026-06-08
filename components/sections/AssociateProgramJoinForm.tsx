@@ -66,17 +66,15 @@ export function AssociateProgramJoinForm() {
 
             <motion.h2
               {...scrollFade(0.05)}
-              className="font-display font-normal text-[clamp(1.6rem,3vw,2.2rem)] leading-tight tracking-tight text-primary mb-3"
+              className="font-display font-normal text-[clamp(1.6rem,3vw,2.2rem)] leading-tight tracking-tight text-primary mb-3 text-center"
             >
               Interested in joining the network?
             </motion.h2>
             <motion.p
               {...scrollFade(0.1)}
-              className="text-sm text-muted-foreground leading-relaxed mb-8"
+              className="text-sm text-muted-foreground leading-relaxed mb-8 text-center"
             >
-              Submit your details below to begin the review process. Selected
-              applicants will be contacted with onboarding information and next
-              steps.
+              Fill in your details and we&apos;ll take it from there.
             </motion.p>
 
             {state.status === "success" ? (

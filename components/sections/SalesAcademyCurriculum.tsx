@@ -21,7 +21,6 @@ const scrollFade = (delay = 0) => ({
   transition: { duration: 1, ease: POWER3_INOUT, delay },
 });
 
-// ₦ removed from 1B+
 const stats = [
   { number: "200+", label: "Professionals mentored" },
   { number: "1B+",  label: "Opportunities shared"   },
@@ -31,35 +30,30 @@ const stats = [
 
 const pillars = [
   {
-    number: "01",
     title: "Structured Learning",
     description:
       "Learn documentation, customer engagement, negotiation frameworks, and disciplined execution: the building blocks of a sustainable real estate business.",
     image: "/images/real-estate.jpg",
   },
   {
-    number: "02",
     title: "Practical Mentorship",
     description:
       "Receive guidance from experienced professionals who have built businesses and navigated the real estate landscape across multiple cycles.",
     image: "/images/portrait-2.jpg",
   },
   {
-    number: "03",
     title: "Performance-Based Growth",
     description:
       "Progress through measurable action and consistent execution. Growth within the programme reflects real-world competence, not time served.",
     image: "/images/about-foundation.jpg",
   },
   {
-    number: "04",
     title: "Access To Opportunities",
     description:
       "Participate within a network connected to real projects, partnerships, and deal flow. Active members gain access as they demonstrate readiness.",
     image: "/images/philosophy.jpg",
   },
   {
-    number: "05",
     title: "Community",
     description:
       "Grow alongside people committed to learning, accountability, and long-term thinking. The network compounds over time.",
@@ -69,19 +63,25 @@ const pillars = [
 
 export function SalesAcademyCurriculum() {
   return (
-    <section id="programme" className="bg-background">
+    <section id="programme" className="bg-background relative overflow-hidden">
+
+      {/* ── Decorative D-shape arcs ──────────────────────────── */}
+      <div
+        className="absolute right-0 translate-x-1/2 rounded-full border border-foreground/[0.05] pointer-events-none"
+        style={{ width: "min(45vw, 560px)", aspectRatio: "1/1", top: "8%" }}
+        aria-hidden
+      />
+      <div
+        className="absolute left-0 -translate-x-1/2 rounded-full border border-foreground/[0.05] pointer-events-none"
+        style={{ width: "min(32vw, 440px)", aspectRatio: "1/1", bottom: "30%" }}
+        aria-hidden
+      />
 
       {/* ── Why This Exists ──────────────────────────────── */}
-      <div className="pt-16 md:pt-24 pb-10 md:pb-14 px-6 md:px-10 lg:px-16">
+      <div className="pt-[88px] md:pt-[120px] pb-10 md:pb-14 px-6 md:px-10 lg:px-16">
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
             <div>
-              <motion.p
-                {...scrollFade(0)}
-                className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans mb-6"
-              >
-                Why This Exists
-              </motion.p>
               <motion.h2
                 initial="hidden"
                 whileInView="visible"
@@ -118,7 +118,7 @@ export function SalesAcademyCurriculum() {
         </div>
       </div>
 
-      {/* ── Stats — no top border, tighter spacing ───────── */}
+      {/* ── Stats ────────────────────────────────────────── */}
       <div className="px-6 md:px-10 lg:px-16 pb-14 md:pb-20">
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
@@ -146,15 +146,9 @@ export function SalesAcademyCurriculum() {
       {/* ── What Members Experience ───────────────────────── */}
       <div className="border-t border-border">
 
-        {/* Centred section header */}
+        {/* Section header — no eyebrow */}
         <div className="px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-10 md:pb-14">
           <div className="mx-auto w-full max-w-[var(--container-default)] flex flex-col items-center text-center gap-4">
-            <motion.p
-              {...scrollFade(0)}
-              className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
-            >
-              Five Pillars
-            </motion.p>
             <motion.h2
               initial="hidden"
               whileInView="visible"
@@ -179,56 +173,57 @@ export function SalesAcademyCurriculum() {
           </div>
         </div>
 
-        {/* Pillar rows — image in contained card, text alongside */}
-        {pillars.map((p, i) => {
-          const imageLeft = i % 2 === 0;
+        {/* Pillar rows — contained within site margin, no dividers, no numbers */}
+        <div className="px-6 md:px-10 lg:px-16 pb-16 md:pb-24">
+          <div className="mx-auto w-full max-w-[var(--container-default)]">
+            <div className="flex flex-col gap-8 md:gap-10">
+              {pillars.map((p, i) => {
+                const imageLeft = i % 2 === 0;
+                return (
+                  <motion.div
+                    key={p.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-8%" }}
+                    transition={{ duration: 0.9, ease: POWER3_INOUT }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+                  >
+                    {/* Image card */}
+                    <div
+                      className={`relative rounded-2xl overflow-hidden bg-surface ${
+                        imageLeft ? "md:order-1" : "md:order-2"
+                      }`}
+                      style={{ minHeight: 380 }}
+                    >
+                      <Image
+                        src={p.image}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                        alt={p.title}
+                      />
+                    </div>
 
-          return (
-            <motion.div
-              key={p.number}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-8%" }}
-              transition={{ duration: 0.9, ease: POWER3_INOUT }}
-              className="grid grid-cols-1 md:grid-cols-2 border-t border-border"
-            >
-              {/* Image side — padded card presentation */}
-              <div
-                className={`p-6 md:p-8 flex items-stretch ${imageLeft ? "md:order-1" : "md:order-2"}`}
-              >
-                <div
-                  className="relative w-full rounded-2xl overflow-hidden bg-surface"
-                  style={{ minHeight: 360 }}
-                >
-                  <Image
-                    src={p.image}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                    alt={p.title}
-                  />
-                </div>
-              </div>
+                    {/* Text */}
+                    <div
+                      className={`flex flex-col justify-center gap-4 py-4 md:py-8 ${
+                        imageLeft ? "md:order-2 md:pl-4" : "md:order-1 md:pr-4"
+                      }`}
+                    >
+                      <h3 className="font-display font-normal text-2xl md:text-3xl leading-snug text-foreground">
+                        {p.title}
+                      </h3>
+                      <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
+                        {p.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
-              {/* Text side */}
-              <div
-                className={`flex flex-col justify-center gap-4 px-8 md:px-10 lg:px-14 py-10 md:py-14 ${
-                  imageLeft ? "md:order-2" : "md:order-1"
-                }`}
-              >
-                <span className="font-mono text-xs text-muted-foreground/40 tabular-nums">
-                  {p.number}
-                </span>
-                <h3 className="font-display font-normal text-2xl md:text-3xl leading-snug text-foreground">
-                  {p.title}
-                </h3>
-                <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
-                  {p.description}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
       </div>
 
     </section>
