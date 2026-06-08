@@ -13,20 +13,7 @@ export function VenturesHero() {
           "linear-gradient(to bottom, transparent 15%, oklch(0.99 0 0) 72%)",
       }}
     >
-      <BackgroundPattern variant="light" />
-
-      {/* D D watermark */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none overflow-hidden"
-      >
-        <span
-          className="font-display font-normal text-foreground/[0.03] leading-none tracking-[-0.05em] whitespace-nowrap"
-          style={{ fontSize: "clamp(18rem, 40vw, 38rem)" }}
-        >
-          D D
-        </span>
-      </div>
+      <BackgroundPattern variant="light" className="opacity-[0.03]" />
 
       <div className="relative mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
