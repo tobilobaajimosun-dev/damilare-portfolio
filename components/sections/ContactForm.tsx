@@ -49,39 +49,57 @@ export function ContactForm() {
       className="flex flex-col gap-5"
     >
       <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <input
-          name="firstName"
-          type="text"
-          placeholder="First name"
-          required
-          className={inputClasses}
-        />
-        <input
-          name="lastName"
-          type="text"
-          placeholder="Last name"
-          className={inputClasses}
-        />
+        <label className="flex flex-col gap-1.5">
+          <span className="sr-only">First name</span>
+          <input
+            name="firstName"
+            type="text"
+            placeholder="First name"
+            required
+            autoComplete="given-name"
+            className={inputClasses}
+          />
+        </label>
+        <label className="flex flex-col gap-1.5">
+          <span className="sr-only">Last name</span>
+          <input
+            name="lastName"
+            type="text"
+            placeholder="Last name"
+            autoComplete="family-name"
+            className={inputClasses}
+          />
+        </label>
       </motion.div>
 
       <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <input
-          name="email"
-          type="email"
-          placeholder="Email address"
-          required
-          className={inputClasses}
-        />
-        <input
-          name="phone"
-          type="tel"
-          placeholder="Phone number (optional)"
-          className={inputClasses}
-        />
+        <label className="flex flex-col gap-1.5">
+          <span className="sr-only">Email address</span>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email address"
+            required
+            autoComplete="email"
+            className={inputClasses}
+          />
+        </label>
+        <label className="flex flex-col gap-1.5">
+          <span className="sr-only">Phone number (optional)</span>
+          <input
+            name="phone"
+            type="tel"
+            placeholder="Phone number (optional)"
+            autoComplete="tel"
+            className={inputClasses}
+          />
+        </label>
       </motion.div>
 
       <motion.div variants={fadeUp} className="relative">
+        <label className="sr-only" htmlFor="reason">Reason for contacting</label>
         <select
+          id="reason"
           name="reason"
           required
           defaultValue=""
@@ -103,13 +121,16 @@ export function ContactForm() {
       </motion.div>
 
       <motion.div variants={fadeUp}>
-        <textarea
-          name="message"
-          placeholder="Tell me a little about what you're building…"
-          required
-          rows={5}
-          className={`${inputClasses} resize-none`}
-        />
+        <label className="flex flex-col gap-1.5">
+          <span className="sr-only">Message</span>
+          <textarea
+            name="message"
+            placeholder="Tell me a little about what you're building…"
+            required
+            rows={5}
+            className={`${inputClasses} resize-none`}
+          />
+        </label>
       </motion.div>
 
       <motion.div variants={fadeUp} className="flex flex-col gap-3">

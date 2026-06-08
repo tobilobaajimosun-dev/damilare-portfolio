@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { generalSans, ltSuperiorSerif, archivo, geistMono, homemadeApple } from "@/lib/fonts";
 import { baseMetadata, siteConfig } from "@/lib/metadata";
 import { ScrollBlur } from "@/components/layout/ScrollBlur";
+import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -41,7 +42,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <a href="#main-content" className="skip-nav">Skip to main content</a>
-        {children}
+        <MotionProvider>
+          {children}
+        </MotionProvider>
         <ScrollBlur />
         <Analytics />
       </body>

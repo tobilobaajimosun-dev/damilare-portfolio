@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import {
   motion,
   useScroll,
@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, X } from "lucide-react";
 import type { Variants } from "framer-motion";
 
 const blurUp: Variants = {
@@ -28,9 +28,35 @@ const stagger: Variants = {
 
 export function HomeVision() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const modalVideoRef = useRef<HTMLVideoElement>(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [inSection, setInSection] = useState(false);
   const [videoActive, setVideoActive] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = useCallback(() => {
+    if (videoActive) setModalOpen(true);
+  }, [videoActive]);
+
+  const closeModal = useCallback(() => setModalOpen(false), []);
+
+  useEffect(() => {
+    if (!modalOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeModal(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen, closeModal]);
+
+  useEffect(() => {
+    if (modalOpen && modalVideoRef.current) {
+      modalVideoRef.current.currentTime = 0;
+      modalVideoRef.current.play().catch(() => {});
+    }
+  }, [modalOpen]);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -114,6 +140,7 @@ export function HomeVision() {
               borderRadius: videoBorderRadius,
             }}
             className="overflow-hidden bg-neutral-900"
+            onClick={openModal}
           >
             <video
               src="/videos/damilare-reel.mp4"
@@ -142,6 +169,47 @@ export function HomeVision() {
             <div className="w-16 h-16 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 shadow-lg">
               <Play size={18} className="text-white ml-0.5" fill="white" />
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Video modal ── */}
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Video player"
+            className="fixed inset-0 z-[900] flex items-center justify-center bg-black/90 backdrop-blur-sm px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={closeModal}
+          >
+            <motion.div
+              className="relative w-full max-w-4xl"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                ref={modalVideoRef}
+                src="/videos/damilare-reel.mp4"
+                controls
+                playsInline
+                className="w-full rounded-2xl shadow-2xl bg-black"
+              />
+              <button
+                onClick={closeModal}
+                aria-label="Close video"
+                className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              >
+                <X size={18} />
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
