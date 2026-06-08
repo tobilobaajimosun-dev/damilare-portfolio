@@ -22,23 +22,23 @@ const CARD_GAP = 16; // px — right-margin per card (gap between cards)
 const profiles = [
   {
     text: "Entrepreneurs expanding into real estate",
-    image: "/images/real-estate.jpg",
+    image: "/images/ap-profile-1.jpg",
   },
   {
     text: "Professionals seeking additional income",
-    image: "/images/about-c3.jpg",
+    image: "/images/ap-profile-2.jpg",
   },
   {
     text: "Recent graduates and growth-minded individuals",
-    image: "/images/about-c4.jpg",
+    image: "/images/ap-profile-3.jpg",
   },
   {
     text: "Business owners exploring property investment",
-    image: "/images/about-foundation.jpg",
+    image: "/images/ap-profile-4.jpg",
   },
   {
     text: "Ambitious people ready to learn and execute",
-    image: "/images/portrait-2.jpg",
+    image: "/images/ap-profile-5.jpg",
   },
 ];
 

@@ -33,31 +33,31 @@ const pillars = [
     title: "Structured Learning",
     description:
       "Learn documentation, customer engagement, negotiation frameworks, and disciplined execution: the building blocks of a sustainable real estate business.",
-    image: "/images/real-estate.jpg",
+    image: "/images/ap-pillar-learning.jpg",
   },
   {
     title: "Practical Mentorship",
     description:
       "Receive guidance from experienced professionals who have built businesses and navigated the real estate landscape across multiple cycles.",
-    image: "/images/portrait-2.jpg",
+    image: "/images/ap-pillar-mentorship.jpg",
   },
   {
     title: "Performance-Based Growth",
     description:
       "Progress through measurable action and consistent execution. Growth within the programme reflects real-world competence, not time served.",
-    image: "/images/about-foundation.jpg",
+    image: "/images/ap-pillar-growth.jpg",
   },
   {
     title: "Access To Opportunities",
     description:
       "Participate within a network connected to real projects, partnerships, and deal flow. Active members gain access as they demonstrate readiness.",
-    image: "/images/philosophy.jpg",
+    image: "/images/ap-pillar-opportunities.jpg",
   },
   {
     title: "Community",
     description:
       "Grow alongside people committed to learning, accountability, and long-term thinking. The network compounds over time.",
-    image: "/images/about-stat-1.jpg",
+    image: "/images/ap-pillar-community.jpg",
   },
 ];
 

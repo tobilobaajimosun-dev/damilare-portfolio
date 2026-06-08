@@ -17,13 +17,13 @@ const lineReveal = {
 };
 
 const photos = [
-  "/images/about-c1.jpg",
-  "/images/about-c2.jpg",
-  "/images/about-c3.jpg",
-  "/images/about-c4.jpg",
-  "/images/about-c5.jpg",
-  "/images/about-c6.jpg",
-  "/images/real-estate.jpg",
+  "/images/ap-hero-1.jpg",
+  "/images/ap-hero-2.jpg",
+  "/images/ap-hero-3.jpg",
+  "/images/ap-hero-4.jpg",
+  "/images/ap-hero-5.jpg",
+  "/images/ap-hero-6.jpg",
+  "/images/ap-hero-7.jpg",
 ];
 const N = photos.length;
 

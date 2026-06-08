@@ -24,7 +24,7 @@ export function AssociateProgramClosing() {
         <div className="p-6 md:p-10 flex items-stretch">
           <div className="relative w-full rounded-2xl overflow-hidden bg-surface min-h-[360px] md:min-h-[480px]">
             <Image
-              src="/images/portrait-2.jpg"
+              src="/images/ap-closing.jpg"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-top"
