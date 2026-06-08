@@ -47,10 +47,10 @@ export function Ventures() {
               variants={fadeUp}
               className="group flex flex-col bg-background rounded-2xl border border-border hover:border-foreground/20 hover:shadow-sm transition-all duration-300 overflow-hidden"
             >
-              {/* Logo area */}
-              <div className="flex items-center justify-between px-6 pt-6 pb-4">
-                <div className="h-8 flex items-center">
-                  {v.logo ? (
+              {/* Logo area — only rendered when a logo exists */}
+              {v.logo && (
+                <div className="flex items-center justify-between px-6 pt-6 pb-4">
+                  <div className="h-8 flex items-center">
                     <Image
                       src={v.logo}
                       alt={`${v.name} logo`}
@@ -59,35 +59,42 @@ export function Ventures() {
                       className="object-contain object-left max-h-8 w-auto"
                       unoptimized
                     />
-                  ) : (
-                    <span className="font-display text-lg font-normal text-foreground">
-                      {v.name}
-                    </span>
+                  </div>
+                  {v.url && (
+                    <a
+                      href={v.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${v.name}`}
+                      className="text-muted-foreground/40 hover:text-primary transition-colors duration-200 opacity-0 group-hover:opacity-100"
+                    >
+                      <ArrowUpRight size={16} />
+                    </a>
                   )}
                 </div>
-                {v.url && (
-                  <a
-                    href={v.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${v.name}`}
-                    className="text-muted-foreground/40 hover:text-primary transition-colors duration-200 opacity-0 group-hover:opacity-100"
-                  >
-                    <ArrowUpRight size={16} />
-                  </a>
-                )}
-              </div>
+              )}
 
               {/* Content */}
-              <div className="flex flex-col gap-3 px-6 pb-8 flex-1">
-                <span className="text-[0.6rem] tracking-[0.2em] uppercase font-sans text-muted-foreground">
-                  {v.category}
-                </span>
-                {v.logo && (
-                  <p className="font-display text-xl font-normal text-foreground group-hover:text-primary transition-colors duration-200">
-                    {v.name}
-                  </p>
-                )}
+              <div className={`flex flex-col gap-3 px-6 pb-8 flex-1 ${v.logo ? "pt-0" : "pt-6"}`}>
+                <div className="flex items-center justify-between">
+                  <span className="text-[0.6rem] tracking-[0.2em] uppercase font-sans text-muted-foreground">
+                    {v.category}
+                  </span>
+                  {!v.logo && v.url && (
+                    <a
+                      href={v.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${v.name}`}
+                      className="text-muted-foreground/40 hover:text-primary transition-colors duration-200 opacity-0 group-hover:opacity-100"
+                    >
+                      <ArrowUpRight size={16} />
+                    </a>
+                  )}
+                </div>
+                <p className="font-display text-xl font-normal text-foreground group-hover:text-primary transition-colors duration-200">
+                  {v.name}
+                </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {v.description}
                 </p>
