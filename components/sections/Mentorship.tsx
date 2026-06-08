@@ -24,6 +24,7 @@ export function Mentorship() {
           className="flex flex-col items-center text-center gap-4 mb-10"
         >
           <motion.h2
+            key="heading"
             variants={fadeUp}
             className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight"
           >
@@ -31,7 +32,7 @@ export function Mentorship() {
             <span className="text-muted-foreground">generation.</span>
           </motion.h2>
 
-          <motion.blockquote variants={fadeUp} className="max-w-2xl">
+          <motion.blockquote key="quote" variants={fadeUp} className="max-w-2xl">
             <p className="font-display text-xl md:text-2xl font-normal text-muted-foreground leading-snug">
               &ldquo;The most meaningful work I do isn&apos;t measured in
               revenue. It&apos;s measured in the founders who found their
@@ -40,6 +41,7 @@ export function Mentorship() {
           </motion.blockquote>
 
           <motion.div
+            key="body"
             variants={fadeUp}
             className="flex flex-col gap-5 text-base text-muted-foreground leading-[1.8] max-w-2xl"
           >
