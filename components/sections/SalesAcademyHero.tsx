@@ -16,35 +16,39 @@ const lineReveal = {
 };
 
 // ── Photo arc config ───────────────────────────────────────────────
+// All cards are the same dimensions — the arc comes from position + tilt only.
 // offsetX: distance from screen centre (px, positive = right)
 // top: distance from photo-region top (px)
-// rotate: static tilt angle (deg); 0 = centre card, stays straight
-// entryDelay: stagger for the roll-in animation (rightmost first)
-// oscAmp: how many degrees the card rocks ±; 0 = no rocking (centre)
+// rotate: tilt angle (deg); centre card is 0
+// entryDelay: stagger for the roll-in (rightmost first)
+// oscAmp: rocking amplitude ±deg; all cards rock, centre very subtly
+const CARD_W = 224;
+const CARD_H = 316;
+
 const photos = [
   {
     src: "/images/about-c1.jpg",
-    offsetX: -635, top: 165, w: 184, h: 286,
+    offsetX: -635, top: 165,
     rotate: -16, entryDelay: 0.44, oscAmp: 3, oscDur: 3.8,
   },
   {
     src: "/images/about-c2.jpg",
-    offsetX: -315, top: 72, w: 220, h: 328,
+    offsetX: -315, top: 72,
     rotate:  -7, entryDelay: 0.28, oscAmp: 2, oscDur: 4.4,
   },
   {
     src: "/images/about-c3.jpg",
-    offsetX:    0, top: 18, w: 264, h: 372,
-    rotate:   0, entryDelay: 0.12, oscAmp: 0, oscDur: 0,
+    offsetX:    0, top: 18,
+    rotate:   0, entryDelay: 0.12, oscAmp: 1, oscDur: 5.0,
   },
   {
     src: "/images/about-c4.jpg",
-    offsetX:  315, top: 72, w: 220, h: 328,
+    offsetX:  315, top: 72,
     rotate:   7, entryDelay: 0.20, oscAmp: 2, oscDur: 4.1,
   },
   {
     src: "/images/about-c5.jpg",
-    offsetX:  635, top: 165, w: 184, h: 286,
+    offsetX:  635, top: 165,
     rotate:  16, entryDelay: 0.36, oscAmp: 3, oscDur: 3.5,
   },
 ];
@@ -68,49 +72,31 @@ export function SalesAcademyHero() {
         style={{ height: PHOTO_REGION_H + 112 }} // +112 for pt-28 (112px)
       >
         {photos.map((p, i) => (
-          /*
-            Outer motion.div: handles the one-time entry roll-in from the right.
-            Position is absolute; left uses calc(50% + offsetX - w/2) so it
-            scales with viewport width automatically.
-          */
           <motion.div
             key={i}
             style={{
               position: "absolute",
-              top: p.top + 112, // offset by pt-28
-              left: `calc(50% + ${p.offsetX - p.w / 2}px)`,
-              zIndex: 5 - Math.abs(i - 2), // centre on top
+              top: p.top + 112,
+              left: `calc(50% + ${p.offsetX - CARD_W / 2}px)`,
+              zIndex: 5 - Math.abs(i - 2),
             }}
             initial={{ x: 280, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.95, ease: EXPO_OUT, delay: p.entryDelay }}
           >
-            {/*
-              Inner motion.div: continuous rocking for non-centre cards.
-              Separate from the entry so the two animations don't conflict.
-            */}
             <motion.div
-              animate={
-                p.oscAmp > 0
-                  ? { rotate: [p.rotate - p.oscAmp, p.rotate + p.oscAmp] }
-                  : { rotate: p.rotate }
-              }
-              transition={
-                p.oscAmp > 0
-                  ? {
-                      duration: p.oscDur,
-                      repeat: Infinity,
-                      repeatType: "mirror",
-                      ease: "easeInOut",
-                    }
-                  : {}
-              }
+              animate={{ rotate: [p.rotate - p.oscAmp, p.rotate + p.oscAmp] }}
+              transition={{
+                duration: p.oscDur,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+              }}
             >
-              {/* Photo — no frame, very light shadow */}
               <div
                 style={{
-                  width:  p.w,
-                  height: p.h,
+                  width: CARD_W,
+                  height: CARD_H,
                   borderRadius: 10,
                   overflow: "hidden",
                   boxShadow: "0 6px 28px rgba(0,0,0,0.08)",
@@ -119,7 +105,7 @@ export function SalesAcademyHero() {
                 <Image
                   src={p.src}
                   fill
-                  sizes={`${p.w}px`}
+                  sizes={`${CARD_W}px`}
                   className="object-cover object-top"
                   alt=""
                   priority={i === 2}
@@ -133,6 +119,15 @@ export function SalesAcademyHero() {
 
       {/* ── Text ──────────────────────────────────────────── */}
       <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-5 mt-10 md:mt-12 pb-20 md:pb-24">
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: POWER3_INOUT, delay: 0.3 }}
+          className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
+        >
+          The Associate Program
+        </motion.p>
 
         <motion.h1
           initial="hidden"

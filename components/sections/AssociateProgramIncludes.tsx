@@ -9,13 +9,13 @@ const items = [
     Icon: BookOpen,
     title: "Structured Curriculum",
     description:
-      "Core frameworks covering documentation, client engagement, negotiation, and execution — designed to move you from foundations to advanced strategy.",
+      "Core frameworks covering documentation, client engagement, negotiation, and execution, designed to move you from foundations to advanced strategy.",
   },
   {
     Icon: Users,
     title: "Group Sessions with Damilare",
     description:
-      "Regular live sessions where Damilare engages directly with members — practical, honest, and grounded in real experience.",
+      "Regular live sessions where Damilare engages directly with members: practical, honest, and grounded in real experience.",
   },
   {
     Icon: Globe,
@@ -27,7 +27,7 @@ const items = [
     Icon: UserCheck,
     title: "One-on-One Mentorship",
     description:
-      "Personalised guidance from experienced professionals — matched to your growth stage and calibrated to your specific goals.",
+      "Personalised guidance from experienced professionals, matched to your growth stage and calibrated to your specific goals.",
   },
   {
     Icon: TrendingUp,
@@ -55,7 +55,6 @@ export function AssociateProgramIncludes() {
           className="flex flex-col gap-12"
         >
           <motion.div variants={fadeUp} className="flex flex-col gap-3 max-w-xl">
-            <p className="text-xs tracking-[0.22em] uppercase text-primary font-sans">What Is Included</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-background leading-tight">
               Everything the programme includes.
             </h2>

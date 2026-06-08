@@ -34,7 +34,7 @@ const pillars = [
     number: "01",
     title: "Structured Learning",
     description:
-      "Learn documentation, customer engagement, negotiation frameworks, and disciplined execution — the building blocks of a sustainable real estate business.",
+      "Learn documentation, customer engagement, negotiation frameworks, and disciplined execution: the building blocks of a sustainable real estate business.",
     image: "/images/real-estate.jpg",
   },
   {
@@ -72,7 +72,7 @@ export function SalesAcademyCurriculum() {
     <section id="programme" className="bg-background">
 
       {/* ── Why This Exists ──────────────────────────────── */}
-      <div className="pt-16 md:pt-24 pb-10 md:pb-14 px-6 md:px-10 lg:px-16 border-t border-border">
+      <div className="pt-16 md:pt-24 pb-10 md:pb-14 px-6 md:px-10 lg:px-16">
         <div className="mx-auto w-full max-w-[var(--container-default)]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
             <div>

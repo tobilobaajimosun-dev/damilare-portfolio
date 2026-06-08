@@ -81,7 +81,7 @@ export function AssociateProgramWhoIsItFor() {
           transition={{ duration: 0.8, ease: POWER3_INOUT, delay: 0.2 }}
           className="text-base text-muted-foreground leading-relaxed"
         >
-          Whether you&apos;re starting, transitioning, or scaling — if you&apos;re
+          Whether you&apos;re starting, transitioning, or scaling, if you&apos;re
           ready to learn and execute, there&apos;s a place for you here.
         </motion.p>
       </div>

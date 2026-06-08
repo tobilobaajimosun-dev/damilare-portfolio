@@ -36,7 +36,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground text-sm rounded-xl [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200 font-medium disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+      className="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground text-sm rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200 font-medium disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
     >
       {pending ? "Submitting…" : "Apply to Join"}
       {!pending && <ArrowRight size={14} />}
@@ -57,8 +57,8 @@ export function AssociateProgramJoinForm() {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: [
-            "repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 24px)",
-            "repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 24px)",
+            "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 24px)",
+            "repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 24px)",
           ].join(", "),
         }}
         aria-hidden
@@ -97,7 +97,7 @@ export function AssociateProgramJoinForm() {
               >
                 <p className="font-display text-xl text-foreground">Application received.</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Thank you for reaching out — every application is reviewed personally.
+                  Thank you for reaching out. Every application is reviewed personally.
                   If it&apos;s the right fit, we&apos;ll be in touch within a few days
                   with everything you need to get started.
                 </p>

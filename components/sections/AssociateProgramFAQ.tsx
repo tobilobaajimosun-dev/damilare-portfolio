@@ -18,7 +18,7 @@ const lineReveal = {
 const faqs = [
   {
     q: "Do I need experience?",
-    a: "No prior real estate experience is required. The Associate Program is designed to meet you where you are — whether you're starting from scratch or looking to formalise existing knowledge. What matters most is commitment to learning and execution.",
+    a: "No prior real estate experience is required. The Associate Program is designed to meet you where you are, whether you're starting from scratch or looking to formalise existing knowledge. What matters most is commitment to learning and execution.",
   },
   {
     q: "Can I join while working a 9–5?",
