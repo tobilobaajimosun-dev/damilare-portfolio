@@ -1,24 +1,28 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { siteConfig } from "@/lib/metadata";
 
 export const alt = siteConfig.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OGImage() {
+export default async function OGImage() {
+  const heroBuffer = await readFile(
+    join(process.cwd(), "public/images/hero.jpg")
+  );
+  const heroSrc = `data:image/jpeg;base64,${heroBuffer.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
         style={{
-          background: "#fafafa",
+          background: "#111111",
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "flex-end",
-          padding: "80px",
-          fontFamily: "serif",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
         {/* Gold accent bar */}
@@ -33,44 +37,113 @@ export default function OGImage() {
           }}
         />
 
-        {/* Name */}
-        <div
+        {/* Hero portrait — right side */}
+        <img
+          src={heroSrc}
           style={{
-            fontSize: 72,
-            fontWeight: 700,
-            color: "#111111",
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
-            marginBottom: 20,
+            position: "absolute",
+            right: 0,
+            top: 0,
+            width: "500px",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center top",
           }}
-        >
-          {siteConfig.name}
-        </div>
+        />
 
-        {/* Tagline */}
-        <div
-          style={{
-            fontSize: 28,
-            color: "#666666",
-            letterSpacing: "0.05em",
-            textTransform: "uppercase",
-          }}
-        >
-          Entrepreneur · Founder · Speaker
-        </div>
-
-        {/* Domain */}
+        {/* Gradient: dark left → transparent right, blends photo into bg */}
         <div
           style={{
             position: "absolute",
-            top: 80,
-            right: 80,
-            fontSize: 18,
-            color: "#C4893A",
-            letterSpacing: "0.08em",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(to right, #111111 50%, rgba(17,17,17,0.1) 100%)",
+          }}
+        />
+
+        {/* Content */}
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            padding: "72px 80px",
+            width: "680px",
           }}
         >
-          damilareoshokoya.com
+          <div
+            style={{
+              fontSize: 13,
+              color: "#C4893A",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              marginBottom: 22,
+              fontFamily: "sans-serif",
+            }}
+          >
+            Oshokoya Damilare
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 0,
+              marginBottom: 28,
+            }}
+          >
+            <div
+              style={{
+                fontSize: 68,
+                fontWeight: 700,
+                color: "#ffffff",
+                lineHeight: 1.05,
+                letterSpacing: "-0.025em",
+                fontFamily: "Georgia, serif",
+              }}
+            >
+              Entrepreneur.
+            </div>
+            <div
+              style={{
+                fontSize: 68,
+                fontWeight: 700,
+                color: "#ffffff",
+                lineHeight: 1.05,
+                letterSpacing: "-0.025em",
+                fontFamily: "Georgia, serif",
+              }}
+            >
+              Founder.
+            </div>
+            <div
+              style={{
+                fontSize: 68,
+                fontWeight: 700,
+                color: "#C4893A",
+                lineHeight: 1.05,
+                letterSpacing: "-0.025em",
+                fontFamily: "Georgia, serif",
+              }}
+            >
+              Strategist.
+            </div>
+          </div>
+
+          <div
+            style={{
+              fontSize: 18,
+              color: "#777777",
+              fontFamily: "sans-serif",
+              letterSpacing: "0.06em",
+            }}
+          >
+            damilareoshokoya.com
+          </div>
         </div>
       </div>
     ),
