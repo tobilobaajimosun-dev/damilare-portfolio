@@ -4,6 +4,7 @@ export type PressItem = {
   domain: string
   excerpt: string
   url: string
+  image?: string
 }
 
 export const press: PressItem[] = [
@@ -14,6 +15,7 @@ export const press: PressItem[] = [
     excerpt:
       "Co-founder of Abode, Damilare Oshokoya, has called for stronger collaboration between the public and private sectors to accelerate housing access and real estate development across Nigeria.",
     url: "https://leadership.ng/realtor-urges-robust-public-private-synergy-for-real-estate-growth/",
+    image: "/images/press/leadership-ng.jpg",
   },
   {
     title: "Oshokoya Urges Public-Private Synergy for Real Estate Growth",
@@ -30,5 +32,6 @@ export const press: PressItem[] = [
     excerpt:
       "Entrepreneur Damilare Oshokoya has advocated for deeper collaboration between government and the private sector to unlock Nigeria's real estate potential.",
     url: "https://newtelegraphng.com/oshokoya-calls-for-stronger-govt-private-sector-partnership/",
+    image: "/images/press/newtelegraph-ng.jpg",
   },
 ]
