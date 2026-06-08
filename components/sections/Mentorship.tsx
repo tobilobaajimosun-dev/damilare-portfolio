@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const programmes = [
-  { name: "Wadhwani Foundation", domain: "wadhwani.org" },
-  { name: "Enactus", domain: "enactus.org" },
-  { name: "Futurize", domain: "futurize.africa" },
+  { name: "Wadhwani Foundation", logo: "/images/Wadhwani Foundation Logo.webp" },
+  { name: "Enactus", logo: "/images/enactus.png" },
+  { name: "Futurize", logo: null },
 ];
 
 export function Mentorship() {
@@ -66,31 +66,26 @@ export function Mentorship() {
           viewport={{ once: true, margin: "-60px" }}
           className="flex flex-wrap items-center justify-center gap-8 mb-12"
         >
-          {programmes.map(({ name, domain }) => (
+          {programmes.map(({ name, logo }) => (
             <motion.div
               key={name}
               variants={fadeUp}
               className="flex items-center justify-center h-12 px-6 bg-surface border border-border rounded-xl min-w-[140px]"
             >
-              <Image
-                src={`https://logo.clearbit.com/${domain}`}
-                alt={name}
-                width={120}
-                height={36}
-                className="object-contain max-h-7 w-auto grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-                unoptimized
-                onError={(e) => {
-                  const img = e.currentTarget;
-                  img.style.display = "none";
-                  const parent = img.parentElement;
-                  if (parent && !parent.querySelector("span")) {
-                    const span = document.createElement("span");
-                    span.className = "text-xs font-medium text-muted-foreground tracking-wide";
-                    span.textContent = name;
-                    parent.appendChild(span);
-                  }
-                }}
-              />
+              {logo ? (
+                <Image
+                  src={logo}
+                  alt={name}
+                  width={120}
+                  height={36}
+                  className="object-contain max-h-7 w-auto grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                  unoptimized
+                />
+              ) : (
+                <span className="text-xs font-medium text-muted-foreground/60 tracking-wide">
+                  {name}
+                </span>
+              )}
             </motion.div>
           ))}
         </motion.div>
