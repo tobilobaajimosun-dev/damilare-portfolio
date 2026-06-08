@@ -8,6 +8,7 @@ import { AssociateProgramWhoIsItFor } from "@/components/sections/AssociateProgr
 import { Testimonials } from "@/components/sections/Testimonials";
 import { AssociateProgramFAQ } from "@/components/sections/AssociateProgramFAQ";
 import { AssociateProgramJoinForm } from "@/components/sections/AssociateProgramJoinForm";
+import { AssociateProgramClosing } from "@/components/sections/AssociateProgramClosing";
 import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function AssociateProgramPage() {
         <Testimonials />
         <AssociateProgramFAQ />
         <AssociateProgramJoinForm />
+        <AssociateProgramClosing />
         <HomeNewsletter />
       </main>
       <Footer />

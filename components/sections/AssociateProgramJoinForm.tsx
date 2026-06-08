@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { sendApplication, type ApplicationState } from "@/app/actions/application";
+import { BackgroundPattern } from "@/components/ui/BackgroundPattern";
 
 const POWER3_INOUT = [0.7, 0, 0.3, 1] as const;
 
@@ -52,17 +53,7 @@ export function AssociateProgramJoinForm() {
       id="apply"
       className="py-20 md:py-28 px-6 bg-foreground relative overflow-hidden"
     >
-      {/* Subtle grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: [
-            "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 24px)",
-            "repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 24px)",
-          ].join(", "),
-        }}
-        aria-hidden
-      />
+      <BackgroundPattern variant="dark" />
 
       <div className="relative mx-auto w-full max-w-xl">
 

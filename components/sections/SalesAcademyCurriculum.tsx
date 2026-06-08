@@ -179,7 +179,7 @@ export function SalesAcademyCurriculum() {
           </div>
         </div>
 
-        {/* Pillar rows — full-bleed image + text, inspired by editorial layout */}
+        {/* Pillar rows — image in contained card, text alongside */}
         {pillars.map((p, i) => {
           const imageLeft = i % 2 === 0;
 
@@ -192,18 +192,22 @@ export function SalesAcademyCurriculum() {
               transition={{ duration: 0.9, ease: POWER3_INOUT }}
               className="grid grid-cols-1 md:grid-cols-2 border-t border-border"
             >
-              {/* Image side — full-bleed, no bg tint */}
+              {/* Image side — padded card presentation */}
               <div
-                className={`relative overflow-hidden ${imageLeft ? "md:order-1" : "md:order-2"}`}
-                style={{ minHeight: 460 }}
+                className={`p-6 md:p-8 flex items-stretch ${imageLeft ? "md:order-1" : "md:order-2"}`}
               >
-                <Image
-                  src={p.image}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                  alt={p.title}
-                />
+                <div
+                  className="relative w-full rounded-2xl overflow-hidden bg-surface"
+                  style={{ minHeight: 360 }}
+                >
+                  <Image
+                    src={p.image}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    alt={p.title}
+                  />
+                </div>
               </div>
 
               {/* Text side */}

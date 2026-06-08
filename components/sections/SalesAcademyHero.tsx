@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -15,106 +16,118 @@ const lineReveal = {
   }),
 };
 
-// ── Photo arc config ───────────────────────────────────────────────
-// All cards are the same dimensions — the arc comes from position + tilt only.
-// offsetX: distance from screen centre (px, positive = right)
-// top: distance from photo-region top (px)
-// rotate: tilt angle (deg); centre card is 0
-// entryDelay: stagger for the roll-in (rightmost first)
-// oscAmp: rocking amplitude ±deg; all cards rock, centre very subtly
-const CARD_W = 224;
-const CARD_H = 316;
+// ── Carousel config ────────────────────────────────────────────────
+const CARD_W  = 224;
+const CARD_H  = 316;
+const X_STEP  = 248;  // px between card centres (equal gap between all adjacent cards)
+const ARC_Y   = 24;   // px the arc drops per step from centre
+const ARC_ROT = 7;    // deg tilt per step from centre
+const SCALE_S = 0.06; // scale reduction per step from centre
+
+const PHOTO_REGION_H = 430;
+const PT = 112; // pt-28
+// Centre card sits at this Y so the whole arc fits within PHOTO_REGION_H
+const BASE_Y = Math.round((PHOTO_REGION_H - CARD_H) / 2) - 12;
 
 const photos = [
-  {
-    src: "/images/about-c1.jpg",
-    offsetX: -635, top: 165,
-    rotate: -16, entryDelay: 0.44, oscAmp: 3, oscDur: 3.8,
-  },
-  {
-    src: "/images/about-c2.jpg",
-    offsetX: -315, top: 72,
-    rotate:  -7, entryDelay: 0.28, oscAmp: 2, oscDur: 4.4,
-  },
-  {
-    src: "/images/about-c3.jpg",
-    offsetX:    0, top: 18,
-    rotate:   0, entryDelay: 0.12, oscAmp: 1, oscDur: 5.0,
-  },
-  {
-    src: "/images/about-c4.jpg",
-    offsetX:  315, top: 72,
-    rotate:   7, entryDelay: 0.20, oscAmp: 2, oscDur: 4.1,
-  },
-  {
-    src: "/images/about-c5.jpg",
-    offsetX:  635, top: 165,
-    rotate:  16, entryDelay: 0.36, oscAmp: 3, oscDur: 3.5,
-  },
+  "/images/about-c1.jpg",
+  "/images/about-c2.jpg",
+  "/images/about-c3.jpg",
+  "/images/about-c4.jpg",
+  "/images/about-c5.jpg",
+  "/images/about-c6.jpg",
+  "/images/real-estate.jpg",
 ];
+const N = photos.length;
 
-// Height of the photo region — must fit the tallest photo (centre: 18+372=390)
-// + a small lower buffer so shadows aren't clipped
-const PHOTO_REGION_H = 420;
+// Position style for a card at signed distance `dist` from the centre slot
+function posStyle(dist: number) {
+  const a = Math.abs(dist);
+  return {
+    x:       dist * X_STEP,
+    y:       a * ARC_Y,
+    scale:   1 - a * SCALE_S,
+    rotate:  dist * ARC_ROT,
+    opacity: a > 2 ? 0 : a === 2 ? 0.65 : 1,
+    zIndex:  5 - a,
+  };
+}
 
 export function SalesAcademyHero() {
+  const [center, setCenter] = useState(0);
+
+  // Advance carousel every 2.5 s
+  useEffect(() => {
+    const id = setInterval(() => setCenter(c => (c + 1) % N), 2500);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section className="flex flex-col items-center bg-background overflow-hidden">
 
-      {/* ── Photo arc region ──────────────────────────────── */}
+      {/* ── Carousel region ───────────────────────────────── */}
       {/*
-        pt-28/pt-32 gives breathing room below the navbar.
-        Photos are absolutely positioned inside a fixed-height relative div.
-        overflow-hidden on the section clips photos that extend beyond the edges.
+        All cards share a zero-width anchor at left: 50%.
+        Each card's left edge starts at -CARD_W/2 (so card centre = 50%).
+        animate.x then shifts it by signedDist × X_STEP.
+        overflow-hidden on the section clips outer cards naturally.
       */}
       <div
         className="relative w-full pt-28 md:pt-32"
-        style={{ height: PHOTO_REGION_H + 112 }} // +112 for pt-28 (112px)
+        style={{ height: PHOTO_REGION_H + PT }}
       >
-        {photos.map((p, i) => (
-          <motion.div
-            key={i}
-            style={{
-              position: "absolute",
-              top: p.top + 112,
-              left: `calc(50% + ${p.offsetX - CARD_W / 2}px)`,
-              zIndex: 5 - Math.abs(i - 2),
-            }}
-            initial={{ x: 280, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.95, ease: EXPO_OUT, delay: p.entryDelay }}
-          >
-            <motion.div
-              animate={{ rotate: [p.rotate - p.oscAmp, p.rotate + p.oscAmp] }}
-              transition={{
-                duration: p.oscDur,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut",
-              }}
-            >
-              <div
+        <div
+          style={{
+            position: "absolute",
+            top: PT,
+            left: "50%",
+            width: 0,
+            height: PHOTO_REGION_H,
+          }}
+        >
+          {photos.map((src, idx) => {
+            const raw  = (idx - center + N) % N;
+            const dist = raw > N / 2 ? raw - N : raw; // –3…+3
+            const s    = posStyle(dist);
+
+            return (
+              <motion.div
+                key={src}
+                animate={{ x: s.x, y: s.y, scale: s.scale, rotate: s.rotate, opacity: s.opacity }}
+                transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
                 style={{
-                  width: CARD_W,
+                  position: "absolute",
+                  top:   BASE_Y,
+                  left: -CARD_W / 2,
+                  width:  CARD_W,
                   height: CARD_H,
-                  borderRadius: 10,
-                  overflow: "hidden",
-                  boxShadow: "0 6px 28px rgba(0,0,0,0.08)",
+                  zIndex: s.zIndex,
                 }}
               >
-                <Image
-                  src={p.src}
-                  fill
-                  sizes={`${CARD_W}px`}
-                  className="object-cover object-top"
-                  alt=""
-                  priority={i === 2}
-                  draggable={false}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        ))}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: 10,
+                    overflow: "hidden",
+                    position: "relative",
+                    boxShadow: "0 6px 28px rgba(0,0,0,0.08)",
+                  }}
+                >
+                  <Image
+                    src={src}
+                    fill
+                    sizes={`${CARD_W}px`}
+                    className="object-cover object-top"
+                    alt=""
+                    priority={idx === 0}
+                    draggable={false}
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
 
       {/* ── Text ──────────────────────────────────────────── */}
@@ -135,8 +148,8 @@ export function SalesAcademyHero() {
           className="font-display font-normal leading-[1.02] tracking-tight text-foreground text-[clamp(2rem,4.5vw,4.5rem)]"
         >
           {[
-            { text: "Build More Than A Career.", muted: false },
-            { text: "Build a future in real estate.", muted: true },
+            { text: "Real estate careers.",   muted: false },
+            { text: "Built with structure.",  muted: true  },
           ].map((line, i) => (
             <span key={i} className="block overflow-hidden">
               <motion.span

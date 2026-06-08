@@ -4,18 +4,17 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { brand } from "@/content/brand";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+import { BackgroundPattern } from "@/components/ui/BackgroundPattern";
 
 export function HomeHero() {
   return (
     <section
       className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-16 px-6 md:px-10 lg:px-16 relative"
       style={{
-        backgroundImage: [
-          "linear-gradient(to bottom, transparent 15%, oklch(0.99 0 0) 48%)",
-          "repeating-linear-gradient(90deg, rgba(0,0,0,0.025) 0px, rgba(0,0,0,0.025) 1px, transparent 1px, transparent 24px)",
-        ].join(", "),
+        backgroundImage: "linear-gradient(to bottom, transparent 15%, oklch(0.99 0 0) 48%)",
       }}
     >
+      <BackgroundPattern variant="light" />
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
