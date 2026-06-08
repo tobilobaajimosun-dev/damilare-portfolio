@@ -11,97 +11,128 @@ const lineReveal = {
   hidden: { y: "110%" },
   visible: (i: number) => ({
     y: "0%",
-    transition: { duration: 1.1, ease: EXPO_OUT, delay: 0.35 + i * 0.13 },
+    transition: { duration: 1.1, ease: EXPO_OUT, delay: 0.5 + i * 0.13 },
   }),
 };
 
-// Each card has a fixed tilt. Index 2 (centre of the initial set) is straight.
-// Alternating angles give the scattered, scattered-grid look from the reference.
+// ── Photo arc config ───────────────────────────────────────────────
+// offsetX: distance from screen centre (px, positive = right)
+// top: distance from photo-region top (px)
+// rotate: static tilt angle (deg); 0 = centre card, stays straight
+// entryDelay: stagger for the roll-in animation (rightmost first)
+// oscAmp: how many degrees the card rocks ±; 0 = no rocking (centre)
 const photos = [
-  { src: "/images/about-c4.jpg", rotate: -6  },
-  { src: "/images/about-c2.jpg", rotate:  8  },
-  { src: "/images/about-c3.jpg", rotate:  0  }, // centre — stays straight
-  { src: "/images/about-c1.jpg", rotate: -4  },
-  { src: "/images/about-c5.jpg", rotate:  6  },
+  {
+    src: "/images/about-c1.jpg",
+    offsetX: -635, top: 165, w: 184, h: 286,
+    rotate: -16, entryDelay: 0.44, oscAmp: 3, oscDur: 3.8,
+  },
+  {
+    src: "/images/about-c2.jpg",
+    offsetX: -315, top: 72, w: 220, h: 328,
+    rotate:  -7, entryDelay: 0.28, oscAmp: 2, oscDur: 4.4,
+  },
+  {
+    src: "/images/about-c3.jpg",
+    offsetX:    0, top: 18, w: 264, h: 372,
+    rotate:   0, entryDelay: 0.12, oscAmp: 0, oscDur: 0,
+  },
+  {
+    src: "/images/about-c4.jpg",
+    offsetX:  315, top: 72, w: 220, h: 328,
+    rotate:   7, entryDelay: 0.20, oscAmp: 2, oscDur: 4.1,
+  },
+  {
+    src: "/images/about-c5.jpg",
+    offsetX:  635, top: 165, w: 184, h: 286,
+    rotate:  16, entryDelay: 0.36, oscAmp: 3, oscDur: 3.5,
+  },
 ];
 
-// Duplicate for seamless loop: animate x from 0 → -50% of total width
-const track = [...photos, ...photos];
-
-// Card inner image dimensions (3:4 portrait, white mat around it)
-const IMG_W = 196;
-const IMG_H = 260;
-const MAT   = 10; // white frame padding
+// Height of the photo region — must fit the tallest photo (centre: 18+372=390)
+// + a small lower buffer so shadows aren't clipped
+const PHOTO_REGION_H = 420;
 
 export function SalesAcademyHero() {
   return (
-    <section className="flex flex-col items-center pt-16 md:pt-20 bg-background overflow-hidden">
+    <section className="flex flex-col items-center bg-background overflow-hidden">
 
-      {/* ── Infinite marquee ──────────────────────────────── */}
+      {/* ── Photo arc region ──────────────────────────────── */}
       {/*
-        Outer div clips the track; no padding so cards bleed edge-to-edge.
-        Track is 2× the original set width → animate x: 0 to -50% = one full set.
+        pt-28/pt-32 gives breathing room below the navbar.
+        Photos are absolutely positioned inside a fixed-height relative div.
+        overflow-hidden on the section clips photos that extend beyond the edges.
       */}
-      <div className="w-full overflow-hidden select-none" aria-hidden>
-        <motion.div
-          className="flex items-end"
-          style={{ width: "fit-content", gap: 20 }}
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            x: {
-              duration: 32,
-              ease: "linear",
-              repeat: Infinity,
-              repeatType: "loop",
-            },
-          }}
-        >
-          {track.map((photo, i) => (
-            /*
-              Each card wrapper applies its fixed rotation via CSS transform.
-              The outer motion.div (the track) translates; the inner style
-              applies the tilt so tilt never drifts during scroll.
-            */
-            <div
-              key={i}
-              className="flex-shrink-0"
-              style={{
-                transform: `rotate(${photo.rotate}deg)`,
-                // Shift each card down slightly so the arc bottom aligns and
-                // taller/straighter centre cards feel "raised".
-                marginBottom: Math.abs(photo.rotate) * 3,
-              }}
+      <div
+        className="relative w-full pt-28 md:pt-32"
+        style={{ height: PHOTO_REGION_H + 112 }} // +112 for pt-28 (112px)
+      >
+        {photos.map((p, i) => (
+          /*
+            Outer motion.div: handles the one-time entry roll-in from the right.
+            Position is absolute; left uses calc(50% + offsetX - w/2) so it
+            scales with viewport width automatically.
+          */
+          <motion.div
+            key={i}
+            style={{
+              position: "absolute",
+              top: p.top + 112, // offset by pt-28
+              left: `calc(50% + ${p.offsetX - p.w / 2}px)`,
+              zIndex: 5 - Math.abs(i - 2), // centre on top
+            }}
+            initial={{ x: 280, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.95, ease: EXPO_OUT, delay: p.entryDelay }}
+          >
+            {/*
+              Inner motion.div: continuous rocking for non-centre cards.
+              Separate from the entry so the two animations don't conflict.
+            */}
+            <motion.div
+              animate={
+                p.oscAmp > 0
+                  ? { rotate: [p.rotate - p.oscAmp, p.rotate + p.oscAmp] }
+                  : { rotate: p.rotate }
+              }
+              transition={
+                p.oscAmp > 0
+                  ? {
+                      duration: p.oscDur,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut",
+                    }
+                  : {}
+              }
             >
-              {/* White mat / polaroid frame */}
+              {/* Photo — no frame, very light shadow */}
               <div
                 style={{
-                  padding: MAT,
-                  background: "#ffffff",
-                  borderRadius: 6,
-                  boxShadow: "0 4px 28px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05)",
+                  width:  p.w,
+                  height: p.h,
+                  borderRadius: 10,
+                  overflow: "hidden",
+                  boxShadow: "0 6px 28px rgba(0,0,0,0.08)",
                 }}
               >
-                <div
-                  className="relative overflow-hidden"
-                  style={{ width: IMG_W, height: IMG_H }}
-                >
-                  <Image
-                    src={photo.src}
-                    fill
-                    sizes={`${IMG_W}px`}
-                    className="object-cover object-top"
-                    alt=""
-                    draggable={false}
-                  />
-                </div>
+                <Image
+                  src={p.src}
+                  fill
+                  sizes={`${p.w}px`}
+                  className="object-cover object-top"
+                  alt=""
+                  priority={i === 2}
+                  draggable={false}
+                />
               </div>
-            </div>
-          ))}
-        </motion.div>
+            </motion.div>
+          </motion.div>
+        ))}
       </div>
 
       {/* ── Text ──────────────────────────────────────────── */}
-      <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-5 mt-12 md:mt-14 pb-20 md:pb-24">
+      <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-5 mt-10 md:mt-12 pb-20 md:pb-24">
 
         <motion.h1
           initial="hidden"
@@ -127,7 +158,7 @@ export function SalesAcademyHero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: POWER3_INOUT, delay: 0.75 }}
+          transition={{ duration: 1, ease: POWER3_INOUT, delay: 0.9 }}
           className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed"
         >
           Structured mentorship, real opportunities, and a community built
@@ -137,7 +168,7 @@ export function SalesAcademyHero() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: POWER3_INOUT, delay: 0.9 }}
+          transition={{ duration: 0.9, ease: POWER3_INOUT, delay: 1.05 }}
         >
           <a
             href="#apply"
