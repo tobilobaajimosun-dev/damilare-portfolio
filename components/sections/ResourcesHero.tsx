@@ -2,11 +2,20 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+import { BackgroundPattern } from "@/components/ui/BackgroundPattern";
 
 export function ResourcesHero() {
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-6 md:px-10 lg:px-16 bg-background">
-      <div className="mx-auto w-full max-w-[var(--container-default)]">
+    <section
+      className="pt-32 pb-16 md:pt-40 md:pb-20 px-6 md:px-10 lg:px-16 relative overflow-hidden"
+      style={{
+        backgroundImage:
+          "linear-gradient(to bottom, transparent 15%, oklch(0.99 0 0) 72%)",
+      }}
+    >
+      <BackgroundPattern variant="light" />
+
+      <div className="relative mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -17,16 +26,16 @@ export function ResourcesHero() {
             variants={fadeUp}
             className="font-display font-normal text-[clamp(2.5rem,5.5vw,4.75rem)] tracking-tight text-foreground leading-[1.06]"
           >
-            Books.{" "}
-            <span className="text-muted-foreground">Speaking.</span>{" "}
-            Mentorship.
+            Knowledge Built
+            <br />
+            <span className="text-muted-foreground">In The Field.</span>
           </motion.h1>
           <motion.p
             variants={fadeUp}
-            className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed"
           >
-            Resources to help you grow your thinking, build your business, and
-            develop as a leader.
+            Books, speaking, and ideas — shaped by building real businesses
+            across Africa.
           </motion.p>
         </motion.div>
       </div>

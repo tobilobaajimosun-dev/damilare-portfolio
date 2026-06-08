@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const programmes = [
-  { name: "Wadhwani Foundation", domain: "wadhwanifoundation.org" },
+  { name: "Wadhwani Foundation", domain: "wadhwani.org" },
   { name: "Enactus", domain: "enactus.org" },
   { name: "Futurize", domain: "futurize.africa" },
 ];
@@ -16,7 +16,7 @@ export function Mentorship() {
   return (
     <section
       id="mentorship"
-      className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background scroll-mt-20"
+      className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-background scroll-mt-20"
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
@@ -26,7 +26,7 @@ export function Mentorship() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col items-center text-center gap-6 mb-16"
+          className="flex flex-col items-center text-center gap-4 mb-10"
         >
           <motion.h2
             variants={fadeUp}
@@ -70,15 +70,26 @@ export function Mentorship() {
             <motion.div
               key={name}
               variants={fadeUp}
-              className="flex items-center justify-center h-12 px-6 bg-surface border border-border rounded-xl"
+              className="flex items-center justify-center h-12 px-6 bg-surface border border-border rounded-xl min-w-[140px]"
             >
               <Image
                 src={`https://logo.clearbit.com/${domain}`}
                 alt={name}
                 width={120}
                 height={36}
-                className="object-contain max-h-7 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-                onError={() => {}}
+                className="object-contain max-h-7 w-auto grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                unoptimized
+                onError={(e) => {
+                  const img = e.currentTarget;
+                  img.style.display = "none";
+                  const parent = img.parentElement;
+                  if (parent && !parent.querySelector("span")) {
+                    const span = document.createElement("span");
+                    span.className = "text-xs font-medium text-muted-foreground tracking-wide";
+                    span.textContent = name;
+                    parent.appendChild(span);
+                  }
+                }}
               />
             </motion.div>
           ))}

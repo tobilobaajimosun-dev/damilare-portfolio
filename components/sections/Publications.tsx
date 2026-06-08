@@ -8,14 +8,14 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function Publications() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col gap-6 mb-16"
+          className="flex flex-col gap-3 mb-10"
         >
           <motion.p
             variants={fadeUp}
@@ -23,14 +23,11 @@ export function Publications() {
           >
             Publications
           </motion.p>
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col md:flex-row md:items-end md:justify-between gap-4"
-          >
+          <motion.div variants={fadeUp} className="flex flex-col gap-2">
             <h2 className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground">
               Books &amp; research.
             </h2>
-            <p className="text-muted-foreground max-w-xs text-sm leading-relaxed md:text-right">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
               Knowledge built in the field and refined on the page.
             </p>
           </motion.div>

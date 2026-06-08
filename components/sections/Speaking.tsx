@@ -10,7 +10,7 @@ export function Speaking() {
   return (
     <section
       id="speaking"
-      className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface scroll-mt-20"
+      className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-surface scroll-mt-20"
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
@@ -20,7 +20,7 @@ export function Speaking() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col items-center text-center gap-6 mb-14"
+          className="flex flex-col items-center text-center gap-4 mb-10"
         >
           <motion.h2
             variants={fadeUp}
@@ -59,7 +59,7 @@ export function Speaking() {
             <motion.div
               key={topic.title}
               variants={fadeUp}
-              className="flex flex-col gap-4 p-6 bg-background rounded-xl border border-border hover:border-primary/25 hover:shadow-sm transition-all duration-300"
+              className="flex flex-col gap-4 p-6 bg-background rounded-xl border border-border"
             >
               <h3 className="font-display text-xl font-normal text-foreground leading-snug">
                 {topic.title}
