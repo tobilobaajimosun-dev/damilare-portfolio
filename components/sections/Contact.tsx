@@ -16,7 +16,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="pt-32 pb-24 md:pt-40 md:pb-36 px-6 md:px-10 lg:px-16 bg-background scroll-mt-20"
+      className="pt-28 pb-20 md:pt-40 md:pb-36 px-5 sm:px-8 md:px-10 lg:px-16 bg-background scroll-mt-20"
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         {/* Heading */}
@@ -24,7 +24,7 @@ export function Contact() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-6 mb-16 max-w-2xl"
+          className="flex flex-col gap-6 mb-16 max-w-2xl mx-auto text-center"
         >
           <motion.p
             variants={fadeUp}
@@ -36,7 +36,7 @@ export function Contact() {
             variants={fadeUp}
             className="font-display font-normal tracking-tight text-foreground leading-[1.0] text-[clamp(2.5rem,6vw,4.5rem)]"
           >
-            Building or scaling?{" "}
+            Have something in mind?{" "}
             <span className="text-muted-foreground">
               Let&apos;s talk.
             </span>
@@ -89,8 +89,8 @@ export function Contact() {
               variants={fadeUp}
               className="text-sm text-muted-foreground leading-relaxed max-w-xs"
             >
-              For mentorship applications and speaking enquiries, use the form —
-              tell me what you&apos;re working on and I&apos;ll be in touch.
+              For mentorship applications and speaking enquiries, use the form.
+              Tell me what you&apos;re working on and I&apos;ll be in touch.
             </motion.p>
           </motion.div>
 

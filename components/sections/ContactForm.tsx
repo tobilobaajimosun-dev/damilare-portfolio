@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { sendContact, type ContactState } from "@/app/actions/contact";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
@@ -28,7 +28,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-foreground/85 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
     >
       {pending ? "Sending…" : "Send Message"}
       {!pending && <ArrowRight size={14} />}
@@ -46,9 +46,9 @@ export function ContactForm() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-5"
     >
-      <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <input
           name="firstName"
           type="text"
@@ -64,7 +64,7 @@ export function ContactForm() {
         />
       </motion.div>
 
-      <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <input
           name="email"
           type="email"
@@ -80,12 +80,12 @@ export function ContactForm() {
         />
       </motion.div>
 
-      <motion.div variants={fadeUp}>
+      <motion.div variants={fadeUp} className="relative">
         <select
           name="reason"
           required
           defaultValue=""
-          className={`${inputClasses} cursor-pointer`}
+          className={`${inputClasses} appearance-none cursor-pointer`}
         >
           <option value="" disabled>
             Reason for contacting
@@ -96,6 +96,10 @@ export function ContactForm() {
             </option>
           ))}
         </select>
+        <ChevronDown
+          size={16}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
+        />
       </motion.div>
 
       <motion.div variants={fadeUp}>
@@ -108,13 +112,13 @@ export function ContactForm() {
         />
       </motion.div>
 
-      <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <motion.div variants={fadeUp} className="flex flex-col gap-3">
         <SubmitButton />
         {state.status === "success" && (
-          <p className="text-sm text-primary font-medium">{state.message}</p>
+          <p className="text-sm text-primary font-medium text-center">{state.message}</p>
         )}
         {state.status === "error" && (
-          <p className="text-sm text-destructive">{state.message}</p>
+          <p className="text-sm text-destructive text-center">{state.message}</p>
         )}
       </motion.div>
     </motion.form>
