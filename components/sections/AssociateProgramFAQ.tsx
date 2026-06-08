@@ -91,7 +91,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
 
 export function AssociateProgramFAQ() {
   return (
-    <section className="py-20 md:py-32 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
+    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-12 md:gap-24">

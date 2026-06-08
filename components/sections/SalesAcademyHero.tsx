@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const EXPO_OUT     = [0.16, 1, 0.3, 1] as const;
 const POWER3_INOUT = [0.7, 0, 0.3, 1] as const;
@@ -18,105 +15,62 @@ const lineReveal = {
   }),
 };
 
-// ── Orbit geometry ────────────────────────────────────────────
-// Orbit circle container: 600×600 (= 2R×2R, R=300)
-// Container bottom edge is at -R below the photo-region's bottom
-// → orbit center sits exactly at the photo-region's bottom edge
-// All photo positions computed relative to the 600×600 container center (300,300)
-const R = 300;
-const ORBIT_SIZE = R * 2; // 600
-
-type PhotoConfig = { src: string; angle: number; w: number; h: number; left: number; top: number };
-
-function buildPhotos(): PhotoConfig[] {
-  const raw = [
-    { src: "/images/about-c1.jpg", angle: -40, w: 140, h: 187 },
-    { src: "/images/about-c2.jpg", angle: -20, w: 155, h: 207 },
-    { src: "/images/about-c3.jpg", angle:   0, w: 175, h: 233 }, // center — largest
-    { src: "/images/about-c4.jpg", angle:  20, w: 155, h: 207 },
-    { src: "/images/about-c5.jpg", angle:  40, w: 140, h: 187 },
-  ];
-  return raw.map((p) => {
-    const rad = (p.angle * Math.PI) / 180;
-    return {
-      ...p,
-      left: R + R * Math.sin(rad) - p.w / 2,
-      top:  R - R * Math.cos(rad) - p.h / 2,
-    };
-  });
-}
-const orbitPhotos = buildPhotos();
-const ORBIT_DURATION = "40s";
+// Fan layout — center tallest, progressively smaller outward.
+// Edge photos clip naturally on small screens (intentional, matches reference).
+const photos = [
+  { src: "/images/about-c1.jpg", w: 156, h: 208, rotate: -9  },
+  { src: "/images/about-c2.jpg", w: 190, h: 253, rotate: -4  },
+  { src: "/images/about-c3.jpg", w: 228, h: 304, rotate:  0  },
+  { src: "/images/about-c4.jpg", w: 190, h: 253, rotate:  4  },
+  { src: "/images/about-c5.jpg", w: 156, h: 208, rotate:  9  },
+];
 
 export function SalesAcademyHero() {
-  const [paused, setPaused] = useState(false);
-
   return (
-    <section className="min-h-[100dvh] flex flex-col items-center pt-20 pb-16 md:pb-24 bg-background overflow-hidden">
+    <section className="flex flex-col items-center pt-16 md:pt-20 bg-background overflow-hidden">
 
-      {/* ── Orbit photo region ─────────────────────────────── */}
-      <div className="relative w-full flex-shrink-0 overflow-hidden" style={{ height: 460 }}>
-        {/*
-          Centering wrapper: left:50% + translateX(-50%) centers the
-          600×600 orbit container. bottom:-300px puts the orbit center
-          exactly at the photo region's bottom edge.
-        */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2"
-          style={{ bottom: `-${R}px` }}
-        >
-          {/* Rotating orbit circle */}
-          <div
-            style={{
-              width:  ORBIT_SIZE,
-              height: ORBIT_SIZE,
-              position: "relative",
-              animationName: "orbit-spin",
-              animationDuration: ORBIT_DURATION,
-              animationTimingFunction: "linear",
-              animationIterationCount: "infinite",
-              animationPlayState: paused ? "paused" : "running",
-            }}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
+      {/* ── Photo fan ─────────────────────────────────────────── */}
+      {/* overflow-hidden on section clips edge photos on narrow screens */}
+      <div className="flex items-end justify-center w-full">
+        {photos.map((photo, i) => (
+          // Outer div: handles reveal animation + rotation
+          <motion.div
+            key={i}
+            className="flex-shrink-0"
+            style={{ rotate: photo.rotate, marginLeft: -10, marginRight: -10 }}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: EXPO_OUT, delay: 0.05 + i * 0.07 }}
           >
-            {orbitPhotos.map((photo, i) => (
-              <div
-                key={i}
-                style={{
-                  position: "absolute",
-                  left:   photo.left,
-                  top:    photo.top,
-                  width:  photo.w,
-                  height: photo.h,
-                  borderRadius: 12,
-                  overflow: "hidden",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.13)",
-                  animationName: "orbit-counter",
-                  animationDuration: ORBIT_DURATION,
-                  animationTimingFunction: "linear",
-                  animationIterationCount: "infinite",
-                  animationPlayState: paused ? "paused" : "running",
-                }}
-              >
-                <Image
-                  src={photo.src}
-                  fill
-                  sizes={`${photo.w}px`}
-                  className="object-cover"
-                  alt=""
-                  priority={i === 2}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+            {/* Inner div: continuous float, is the relative container for Image */}
+            <motion.div
+              className="relative rounded-2xl overflow-hidden shadow-[0_6px_30px_rgba(0,0,0,0.11)]"
+              style={{ width: photo.w, height: photo.h }}
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 4.2 + i * 0.55,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror",
+                delay: i * 0.45,
+              }}
+            >
+              <Image
+                src={photo.src}
+                fill
+                sizes={`${photo.w}px`}
+                className="object-cover"
+                alt=""
+                priority={i === 2}
+              />
+            </motion.div>
+          </motion.div>
+        ))}
       </div>
 
-      {/* ── Text content ───────────────────────────────────── */}
-      <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-6 md:gap-8 mt-10 md:mt-14">
+      {/* ── Text ──────────────────────────────────────────────── */}
+      <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-6 mt-12 md:mt-14 pb-20 md:pb-24">
 
-        {/* Headline — 72px max */}
         <motion.h1
           initial="hidden"
           animate="visible"
@@ -138,7 +92,6 @@ export function SalesAcademyHero() {
           ))}
         </motion.h1>
 
-        {/* Body */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -149,12 +102,10 @@ export function SalesAcademyHero() {
           for long-term growth in real estate.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: POWER3_INOUT, delay: 0.9 }}
-          className="flex flex-wrap items-center justify-center gap-3"
         >
           <a
             href="#apply"
@@ -162,16 +113,6 @@ export function SalesAcademyHero() {
           >
             Join The Program
             <ArrowRight size={14} />
-          </a>
-          <a
-            href="#programme"
-            className={cn(
-              buttonVariants({ variant: "secondary" }),
-              "!h-auto rounded-full px-7 py-3.5 text-sm gap-2"
-            )}
-          >
-            Learn How It Works
-            <ChevronDown size={14} />
           </a>
         </motion.div>
 

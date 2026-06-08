@@ -47,7 +47,7 @@ const marqueeItems = [...profiles, ...profiles];
 
 export function AssociateProgramWhoIsItFor() {
   return (
-    <section className="py-24 md:py-36 bg-background overflow-hidden">
+    <section className="py-16 md:py-24 bg-background overflow-hidden">
 
       {/* ── Centered header ──────────────────────────────── */}
       <div className="text-center max-w-2xl mx-auto px-6 mb-16 md:mb-20">

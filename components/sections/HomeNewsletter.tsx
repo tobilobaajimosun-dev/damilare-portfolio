@@ -65,7 +65,7 @@ export function HomeNewsletter() {
     <>
       {/* ── Section ── */}
       <section
-        className="py-24 md:py-36 px-6 md:px-10 lg:px-16"
+        className="py-16 md:py-24 px-6 md:px-10 lg:px-16"
         style={{ backgroundColor: "oklch(0.93 0.04 152)" }}
       >
         <div className="mx-auto w-full max-w-2xl">

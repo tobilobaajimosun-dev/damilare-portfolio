@@ -7,9 +7,8 @@ import { AssociateProgramIncludes } from "@/components/sections/AssociateProgram
 import { AssociateProgramWhoIsItFor } from "@/components/sections/AssociateProgramWhoIsItFor";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { AssociateProgramFAQ } from "@/components/sections/AssociateProgramFAQ";
-import { SalesAcademyApply } from "@/components/sections/SalesAcademyApply";
 import { AssociateProgramJoinForm } from "@/components/sections/AssociateProgramJoinForm";
-import { HomeFounderNote } from "@/components/sections/HomeFounderNote";
+import { HomeNewsletter } from "@/components/sections/HomeNewsletter";
 
 export const metadata: Metadata = {
   title: "The Associate Program — Damilare Oshokoya",
@@ -34,9 +33,8 @@ export default function AssociateProgramPage() {
         <AssociateProgramWhoIsItFor />
         <Testimonials />
         <AssociateProgramFAQ />
-        <SalesAcademyApply />
         <AssociateProgramJoinForm />
-        <HomeFounderNote />
+        <HomeNewsletter />
       </main>
       <Footer />
     </>

@@ -1,41 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BookOpen, Users, Globe, UserCheck, TrendingUp, Award } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const items = [
   {
-    icon: "◎",
+    Icon: BookOpen,
     title: "Structured Curriculum",
     description:
       "Core frameworks covering documentation, client engagement, negotiation, and execution — designed to move you from foundations to advanced strategy.",
   },
   {
-    icon: "◈",
+    Icon: Users,
     title: "Group Sessions with Damilare",
     description:
       "Regular live sessions where Damilare engages directly with members — practical, honest, and grounded in real experience.",
   },
   {
-    icon: "✦",
+    Icon: Globe,
     title: "Private Member Network",
     description:
       "Access a vetted community of professionals building in real estate across Africa. The relationships compound over time.",
   },
   {
-    icon: "◉",
+    Icon: UserCheck,
     title: "One-on-One Mentorship",
     description:
       "Personalised guidance from experienced professionals — matched to your growth stage and calibrated to your specific goals.",
   },
   {
-    icon: "⊕",
+    Icon: TrendingUp,
     title: "Deal Flow & Opportunities",
     description:
       "Active members gain curated access to real projects, partnerships, and referral opportunities as they demonstrate readiness.",
   },
   {
-    icon: "◐",
+    Icon: Award,
     title: "Performance-Based Advancement",
     description:
       "Growth within the programme is earned. Consistent execution unlocks higher-level roles, responsibilities, and recognition.",
@@ -44,14 +45,14 @@ const items = [
 
 export function AssociateProgramIncludes() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-foreground border-t border-background/10">
+    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-foreground border-t border-background/10">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col gap-14"
+          className="flex flex-col gap-12"
         >
           <motion.div variants={fadeUp} className="flex flex-col gap-3 max-w-xl">
             <p className="text-xs tracking-[0.22em] uppercase text-primary font-sans">What Is Included</p>
@@ -70,7 +71,11 @@ export function AssociateProgramIncludes() {
                 variants={fadeUp}
                 className="flex flex-col gap-4 p-7 bg-background/5 border border-background/10 rounded-2xl hover:bg-background/10 transition-colors duration-200"
               >
-                <span className="text-primary text-2xl leading-none">{item.icon}</span>
+                <item.Icon
+                  size={20}
+                  strokeWidth={1.5}
+                  className="text-background/60"
+                />
                 <h3 className="font-display text-lg font-normal text-background">{item.title}</h3>
                 <p className="text-sm text-background/50 leading-relaxed">{item.description}</p>
               </motion.div>

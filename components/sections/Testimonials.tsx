@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function Testimonials() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
         <motion.h2
