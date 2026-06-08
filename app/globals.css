@@ -178,3 +178,13 @@
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* ── Photo orbit ─────────────────────────────────────────────────────────── */
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orbit-counter {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}

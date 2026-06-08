@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -17,62 +18,109 @@ const lineReveal = {
   }),
 };
 
-const photos = [
-  { src: "/images/about-c1.jpg", rotate: -14, yOffset:  52 },
-  { src: "/images/about-c2.jpg", rotate:  -7, yOffset:  22 },
-  { src: "/images/about-c3.jpg", rotate:   0, yOffset:   0 }, // center — tallest
-  { src: "/images/about-c4.jpg", rotate:   7, yOffset:  22 },
-  { src: "/images/about-c5.jpg", rotate:  14, yOffset:  52 },
-];
+// ── Orbit geometry ────────────────────────────────────────────
+// Orbit circle container: 600×600 (= 2R×2R, R=300)
+// Container bottom edge is at -R below the photo-region's bottom
+// → orbit center sits exactly at the photo-region's bottom edge
+// All photo positions computed relative to the 600×600 container center (300,300)
+const R = 300;
+const ORBIT_SIZE = R * 2; // 600
+
+type PhotoConfig = { src: string; angle: number; w: number; h: number; left: number; top: number };
+
+function buildPhotos(): PhotoConfig[] {
+  const raw = [
+    { src: "/images/about-c1.jpg", angle: -40, w: 140, h: 187 },
+    { src: "/images/about-c2.jpg", angle: -20, w: 155, h: 207 },
+    { src: "/images/about-c3.jpg", angle:   0, w: 175, h: 233 }, // center — largest
+    { src: "/images/about-c4.jpg", angle:  20, w: 155, h: 207 },
+    { src: "/images/about-c5.jpg", angle:  40, w: 140, h: 187 },
+  ];
+  return raw.map((p) => {
+    const rad = (p.angle * Math.PI) / 180;
+    return {
+      ...p,
+      left: R + R * Math.sin(rad) - p.w / 2,
+      top:  R - R * Math.cos(rad) - p.h / 2,
+    };
+  });
+}
+const orbitPhotos = buildPhotos();
+const ORBIT_DURATION = "40s";
 
 export function SalesAcademyHero() {
+  const [paused, setPaused] = useState(false);
+
   return (
     <section className="min-h-[100dvh] flex flex-col items-center pt-20 pb-16 md:pb-24 bg-background overflow-hidden">
 
-      {/* ── Photo cluster ──────────────────────────────────── */}
-      <div className="relative flex items-end justify-center w-full flex-1 min-h-0 overflow-hidden pb-6">
-        <div className="flex items-end justify-center">
-          {photos.map((photo, i) => {
-            const isCenter = i === 2;
-            return (
-              <motion.div
+      {/* ── Orbit photo region ─────────────────────────────── */}
+      <div className="relative w-full flex-shrink-0 overflow-hidden" style={{ height: 460 }}>
+        {/*
+          Centering wrapper: left:50% + translateX(-50%) centers the
+          600×600 orbit container. bottom:-300px puts the orbit center
+          exactly at the photo region's bottom edge.
+        */}
+        <div
+          className="absolute left-1/2 -translate-x-1/2"
+          style={{ bottom: `-${R}px` }}
+        >
+          {/* Rotating orbit circle */}
+          <div
+            style={{
+              width:  ORBIT_SIZE,
+              height: ORBIT_SIZE,
+              position: "relative",
+              animationName: "orbit-spin",
+              animationDuration: ORBIT_DURATION,
+              animationTimingFunction: "linear",
+              animationIterationCount: "infinite",
+              animationPlayState: paused ? "paused" : "running",
+            }}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {orbitPhotos.map((photo, i) => (
+              <div
                 key={i}
-                initial={{ opacity: 0, y: photo.yOffset + 80, rotate: photo.rotate }}
-                animate={{ opacity: 1, y: photo.yOffset, rotate: photo.rotate }}
-                transition={{ duration: 1.2, ease: EXPO_OUT, delay: i * 0.07 }}
                 style={{
-                  zIndex: 5 - Math.abs(i - 2),
-                  marginLeft: i > 0 ? "-1.5rem" : "0",
-                  width: isCenter
-                    ? "clamp(150px,17vw,220px)"
-                    : "clamp(120px,13vw,180px)",
-                  aspectRatio: "3 / 4",
-                  flexShrink: 0,
+                  position: "absolute",
+                  left:   photo.left,
+                  top:    photo.top,
+                  width:  photo.w,
+                  height: photo.h,
+                  borderRadius: 12,
+                  overflow: "hidden",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.13)",
+                  animationName: "orbit-counter",
+                  animationDuration: ORBIT_DURATION,
+                  animationTimingFunction: "linear",
+                  animationIterationCount: "infinite",
+                  animationPlayState: paused ? "paused" : "running",
                 }}
-                className="relative overflow-hidden rounded-xl shadow-lg bg-surface"
               >
                 <Image
                   src={photo.src}
                   fill
-                  sizes="220px"
+                  sizes={`${photo.w}px`}
                   className="object-cover"
                   alt=""
-                  priority={isCenter}
+                  priority={i === 2}
                 />
-              </motion.div>
-            );
-          })}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* ── Text content ───────────────────────────────────── */}
       <div className="w-full px-6 md:px-10 flex flex-col items-center text-center gap-6 md:gap-8 mt-10 md:mt-14">
 
-        {/* Headline */}
+        {/* Headline — 72px max */}
         <motion.h1
           initial="hidden"
           animate="visible"
-          className="font-display font-normal leading-[1.02] tracking-tight text-foreground text-[clamp(2.5rem,6vw,5.5rem)]"
+          className="font-display font-normal leading-[1.02] tracking-tight text-foreground text-[clamp(2rem,4.5vw,4.5rem)]"
         >
           {[
             { text: "Build More Than A Career.", muted: false },

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const POWER3_INOUT = [0.7, 0, 0.3, 1] as const;
 const EXPO_OUT     = [0.16, 1, 0.3, 1] as const;
@@ -10,89 +10,72 @@ const lineReveal = {
   hidden: { y: "110%" },
   visible: (i: number) => ({
     y: "0%",
-    transition: { duration: 1.1, ease: EXPO_OUT, delay: i * 0.13 },
+    transition: { duration: 1.1, ease: EXPO_OUT, delay: i * 0.14 },
   }),
 };
 
-const scrollFade = (delay = 0) => ({
-  initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true, margin: "-10%" },
-  transition: { duration: 1, ease: POWER3_INOUT, delay },
-});
+// Linear hero grid pattern at ~5% opacity on dark bg,
+// with a gradient that fades to near-black at the base.
+const sectionBg = [
+  // Fade to dark at base — matches site's dark-green foreground
+  "linear-gradient(to bottom, transparent 55%, oklch(0.09 0.02 152) 100%)",
+  // Vertical lines at 5% opacity
+  "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 24px)",
+  // Horizontal lines at 3% opacity
+  "repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 24px)",
+].join(", ");
 
 export function SalesAcademyApply() {
   return (
     <section
-      id="apply"
-      className="bg-foreground px-6 md:px-10 lg:px-16 py-24 md:py-36 relative overflow-hidden"
+      className="py-28 md:py-40 px-6 bg-foreground relative overflow-hidden"
+      style={{ backgroundImage: sectionBg }}
     >
-      {/* Subtle grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: [
-            "repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 24px)",
-            "repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 24px)",
-          ].join(", "),
-        }}
-        aria-hidden
-      />
+      <div className="relative mx-auto w-full max-w-[var(--container-default)] flex flex-col items-center text-center gap-8 md:gap-10">
 
-      <div className="relative mx-auto w-full max-w-[var(--container-default)]">
+        {/* Headline — max 2 lines, capped so it stays on 2 lines in centered layout */}
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-10%" }}
+          className="font-display font-normal text-background leading-[1.0] tracking-tight text-[clamp(2.5rem,5vw,3.75rem)] max-w-2xl"
+        >
+          {["Your growth begins", "with structure."].map((line, i) => (
+            <span key={i} className="block overflow-hidden">
+              <motion.span className="block" custom={i} variants={lineReveal}>
+                {line}
+              </motion.span>
+            </span>
+          ))}
+        </motion.h2>
 
-        {/* Two-column layout — headline left, body+CTA right */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
+        {/* Body — succinct */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 1, ease: POWER3_INOUT, delay: 0.2 }}
+          className="text-base md:text-lg text-background/50 leading-relaxed max-w-lg"
+        >
+          Join a structured community committed to your long-term growth
+          in real estate — through systems, mentorship, and accountability.
+        </motion.p>
 
-          {/* LEFT — massive display headline */}
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-10%" }}
-            className="font-display font-normal text-background leading-[0.96] tracking-tight text-[clamp(2.75rem,7vw,6.5rem)]"
+        {/* Primary CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.9, ease: POWER3_INOUT, delay: 0.3 }}
+        >
+          <a
+            href="#apply"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground text-sm rounded-full [box-shadow:var(--primary-shadow)] hover:bg-primary/90 hover:[box-shadow:var(--primary-shadow-hover)] hover:-translate-y-px transition-all duration-200"
           >
-            {["Your growth", "begins with", "structure."].map((line, i) => (
-              <span key={i} className="block overflow-hidden">
-                <motion.span className="block" custom={i} variants={lineReveal}>
-                  {line}
-                </motion.span>
-              </span>
-            ))}
-          </motion.h2>
-
-          {/* RIGHT — body + CTA flush to bottom */}
-          <div className="flex flex-col justify-between gap-10 md:gap-20 md:pb-2">
-
-            {/* Subhead */}
-            <motion.p
-              {...scrollFade(0.25)}
-              className="text-base md:text-lg text-background/50 leading-relaxed"
-            >
-              The Associate Program is for people ready to learn, execute, and
-              create meaningful opportunities through real estate. Join a
-              community committed to building businesses, developing people, and
-              creating lasting impact.
-            </motion.p>
-
-            {/* Underlined text CTA — like image 4 */}
-            <motion.div
-              {...scrollFade(0.4)}
-              className="border-t border-background/15 pt-8"
-            >
-              <a
-                href="mailto:damilareoshokoya@gmail.com?subject=The%20Associate%20Program%20%E2%80%94%20Application"
-                className="group inline-flex items-center gap-3 text-background text-base md:text-lg font-normal border-b border-background/25 pb-1 hover:border-background transition-colors duration-300"
-              >
-                Join The Associate Program
-                <ArrowUpRight
-                  size={18}
-                  className="text-background/50 group-hover:text-background group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
-                />
-              </a>
-            </motion.div>
-
-          </div>
-        </div>
+            Join The Associate Program
+            <ArrowRight size={14} />
+          </a>
+        </motion.div>
 
       </div>
     </section>

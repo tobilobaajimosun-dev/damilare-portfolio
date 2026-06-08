@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -15,7 +14,11 @@ const lineReveal = {
   }),
 };
 
-// Each profile card — replace images with programme-specific photos when ready.
+// Card dimensions
+const CARD_W  = 280; // px
+const CARD_H  = 373; // px  (3/4 ratio)
+const CARD_GAP = 16; // px — right-margin per card (gap between cards)
+
 const profiles = [
   {
     text: "Entrepreneurs expanding into real estate",
@@ -39,54 +42,15 @@ const profiles = [
   },
 ];
 
-// Fan rotations and y-drops for resting state
-const fanConfig = [
-  { rotate: -16, yDrop: 40 },
-  { rotate:  -8, yDrop: 16 },
-  { rotate:   0, yDrop:  0 }, // center — front
-  { rotate:   8, yDrop: 16 },
-  { rotate:  16, yDrop: 40 },
-];
-
-function useCardSpacing() {
-  const [spacing, setSpacing] = useState(150);
-  const [cardW, setCardW]     = useState(240);
-  const [cardH, setCardH]     = useState(360);
-
-  useEffect(() => {
-    function update() {
-      const w = window.innerWidth;
-      if (w < 480) {
-        setSpacing(80);
-        setCardW(160);
-        setCardH(240);
-      } else if (w < 768) {
-        setSpacing(110);
-        setCardW(200);
-        setCardH(300);
-      } else {
-        setSpacing(150);
-        setCardW(240);
-        setCardH(360);
-      }
-    }
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  return { spacing, cardW, cardH };
-}
+// Duplicate for seamless loop: 2 copies → animate by -50% = exactly 1 copy scrolled
+const marqueeItems = [...profiles, ...profiles];
 
 export function AssociateProgramWhoIsItFor() {
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const { spacing, cardW, cardH } = useCardSpacing();
-
   return (
-    <section className="py-24 md:py-36 px-6 bg-background overflow-hidden">
+    <section className="py-24 md:py-36 bg-background overflow-hidden">
 
-      {/* Centered header */}
-      <div className="text-center max-w-2xl mx-auto mb-20 md:mb-28">
+      {/* ── Centered header ──────────────────────────────── */}
+      <div className="text-center max-w-2xl mx-auto px-6 mb-16 md:mb-20">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -122,57 +86,64 @@ export function AssociateProgramWhoIsItFor() {
         </motion.p>
       </div>
 
-      {/* Fan deck ─────────────────────────────────────────── */}
-      <div
-        className="relative mx-auto flex items-center justify-center"
-        style={{ height: cardH + 60 }}
-      >
-        {profiles.map((profile, i) => {
-          const fan      = fanConfig[i];
-          const isCenter = i === 2;
-          const isHovered = hoveredIdx === i;
-
-          // z-index: center is 5, edges are 1; hovered goes to 10
-          const zIndex = isHovered ? 10 : (5 - Math.abs(i - 2));
-
-          return (
-            <motion.div
+      {/* ── Endless image marquee ────────────────────────── */}
+      {/* Outer div clips the scrolling track; no padding so images bleed edge-to-edge */}
+      <div className="overflow-hidden select-none">
+        <div
+          style={{
+            display: "flex",
+            /* Total track width = 2 copies × (cardW + gap) × 5 cards */
+            /* No need to set explicit width — flex lays out naturally */
+            animation: "marquee 28s linear infinite",
+            willChange: "transform",
+          }}
+        >
+          {marqueeItems.map((profile, i) => (
+            <div
               key={i}
-              className="absolute cursor-pointer overflow-hidden rounded-2xl"
-              style={{ zIndex, width: cardW, height: cardH }}
-              initial={{
-                x: (i - 2) * spacing,
-                rotate: fan.rotate,
-                y: fan.yDrop,
-                scale: isCenter ? 1 : 0.96,
+              style={{
+                flexShrink: 0,
+                width:       CARD_W,
+                height:      CARD_H,
+                marginRight: CARD_GAP,
+                borderRadius: 16,
+                overflow: "hidden",
+                position: "relative",
               }}
-              animate={{
-                x: (i - 2) * spacing,
-                rotate: isHovered ? 0 : fan.rotate,
-                y: isHovered ? -16 : fan.yDrop,
-                scale: isHovered ? 1.04 : isCenter && hoveredIdx === null ? 1 : 0.96,
-              }}
-              transition={{ type: "spring", stiffness: 260, damping: 24 }}
-              onHoverStart={() => setHoveredIdx(i)}
-              onHoverEnd={() => setHoveredIdx(null)}
             >
               <Image
                 src={profile.image}
                 fill
-                sizes={`${cardW}px`}
+                sizes={`${CARD_W}px`}
                 className="object-cover"
                 alt={profile.text}
               />
-              {/* Gradient overlay + label */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <p className="text-white text-sm leading-snug font-sans">
+              {/* Gradient overlay + profile label */}
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)",
+                  display: "flex",
+                  alignItems: "flex-end",
+                  padding: "20px",
+                }}
+              >
+                <p
+                  style={{
+                    color: "#fff",
+                    fontSize: 13,
+                    lineHeight: 1.45,
+                    fontFamily: "inherit",
+                    margin: 0,
+                  }}
+                >
                   {profile.text}
                 </p>
               </div>
-            </motion.div>
-          );
-        })}
+            </div>
+          ))}
+        </div>
       </div>
 
     </section>
