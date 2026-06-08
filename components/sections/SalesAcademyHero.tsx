@@ -16,18 +16,6 @@ const lineReveal = {
   }),
 };
 
-// ── Carousel config ────────────────────────────────────────────────
-const CARD_W  = 280;
-const CARD_H  = 400;
-const X_STEP  = 320;  // px between card centres — 40px gap between card edges
-const ARC_Y   = 30;   // px the arc drops per step from centre
-const ARC_ROT = 6;    // deg tilt per step from centre
-const SCALE_S = 0.05; // scale reduction per step from centre
-
-const PHOTO_REGION_H = 520;
-const PT = 112; // pt-28
-const BASE_Y = Math.round((PHOTO_REGION_H - CARD_H) / 2) - 10;
-
 const photos = [
   "/images/about-c1.jpg",
   "/images/about-c2.jpg",
@@ -39,54 +27,58 @@ const photos = [
 ];
 const N = photos.length;
 
-// Position style for a card at signed distance `dist` from the centre slot
-function posStyle(dist: number) {
-  const a = Math.abs(dist);
-  return {
-    x:       dist * X_STEP,
-    y:       a * ARC_Y,
-    scale:   1 - a * SCALE_S,
-    rotate:  dist * ARC_ROT,
-    opacity: a > 2 ? 0 : a === 2 ? 0.65 : 1,
-    zIndex:  5 - a,
-  };
-}
+const SCALE_S = 0.05;
+const PT      = 112; // pt-28
 
 export function SalesAcademyHero() {
-  const [center, setCenter] = useState(0);
+  const [center,   setCenter]   = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Advance carousel every 2.5 s
   useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
     const id = setInterval(() => setCenter(c => (c + 1) % N), 2500);
-    return () => clearInterval(id);
+    return () => {
+      window.removeEventListener("resize", check);
+      clearInterval(id);
+    };
   }, []);
+
+  // Responsive sizing: on mobile show 3 cards comfortably, desktop cinematic fan
+  const CARD_W   = isMobile ? 190 : 280;
+  const CARD_H   = isMobile ? 268 : 400;
+  const X_STEP   = isMobile ? 210 : 320;  // gap between card edges: 20px / 40px
+  const ARC_Y    = isMobile ? 18  : 30;
+  const ARC_ROT  = isMobile ? 5   : 6;
+  const REGION_H = isMobile ? 340 : 520;
+  const BASE_Y   = Math.round((REGION_H - CARD_H) / 2) - 10;
+
+  const posStyle = (dist: number) => {
+    const a = Math.abs(dist);
+    return {
+      x:       dist * X_STEP,
+      y:       a * ARC_Y,
+      scale:   1 - a * SCALE_S,
+      rotate:  dist * ARC_ROT,
+      opacity: a > 2 ? 0 : a === 2 ? 0.65 : 1,
+      zIndex:  5 - a,
+    };
+  };
 
   return (
     <section className="flex flex-col items-center bg-background overflow-hidden">
 
-      {/* ── Carousel region ───────────────────────────────── */}
-      {/*
-        All cards share a zero-width anchor at left: 50%.
-        Each card's left edge starts at -CARD_W/2 (so card centre = 50%).
-        animate.x then shifts it by signedDist × X_STEP.
-        overflow-hidden on the section clips outer cards naturally.
-      */}
+      {/* ── Carousel ──────────────────────────────────────── */}
       <div
         className="relative w-full pt-28 md:pt-32"
-        style={{ height: PHOTO_REGION_H + PT }}
+        style={{ height: REGION_H + PT }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: PT,
-            left: "50%",
-            width: 0,
-            height: PHOTO_REGION_H,
-          }}
-        >
+        {/* Zero-width centre anchor at 50% */}
+        <div style={{ position: "absolute", top: PT, left: "50%", width: 0, height: REGION_H }}>
           {photos.map((src, idx) => {
             const raw  = (idx - center + N) % N;
-            const dist = raw > N / 2 ? raw - N : raw; // –3…+3
+            const dist = raw > N / 2 ? raw - N : raw;
             const s    = posStyle(dist);
 
             return (
@@ -103,16 +95,11 @@ export function SalesAcademyHero() {
                   zIndex: s.zIndex,
                 }}
               >
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: 10,
-                    overflow: "hidden",
-                    position: "relative",
-                    boxShadow: "0 6px 28px rgba(0,0,0,0.08)",
-                  }}
-                >
+                <div style={{
+                  width: "100%", height: "100%",
+                  borderRadius: 10, overflow: "hidden", position: "relative",
+                  boxShadow: "0 6px 28px rgba(0,0,0,0.08)",
+                }}>
                   <Image
                     src={src}
                     fill
@@ -147,8 +134,8 @@ export function SalesAcademyHero() {
           className="font-display font-normal leading-[1.02] tracking-tight text-foreground text-[clamp(2rem,4.5vw,4.5rem)]"
         >
           {[
-            { text: "Real estate careers.",   muted: false },
-            { text: "Built with structure.",  muted: true  },
+            { text: "Real estate careers.",  muted: false },
+            { text: "Built with structure.", muted: true  },
           ].map((line, i) => (
             <span key={i} className="block overflow-hidden">
               <motion.span

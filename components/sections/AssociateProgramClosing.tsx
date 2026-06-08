@@ -20,16 +20,17 @@ export function AssociateProgramClosing() {
     <section className="bg-background overflow-hidden border-t border-border">
       <div className="grid grid-cols-1 md:grid-cols-2">
 
-        {/* Portrait */}
-        <div className="relative min-h-[380px] md:min-h-[520px]">
-          <Image
-            src="/images/portrait-2.jpg"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover object-top"
-            alt="Damilare Oshokoya"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/30 hidden md:block" />
+        {/* Portrait — padded so the image breathes within the section */}
+        <div className="p-6 md:p-10 flex items-stretch">
+          <div className="relative w-full rounded-2xl overflow-hidden bg-surface min-h-[360px] md:min-h-[480px]">
+            <Image
+              src="/images/portrait-2.jpg"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-top"
+              alt="Damilare Oshokoya"
+            />
+          </div>
         </div>
 
         {/* Quote + CTA */}
