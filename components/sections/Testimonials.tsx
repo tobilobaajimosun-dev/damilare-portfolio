@@ -6,7 +6,7 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function Testimonials() {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="py-10 md:py-20 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
         <motion.h2
@@ -14,7 +14,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7 }}
-          className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-16 text-center"
+          className="font-display font-normal text-[clamp(2.25rem,4.5vw,3.75rem)] tracking-tight text-foreground leading-tight mb-8 md:mb-12 text-center"
         >
           What clients{" "}
           <span className="text-muted-foreground">say.</span>

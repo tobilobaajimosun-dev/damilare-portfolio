@@ -6,9 +6,9 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function HomePhilosophy() {
   return (
-    <section className="py-16 md:py-28 px-6 md:px-10 lg:px-16 bg-foreground">
+    <section className="py-10 md:py-24 px-6 md:px-10 lg:px-16 bg-foreground">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-stretch">
 
           {/* Left — image fills column height */}
           <motion.div
@@ -32,7 +32,7 @@ export function HomePhilosophy() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="flex flex-col justify-center gap-8"
+            className="flex flex-col justify-center gap-5 md:gap-8"
           >
             <motion.p
               variants={fadeUp}

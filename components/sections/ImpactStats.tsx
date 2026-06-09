@@ -26,7 +26,7 @@ const barcodeHeight = ["h-8", "h-12", "h-16", "h-22", "h-28"];
 
 export function ImpactStats() {
   return (
-    <section className="py-14 md:py-20 px-6 md:px-10 lg:px-16 bg-foreground overflow-hidden">
+    <section className="py-10 md:py-16 px-6 md:px-10 lg:px-16 bg-foreground overflow-hidden">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
         {/* Section header */}
@@ -35,7 +35,7 @@ export function ImpactStats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-16"
+          className="mb-8 md:mb-12"
         >
           <h2 className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-background leading-tight">
             Building businesses,

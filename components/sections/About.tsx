@@ -28,7 +28,7 @@ export function About() {
       {/* ── The Foundation ─────────────────────────────────────── */}
       <section
         id="about"
-        className="py-14 md:py-24 px-6 md:px-10 lg:px-16 scroll-mt-20"
+        className="py-10 md:py-20 px-6 md:px-10 lg:px-16 scroll-mt-20"
         style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.04)" }}
       >
         <div className="mx-auto w-full max-w-[var(--container-default)]">
@@ -87,7 +87,7 @@ export function About() {
 
       {/* ── By the numbers ─────────────────────────────────────── */}
       <section
-        className="py-14 md:py-24 px-6 md:px-10 lg:px-16 border-t border-border"
+        className="py-10 md:py-20 px-6 md:px-10 lg:px-16 border-t border-border"
         style={{ backgroundColor: "oklch(0.26 0.07 152 / 0.03)" }}
       >
         <div className="mx-auto w-full max-w-[var(--container-default)]">

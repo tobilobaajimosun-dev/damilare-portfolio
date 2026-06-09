@@ -16,14 +16,14 @@ export function HomeHero() {
     >
       <BackgroundPattern variant="light" />
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Left — copy */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-5 md:gap-8"
           >
             <motion.h1
               variants={staggerContainer}

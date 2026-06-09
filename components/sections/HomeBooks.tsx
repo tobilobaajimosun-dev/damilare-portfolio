@@ -24,14 +24,14 @@ const books = [
 
 export function HomeBooks() {
   return (
-    <section className="py-14 md:py-24 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
+    <section className="py-10 md:py-20 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col gap-12"
+          className="flex flex-col gap-8 md:gap-12"
         >
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
             <h2 className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground leading-tight">
@@ -58,7 +58,7 @@ export function HomeBooks() {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex flex-col justify-between gap-8 p-8">
+                <div className="flex flex-col justify-between gap-5 p-5 md:gap-8 md:p-8">
                   <div className="flex flex-col gap-3">
                     <h3 className="font-display text-2xl md:text-3xl font-normal text-foreground">
                       {book.title}

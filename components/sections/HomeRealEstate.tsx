@@ -7,9 +7,9 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function HomeRealEstate() {
   return (
-    <section className="py-14 md:py-24 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
+    <section className="py-10 md:py-20 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-center">
 
           {/* Left — text */}
           <motion.div

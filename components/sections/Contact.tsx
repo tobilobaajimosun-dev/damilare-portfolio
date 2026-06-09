@@ -24,7 +24,7 @@ export function Contact() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-6 mb-16 max-w-2xl mx-auto text-center"
+          className="flex flex-col gap-6 mb-8 md:mb-12 max-w-2xl mx-auto text-center"
         >
           <motion.p
             variants={fadeUp}
@@ -44,7 +44,7 @@ export function Contact() {
         </motion.div>
 
         {/* Two columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
           {/* Left — details */}
           <motion.div
             variants={staggerContainer}

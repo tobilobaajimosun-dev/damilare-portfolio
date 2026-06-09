@@ -39,14 +39,14 @@ const ventures = [
 
 export function HomeVenturesPreview() {
   return (
-    <section className="py-14 md:py-24 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="py-10 md:py-20 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col gap-12"
+          className="flex flex-col gap-8 md:gap-12"
         >
           {/* Header */}
           <motion.div

@@ -45,7 +45,7 @@ export function LeadershipJourney() {
   // ── Mobile: simple vertical list ──────────────────────────────────────
   if (isMobile) {
     return (
-      <section className="py-14 px-6 bg-background border-t border-border">
+      <section className="py-10 px-6 bg-background border-t border-border">
         <div className="mb-10 flex flex-col gap-3">
           <h2 className="font-display font-normal text-[clamp(2rem,8vw,3rem)] tracking-tight text-foreground leading-tight">
             My Leadership Journey

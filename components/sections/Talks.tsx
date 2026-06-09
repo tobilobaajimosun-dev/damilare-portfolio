@@ -6,7 +6,7 @@ import { talks } from "@/content/talks";
 
 export function Talks() {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
+    <section className="py-10 md:py-20 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}

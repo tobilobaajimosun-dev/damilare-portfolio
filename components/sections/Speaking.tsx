@@ -10,7 +10,7 @@ export function Speaking() {
   return (
     <section
       id="speaking"
-      className="py-16 md:py-24 px-6 md:px-10 lg:px-16 bg-surface scroll-mt-20"
+      className="py-10 md:py-20 px-6 md:px-10 lg:px-16 bg-surface scroll-mt-20"
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 

@@ -34,14 +34,14 @@ const topics = [
 
 export function HomeMentorship() {
   return (
-    <section className="py-14 md:py-24 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
+    <section className="py-10 md:py-20 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col items-center text-center gap-8"
+          className="flex flex-col items-center text-center gap-5 md:gap-8"
         >
 
           {/* Heading */}
