@@ -35,8 +35,8 @@ export function HomeVision() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = useCallback(() => {
-    if (videoActive) setModalOpen(true);
-  }, [videoActive]);
+    setModalOpen(true);
+  }, []);
 
   const closeModal = useCallback(() => setModalOpen(false), []);
 
@@ -139,7 +139,7 @@ export function HomeVision() {
               bottom: 0,
               borderRadius: videoBorderRadius,
             }}
-            className="overflow-hidden bg-neutral-900"
+            className="overflow-hidden bg-neutral-900 cursor-pointer"
             onClick={openModal}
           >
             <video
@@ -150,6 +150,12 @@ export function HomeVision() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
             />
+            {/* Play button — always visible on mobile, hidden on desktop (custom cursor takes over) */}
+            <div className="md:hidden absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-16 h-16 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 shadow-lg">
+                <Play size={18} className="text-white ml-0.5" fill="white" />
+              </div>
+            </div>
           </motion.div>
 
         </div>
@@ -195,20 +201,22 @@ export function HomeVision() {
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
-              <video
-                ref={modalVideoRef}
-                src="/videos/damilare-reel.mp4"
-                controls
-                playsInline
-                className="w-full rounded-2xl shadow-2xl bg-black"
-              />
-              <button
-                onClick={closeModal}
-                aria-label="Close video"
-                className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-              >
-                <X size={18} />
-              </button>
+              <div className="relative">
+                <video
+                  ref={modalVideoRef}
+                  src="/videos/damilare-reel.mp4"
+                  controls
+                  playsInline
+                  className="w-full rounded-2xl shadow-2xl bg-black"
+                />
+                <button
+                  onClick={closeModal}
+                  aria-label="Close video"
+                  className="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/70 transition-colors z-10"
+                >
+                  <X size={18} />
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}
