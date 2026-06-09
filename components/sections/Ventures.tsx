@@ -83,7 +83,7 @@ export function Ventures() {
 
               {/* Content */}
               <div className="flex flex-col gap-3 px-6 pb-8 flex-1 pt-0">
-                <span className="text-[0.6rem] tracking-[0.2em] uppercase font-sans text-muted-foreground">
+                <span className="text-[0.6rem] tracking-[0.1em] uppercase font-sans text-muted-foreground">
                   {v.category}
                 </span>
                 <p className="font-display text-xl font-normal text-foreground group-hover:text-primary transition-colors duration-200">

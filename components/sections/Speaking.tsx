@@ -36,10 +36,10 @@ export function Speaking() {
             circles back to the same thing: building with intention.
           </motion.p>
 
-          <motion.div variants={fadeUp}>
+          <motion.div variants={fadeUp} className="w-full sm:w-auto">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200"
             >
               Book a speaking engagement
               <ArrowRight size={13} />

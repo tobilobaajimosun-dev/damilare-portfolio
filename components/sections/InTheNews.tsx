@@ -17,7 +17,7 @@ export function InTheNews() {
           viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-3 mb-10"
         >
-          <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
+          <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.1em] uppercase text-primary font-sans">
             In The News
           </motion.p>
           <motion.h2 variants={fadeUp} className="font-display font-normal text-[clamp(1.9rem,3.5vw,3rem)] tracking-tight text-foreground">
@@ -54,13 +54,13 @@ export function InTheNews() {
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center p-6">
-                    <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground/40 font-sans text-center">
+                    <span className="text-xs tracking-[0.1em] uppercase text-muted-foreground/40 font-sans text-center">
                       {item.outlet}
                     </span>
                   </div>
                 )}
                 {/* Outlet badge */}
-                <span className="absolute bottom-2 left-3 text-[0.58rem] tracking-[0.16em] uppercase font-sans px-2 py-0.5 rounded bg-background/85 backdrop-blur-sm text-foreground/60 border border-border/50">
+                <span className="absolute bottom-2 left-3 text-[0.58rem] tracking-[0.08em] uppercase font-sans px-2 py-0.5 rounded bg-background/85 backdrop-blur-sm text-foreground/60 border border-border/50">
                   {item.outlet}
                 </span>
               </div>

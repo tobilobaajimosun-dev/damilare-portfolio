@@ -19,7 +19,7 @@ export function Publications() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
+            className="text-[0.65rem] tracking-[0.1em] uppercase text-primary font-sans"
           >
             Publications
           </motion.p>

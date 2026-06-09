@@ -48,7 +48,7 @@ export function SalesAcademyIncludes() {
           className="flex flex-col gap-14"
         >
           <motion.div variants={fadeUp} className="flex flex-col gap-3 max-w-xl">
-            <p className="text-xs tracking-[0.22em] uppercase text-primary font-sans">What Is Included</p>
+            <p className="text-xs tracking-[0.1em] uppercase text-primary font-sans">What Is Included</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-background leading-tight">
               Everything you need to close more deals.
             </h2>

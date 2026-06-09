@@ -26,7 +26,7 @@ const barcodeHeight = ["h-8", "h-12", "h-16", "h-22", "h-28"];
 
 export function ImpactStats() {
   return (
-    <section className="py-20 md:py-32 px-6 md:px-10 lg:px-16 bg-foreground overflow-hidden">
+    <section className="py-14 md:py-20 px-6 md:px-10 lg:px-16 bg-foreground overflow-hidden">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
 
         {/* Section header */}
@@ -60,7 +60,7 @@ export function ImpactStats() {
               <p className="font-display font-normal text-[clamp(2.8rem,4.5vw,4.5rem)] text-white tracking-tight leading-none">
                 {stat.value}
               </p>
-              <p className="text-[0.6rem] tracking-[0.22em] uppercase text-white/50 font-sans mt-4">
+              <p className="text-[0.6rem] tracking-[0.1em] uppercase text-white/50 font-sans mt-4">
                 {stat.label}
               </p>
               <p className="text-[0.72rem] text-white/30 leading-snug mt-2 flex-1">
@@ -96,7 +96,7 @@ export function ImpactStats() {
               className="flex items-center justify-between gap-6 py-5"
             >
               <div className="flex flex-col gap-1.5">
-                <p className="text-[0.6rem] tracking-[0.2em] uppercase text-white/50 font-sans">
+                <p className="text-[0.6rem] tracking-[0.1em] uppercase text-white/50 font-sans">
                   {stat.label}
                 </p>
                 <p className="text-sm text-white/30 leading-snug">

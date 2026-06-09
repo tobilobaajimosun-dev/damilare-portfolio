@@ -7,7 +7,7 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 
 export function HomeRealEstate() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
+    <section className="py-14 md:py-24 px-6 md:px-10 lg:px-16 bg-background border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
@@ -36,7 +36,7 @@ export function HomeRealEstate() {
                 href="https://www.abodeflex.ng/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200 self-start"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200"
               >
                 Learn more on Abode
                 <ArrowRight size={13} />

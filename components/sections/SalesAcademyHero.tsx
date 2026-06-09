@@ -123,7 +123,7 @@ export function SalesAcademyHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: POWER3_INOUT, delay: 0.3 }}
-          className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
+          className="text-[0.65rem] tracking-[0.1em] uppercase text-primary font-sans"
         >
           The Associate Program
         </motion.p>

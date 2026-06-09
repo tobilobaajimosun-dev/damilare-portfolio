@@ -7,7 +7,7 @@ import { BackgroundPattern } from "@/components/ui/BackgroundPattern";
 export function ResourcesHero() {
   return (
     <section
-      className="pt-32 pb-16 md:pt-40 md:pb-20 px-6 md:px-10 lg:px-16 relative overflow-hidden"
+      className="pt-28 pb-12 md:pt-36 md:pb-16 px-6 md:px-10 lg:px-16 relative overflow-hidden"
       style={{
         backgroundImage:
           "linear-gradient(to bottom, transparent 15%, oklch(0.99 0 0) 72%)",

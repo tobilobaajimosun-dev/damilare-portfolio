@@ -15,7 +15,7 @@ export function Talks() {
           viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col gap-4 mb-10"
         >
-          <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans">
+          <motion.p variants={fadeUp} className="text-[0.65rem] tracking-[0.1em] uppercase text-primary font-sans">
             Talks &amp; Media
           </motion.p>
           <motion.h2

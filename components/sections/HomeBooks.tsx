@@ -24,7 +24,7 @@ const books = [
 
 export function HomeBooks() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
+    <section className="py-14 md:py-24 px-6 md:px-10 lg:px-16 bg-surface border-t border-border">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}

@@ -16,7 +16,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="pt-28 pb-20 md:pt-40 md:pb-36 px-5 sm:px-8 md:px-10 lg:px-16 bg-background scroll-mt-20"
+      className="pt-20 pb-14 md:pt-28 md:pb-20 px-5 sm:px-8 md:px-10 lg:px-16 bg-background scroll-mt-20"
     >
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         {/* Heading */}
@@ -28,7 +28,7 @@ export function Contact() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs tracking-[0.2em] uppercase text-primary font-sans"
+            className="text-xs tracking-[0.1em] uppercase text-primary font-sans"
           >
             Contact
           </motion.p>
@@ -54,7 +54,7 @@ export function Contact() {
             className="lg:col-span-5 flex flex-col gap-10"
           >
             <motion.div variants={fadeUp} className="flex flex-col gap-3">
-              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+              <p className="text-xs tracking-[0.1em] uppercase text-muted-foreground">
                 Email
               </p>
               <a
@@ -66,7 +66,7 @@ export function Contact() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-col gap-3">
-              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">
+              <p className="text-xs tracking-[0.1em] uppercase text-muted-foreground">
                 Socials
               </p>
               <div className="flex flex-col gap-2.5">

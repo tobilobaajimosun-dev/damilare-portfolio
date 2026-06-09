@@ -103,7 +103,7 @@ export function AssociateProgramFAQ() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 1, ease: POWER3_INOUT }}
-              className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans mb-6"
+              className="text-[0.65rem] tracking-[0.1em] uppercase text-primary font-sans mb-6"
             >
               FAQ
             </motion.p>

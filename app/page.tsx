@@ -20,7 +20,7 @@ export default function Home() {
         <HomeHero />
         <HomeMarquee />
         {/* Breathing room between marquee and I build systems section */}
-        <div className="h-20 md:h-28" />
+        <div className="h-8 md:h-14" />
         <HomeVision />
         <ImpactStats />
         <HomePhilosophy />

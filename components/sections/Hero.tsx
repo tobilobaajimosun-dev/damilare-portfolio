@@ -19,7 +19,7 @@ export function Hero() {
           <div className="lg:col-span-8 flex flex-col gap-8">
             <motion.p
               variants={fadeUp}
-              className="text-sm font-sans tracking-[0.18em] uppercase text-muted-foreground"
+              className="text-sm font-sans tracking-[0.08em] uppercase text-muted-foreground"
             >
               {brand.roles.slice(0, 4).join(" · ")}
             </motion.p>

@@ -39,7 +39,7 @@ const ventures = [
 
 export function HomeVenturesPreview() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-background">
+    <section className="py-14 md:py-24 px-6 md:px-10 lg:px-16 bg-background">
       <div className="mx-auto w-full max-w-[var(--container-default)]">
         <motion.div
           variants={staggerContainer}
@@ -64,7 +64,7 @@ export function HomeVenturesPreview() {
             </div>
             <Link
               href="/ventures"
-              className="inline-flex items-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200 shrink-0"
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 border border-border text-foreground text-sm font-medium rounded-full hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all duration-200"
             >
               View All Ventures
               <ArrowRight size={13} />

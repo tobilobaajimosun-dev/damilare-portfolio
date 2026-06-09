@@ -23,7 +23,7 @@ export function HomeMarquee() {
       >
         {track.map((label, i) => (
           <span key={i} className="flex items-center shrink-0">
-            <span className="text-[0.65rem] tracking-[0.3em] uppercase text-muted-foreground font-sans font-medium whitespace-nowrap px-8">
+            <span className="text-[0.65rem] tracking-[0.12em] uppercase text-muted-foreground font-sans font-medium whitespace-nowrap px-8">
               {label}
             </span>
             <span

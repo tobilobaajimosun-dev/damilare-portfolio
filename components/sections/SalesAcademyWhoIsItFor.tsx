@@ -54,7 +54,7 @@ export function SalesAcademyWhoIsItFor() {
             className="flex flex-col gap-10"
           >
             <motion.div variants={fadeUp} className="flex flex-col gap-3">
-              <p className="text-xs tracking-[0.22em] uppercase text-primary font-sans">Who It Is For</p>
+              <p className="text-xs tracking-[0.1em] uppercase text-primary font-sans">Who It Is For</p>
               <h2 className="font-display text-3xl md:text-4xl font-normal tracking-tight text-foreground leading-tight">
                 Built for people who are serious about growth.
               </h2>

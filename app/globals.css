@@ -130,10 +130,18 @@
 
   html {
     @apply font-sans scroll-smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Hide scrollbar on mobile — keeps scroll functionality */
+  @media (max-width: 768px) {
+    ::-webkit-scrollbar { display: none; }
+    * { scrollbar-width: none; -ms-overflow-style: none; }
   }
 
   p {

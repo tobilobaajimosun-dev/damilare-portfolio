@@ -11,7 +11,7 @@ const sectionBg = [
 export function HomeFounderNote() {
   return (
     <section
-      className="py-28 md:py-40 px-6 md:px-10 lg:px-16 bg-background"
+      className="py-16 md:py-28 px-6 md:px-10 lg:px-16 bg-background"
       style={{ backgroundImage: sectionBg }}
     >
       <div className="mx-auto w-full max-w-[var(--container-content)]">
@@ -24,7 +24,7 @@ export function HomeFounderNote() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans"
+            className="text-[0.65rem] tracking-[0.1em] uppercase text-primary font-sans"
           >
             A Note From Damilare
           </motion.p>

@@ -40,7 +40,7 @@ export function Footer() {
 
           {/* Explore */}
           <div className="flex flex-col gap-6">
-            <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
+            <p className="text-[0.65rem] tracking-[0.1em] uppercase text-muted-foreground font-sans">
               Explore
             </p>
             <motion.nav
@@ -74,7 +74,7 @@ export function Footer() {
 
           {/* Follow */}
           <div className="flex flex-col gap-6">
-            <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
+            <p className="text-[0.65rem] tracking-[0.1em] uppercase text-muted-foreground font-sans">
               Follow
             </p>
             <motion.div
@@ -110,9 +110,9 @@ export function Footer() {
           </div>
 
           {/* Contact details */}
-          <div className="grid grid-cols-2 md:grid-cols-1 gap-8 md:min-w-[220px]">
+          <div className="flex flex-col gap-8 md:min-w-[220px]">
             <div className="flex flex-col gap-2">
-              <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
+              <p className="text-[0.65rem] tracking-[0.1em] uppercase text-muted-foreground font-sans">
                 Location
               </p>
               <div className="flex items-start gap-1.5">
@@ -126,7 +126,7 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-sans">
+              <p className="text-[0.65rem] tracking-[0.1em] uppercase text-muted-foreground font-sans">
                 Email
               </p>
               <a

@@ -10,7 +10,7 @@ export default function NotFound() {
         id="main-content"
         className="min-h-[80dvh] flex flex-col items-center justify-center px-6 text-center"
       >
-        <p className="text-[0.65rem] tracking-[0.22em] uppercase text-primary font-sans mb-6">
+        <p className="text-[0.65rem] tracking-[0.1em] uppercase text-primary font-sans mb-6">
           404
         </p>
         <h1 className="font-display font-normal text-[clamp(2.5rem,5.5vw,4.75rem)] tracking-tight text-foreground leading-[1.06] mb-6">
