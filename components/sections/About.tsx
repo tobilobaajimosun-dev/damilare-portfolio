@@ -122,7 +122,7 @@ export function About() {
                 <div className="hidden md:block aspect-square w-[260px] rounded-xl overflow-hidden relative shrink-0 order-3">
                   <Image
                     src={stat.img}
-                    alt=""
+                    alt={stat.label}
                     fill
                     className="object-cover"
                     sizes="260px"

@@ -105,7 +105,7 @@ export function SalesAcademyHero() {
                     fill
                     sizes={`${CARD_W}px`}
                     className="object-cover object-top"
-                    alt=""
+                    alt="Associate Program — Damilare Oshokoya"
                     priority={idx === 0}
                     draggable={false}
                   />
