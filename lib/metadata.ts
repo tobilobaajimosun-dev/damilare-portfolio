@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 
+// Priority: explicit env → Vercel stable production URL → custom domain fallback
 const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://damilareoshokoya.com";
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://damilareoshokoya.com");
 
 export const siteConfig = {
   name: "Oshokoya Damilare",
